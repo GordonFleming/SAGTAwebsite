@@ -1,6 +1,12 @@
 from .base import *
+import ast
 
-DEBUG = False
+SECRET_KEY = os.environ.get('SECRET_KEY')
+DEBUG = ast.literal_eval(os.environ.get('DEBUG', 'False'))
+WAGTAIL_SITE_NAME = os.environ.get('SITE_NAME')
+HTTP_PORT = os.environ.get('HTTP_PORT')
+ALLOWED_HOSTS = [
+    '{}'.format(WAGTAIL_SITE_NAME), 'www.{}'.format(WAGTAIL_SITE_NAME)]
 
 try:
     from .local import *
