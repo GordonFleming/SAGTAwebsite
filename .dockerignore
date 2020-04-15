@@ -1,0 +1,6 @@
+# Ignore media directory and database (for portability)
+
+media
+static
+db.sqlite3
+deployment

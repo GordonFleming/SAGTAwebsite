@@ -3,3 +3,10 @@ db.sqlite3
 .vscode/
 SAGTA-Workspace.code-workspace
 __*
+.python-version
+
+
+.env
+.idea
+docker-compose.override.yml
+nginx.conf
