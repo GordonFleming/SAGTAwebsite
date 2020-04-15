@@ -1,0 +1,7 @@
+version: '3.7'
+services:
+  uwsgi:
+    image: sagtaweb:latest
+    build:
+      context: ../
+      dockerfile: Dockerfile
