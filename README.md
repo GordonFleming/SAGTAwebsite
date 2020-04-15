@@ -25,6 +25,8 @@ Install dependencies for development
 pip install -r requirements.txt -r requirements.dev.txt
 ```
 
+Uncomment the DEBUG section in urls.py
+
 Run initial manage.py command
 
 ```shell script
