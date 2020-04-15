@@ -1,3 +1,5 @@
 env/
 db.sqlite3
+.vscode/
+SAGTA-Workspace.code-workspace
 __*

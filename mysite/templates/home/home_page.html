@@ -1,3 +1,93 @@
+{% extends "base.html" %}
+
+{% load wagtailcore_tags wagtailimages_tags%}
+
 {% block content %}
-    Hello world
+    {% image self.banner_image fill-500x200 as img %}
+    <div class="jumbotron mb-0" style="background-image: url('{{ img.url }}'); background-size: cover; color: #fff !important">
+        <div class="row">
+            <div class="col-10">
+                <h1 class="display-4">{{ self.banner_title }}</h1>
+                <div class = "lead">{{ self.banner_subtitle|richtext }}</div>        
+                {% if self.banner_cta %}
+                <a class="btn btn-primary btn-lg mt-2" href="https://sagtamapdownloader.kartoza.com/" target="_blank" role="button">Topo Map Dowloader</a>
+                <div class="youtube-map-tut">
+                <h5>How it works:</h5>
+                <a href="https://www.youtube.com/watch?v=LwjhL0BAKlQ&feature=youtu.be" target="_blank"><i class="fab fa-youtube fa-3x"></i></a>
+                </div>
+                {% endif %}
+            </div>
+            <div class="col-2 pt-2">
+                <img src="/media/images/SAGTA_logo_with_NPO.original.png" class="img-fluid">
+            </div>
+        </div>        
+    </div> 
+    <div class="p-3 mb-2 bg-danger text-white col text-center">
+        <h4>Covid-19 Teacher Support</h4>
+        <p>Online Teaching Resources: <a href="https://drive.google.com/open?id=1ULZlqpjhCHJsKxHQqquS7Pl4x4UvDBe8" target="_blank">Click here.</a></p>
+        <a href="https:sacoronavirus.co.za" target="_blank" style="color:inherit;">Stay informed! Visit the SA Department of Health's website for COVID-19 updates: www.sacoronavirus.co.za</a>
+    </div>
+    <!--<div class="row">
+        <div class="col text-center">
+            <a href="https://sagtamapdownloader.kartoza.com/" target="_blank" style="color:inherit"><button type="button" class="btn btn-primary btn-lg" id="button_downloader">SAGTA Map Downloader</button></a>               
+        </div>
+    -->
+    </div>
+    <div class="container-fluid text-center mb-5 mt-3">
+        <h2>Apply</h2>
+        <div class="row align-items-center">
+            <div class="col d-flex justify-content-end"><h4>Printable Form</h4></div>
+            <div class="col d-flex justify-content-start"><a href="/documents/1/SAGTA_Membership_form_2019.pdf" target="_blank"><i class="fas fa-file-alt fa-5x"></i></a></div>
+            <div class="col d-flex justify-content-end"><h4>Online Form</h4></div>
+            <div class="col d-flex justify-content-start"><a href="https://docs.google.com/forms/d/e/1FAIpQLScwiXz63RgBXvp9ExWgI28yHRqD7tiT6fHxiI6G7HSTNtaISg/viewform?c=0&w=1" target="_blank"><i class="fas fa-cloud fa-5x"></i></a></div>
+        </div>
+    </div>
+    <div class="container mb-5">  
+        <h2 class="text-center mb-5">Benefits of membership</h2>
+        <div class="row">
+            <div class="col">
+                <ul class="list-group list-group-flush">  
+                    <li class="list-group-item">SAGTA biannual e-journal</li>
+                    <li class="list-group-item">Up-skilling opportunities (attending workshops and accredited courses)</li>
+                    <li class="list-group-item">Promote Geo-sciences and Spatial IT (GIS and Remote Sensing) as a career option to students and learners</li>
+                    <li class="list-group-item">Membership includes membership of the AAG (American  Association of Geographers)</li>
+                    <li class="list-group-item">Communicate and share with the local geography community</li>
+                </ul> 
+            </div>
+            <div class="col">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Vacancies (for Teachers looking for a post and for schools advertising posts)</li>
+                    <li class="list-group-item">Resource sharing (access to lesson preparation, digital lessons, assessment tasks and examinations)</li>
+                    <li class="list-group-item">Student and learner development (Expos and Olympiads - Geography and GIS)</li>
+                    <li class="list-group-item">Networking opportunities (See calendar)</li>
+                    <li class="list-group-item">Funding opportunities to attend International Conferences</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-24">
+            <img src="/media/images/Goals.original.png" class="img-fluid">
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-24">
+                <div class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100 rounded" src="/media/images/Brandon.original.jpg" alt="First slide">
+                            <div class="carousel-caption d-none d-md-block">
+                            <h5>Cynthia Dibben (Head of Awards Committee) presenting Brandon Louw with the ‘Contribution to Geography’ award.</h5>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100 rounded" src="/media/images/Vusi.original.jpg" alt="Second slide">
+                            <div class="carousel-caption d-none d-md-block">
+                            <h5>Pam Esterhuysen (SAGTA Chair 2019-2020) presenting Vusi Masuku with the ‘Contribution to Geography’ award.</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
