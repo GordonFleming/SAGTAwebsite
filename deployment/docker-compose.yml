@@ -14,7 +14,7 @@ services:
 
   nginx:
     image: nginx
-    # let uwsgi online first
+    # let wsgi online first
     depends_on:
       - wsgi
     volumes:

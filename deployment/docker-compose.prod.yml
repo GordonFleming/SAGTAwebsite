@@ -1,0 +1,49 @@
+# Compose file recipe needed to generate stack in Rancher 1.6
+version: '2'
+volumes:
+  db-data:
+  media-data:
+  static-data:
+  nginx-conf-data:
+services:
+  wsgi:
+    # Change into production image
+    image: sagtaweb:latest
+    environment:
+      DJANGO_SETTINGS_MODULE: "mysite.settings.production"
+      DEBUG: "False"
+      # Fill in SITE_NAME with FQDN
+      SITE_NAME: "sagta.org.za"
+      UWSGI_PORT: "8000"
+      # Change secret key into a random string
+      SECRET_KEY: "secretphrase"
+      # In production, db can be stored in a special directory
+      SQLITE_LOCATION: "/code/db/db.sqlite3"
+    volumes:
+      # Will also mount media, static, and sqlite db in that directory
+      - db-data:/code/db
+      - media-data:/code/media
+      - static-data:/code/static
+
+  nginx:
+    image: nginx
+    # let wsgi online first
+    depends_on:
+      - wsgi
+    volumes:
+      - nginx-conf-data:/etc/nginx
+      - media-data:/opt/sagtawebsite/media
+      - static-data:/opt/sagtawebsite/static
+
+  rsync:
+    image: eeacms/rsync
+    environment:
+      SSH_AUTH_KEY_1: "Your ssh public key"
+    volumes:
+    - media-data:/media
+    - static-data:/static
+    - nginx-conf-data:/nginx
+    - db-data:/db
+    ports:
+    - 522:22/tcp
+    command: server
