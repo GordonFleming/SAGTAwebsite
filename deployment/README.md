@@ -2,15 +2,16 @@
 
 This is a guide to start deployment configuration for production instance using docker and docker-compose.
 
-## Prerequisite
-
-- Docker Engine
-- Resolvable FQDN to be used as SITE_NAME
-
 ## Quick Start Guide
 
 These steps will deploy production server on a host with docker installed.
 Every shell script command is assumed to start from this `deployment` directory.
+
+
+### Prerequisite
+
+- Docker Engine
+- Resolvable FQDN to be used as SITE_NAME
 
 ### Create configurations
 
@@ -68,6 +69,12 @@ docker tag sagtaweb:latest sagtaweb:<YY.MM.DD>
 With <YY.MM.DD> replaced by current year, month, and date, like this: 20.04.18
 That way, even if you rebuild you will have previous tag (locally) in the machine.
 
+We can push the docker image into public registry like this:
+
+```
+docker push <DOCKER_HUB_USER_NAME>/<REPO_NAME>:<TAG_NAME>
+```
+
 #### Pulling the image from registry
 
 If you pull the image from docker image registry, then you don't need to build.
@@ -105,3 +112,88 @@ make down
 ```
 
 
+## Rancher Deployment Guide
+
+### Prerequisite
+
+- Rancher v1.6 with host configured
+
+### Create configuration
+
+Copy and create configuration from `docker-compose.prod.yml` (new name for the file is arbitrary).
+All the values needed to generate the website **must** be hardcoded here.
+
+Some important keys:
+
+|  Key   |   Description   |   Sample value   |
+|--------|-----------------|------------------|
+| services.wsgi.environment.SECRET_KEY | Put any long random string | "kajhgkjahjkshaf98qh-0q-ut31qwiakhewqioxmuwmiotgynnp" |
+| services.wsgi.environment.SITE_NAME | Put FQDN for the production site | "sagta.org.za" |
+| services.rsync.environment.SSH_AUTH_KEY_1 | Put your SSH **public** key | "ssh-rsa AAAAAAAA user@email.org" |
+
+Copy and create configuration from `nginx.prod.con` as `mysite.conf`.
+Replace the server_name directive with the server's FQDN.
+
+### Generate Rancher Stack
+
+In Rancher, on the Stacks UI, click Add Stack.
+Fill in the stack name, and copy paste the content of `docker-compose.prod.yml` that you configured previously.
+Create the stack and wait for the service to complete.
+
+### Copy/Migrate production data
+
+If you already put your ssh public key, you can rsync into your server using port 522.
+
+Several files that needs to be copied:
+
+| File | Usage |
+|------|-------|
+| media/ | Media folder |
+| mysite.conf | Your site's nginx configuration |
+| db.sqlite3 | Your sqlite's database |
+
+Copy these content into the server:
+
+Execute it from root repo:
+
+```shell script
+rsync -avzP -e 'ssh -p 522' media/* root@sagta.org.za:/media
+rsync -avzP -e 'ssh -p 522' db.sqlite3 root@sagta.org.za:/db/db.sqlite3
+rsync -avzP -e 'ssh -p 522' deployment/mysite.conf root@sagta.org.za:/nginx/conf.d/mysite.conf
+```
+
+You can replace `sagta.org.za` with IP address of the machine if it is behind a proxy
+
+### Check folder permissions
+
+Wagtail container run as user Wagtail. Check that the folder permission is sufficient for 
+sqlite database and media folder.
+
+Go inside wsgi container (from Rancher, there's no other way), and check wagtail's UID:
+
+```shell script
+cat /etc/passwd | grep wagtail
+```
+
+The third column is the UID. In this case, usually ID: 1000.
+
+Go inside our rsync server container and set appropriate permissions:
+
+```shell script
+ssh -p 522 root@sagta.org.za
+# from inside the shell of rsync server
+chown -R 1000:1000 /media /db /static
+```
+
+Alternatively you could use Rancher shell of rsync server to do this.
+
+
+### Restart services
+
+Restart `wsgi` and `nginx` service to apply latest changes.
+
+### Expose nginx service
+
+`nginx` service acts as the server. Expose this service to the internet.
+Either expose ports 80 of `nginx` server directly to the host machine via Rancher interface,
+or alternatively use Rancher load balancer.
