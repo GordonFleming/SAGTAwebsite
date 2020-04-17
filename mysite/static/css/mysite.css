@@ -1,6 +1,10 @@
 body {
     background-color: rgb(96, 120, 146);
-}
+
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+} 
 p{
     font-size: 18px;
 }
@@ -28,6 +32,7 @@ a :hover{
 .footer_look {
     background: #375A7F;
     padding: 30px;
+    margin-top: auto;
 }
 .segment-two h3{
     color: cornsilk;
