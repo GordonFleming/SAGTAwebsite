@@ -56,6 +56,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    'captcha',
+    'wagtailcaptcha',
 ]
 
 SITE_ID = 1
@@ -178,6 +181,11 @@ WAGTAIL_SITE_NAME = "mysite"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://example.com'
+
+# Recaptcha settings
+RECAPTCHA_PUBLIC_KEY = "6LfOaOsUAAAAAOo7jXLW5wTwN2LO3iM8Tz49wVGZ"
+RECAPTCHA_PRIVATE_KEY = "6LfOaOsUAAAAABsu2IgtHhoSCqEC481H11XT0TEX"
+NOCAPTCHA = True
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/prep-share/'

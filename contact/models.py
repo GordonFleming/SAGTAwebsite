@@ -12,6 +12,7 @@ from wagtail.contrib.forms.models import(
     AbstractEmailForm,
     AbstractFormField
 )
+from wagtailcaptcha.models import WagtailCaptchaEmailForm
 # Create your models here.
 class FormField(AbstractFormField):
     page = ParentalKey(
@@ -20,7 +21,7 @@ class FormField(AbstractFormField):
         related_name='form_fields',
     )
 
-class ContactPage(AbstractEmailForm):
+class ContactPage(WagtailCaptchaEmailForm):
 
     template = "contact/contact_page.html"
 
