@@ -1,5 +1,7 @@
-from .base import *
+import os
 import ast
+
+from mysite.settings.base import DATABASES
 
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = ast.literal_eval(os.environ.get('DEBUG', 'False'))
@@ -9,6 +11,7 @@ ALLOWED_HOSTS = [
     '{}'.format(WAGTAIL_SITE_NAME), 'www.{}'.format(WAGTAIL_SITE_NAME)]
 DATABASES['default']['NAME'] = os.environ.get(
     'SQLITE_LOCATION', DATABASES['default']['NAME'])
+
 try:
     from .local import *
 except ImportError:
