@@ -10,3 +10,5 @@ media/
 .idea
 docker-compose.override.yml
 nginx.conf
+
+setup.cfg
