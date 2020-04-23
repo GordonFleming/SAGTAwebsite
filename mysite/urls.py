@@ -19,14 +19,14 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
     url(r'', include('allauth.urls')),
-    
+
     url(r"", include(wagtail_urls)),
 ]
 
 
 if settings.DEBUG:
 
-    #Serve static and media files from development server
+    # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()
     urlpatterns += static.static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
