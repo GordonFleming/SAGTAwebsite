@@ -1,4 +1,4 @@
-from .base import *
+from mysite.settings.base import INSTALLED_APPS, MIDDLEWARE
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -7,7 +7,7 @@ DEBUG = True
 SECRET_KEY = 'b51=^q4fgm#*kl*kd*dd@nv+0lix=wfuqgj55ohanmt#wvdr)d'
 
 # SECURITY WARNING: define the correct hosts in production!
-ALLOWED_HOSTS = ['*'] 
+ALLOWED_HOSTS = ['*']
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 

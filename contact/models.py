@@ -5,21 +5,24 @@ from wagtail.admin.edit_handlers import (
     FieldPanel,
     FieldRowPanel,
     InlinePanel,
-    MultiFieldPanel
+    MultiFieldPanel,
 )
 from wagtail.core.fields import RichTextField
-from wagtail.contrib.forms.models import(
+from wagtail.contrib.forms.models import (
     AbstractEmailForm,
-    AbstractFormField
+    AbstractFormField,
 )
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
 # Create your models here.
+
+
 class FormField(AbstractFormField):
     page = ParentalKey(
         'ContactPage',
         on_delete=models.CASCADE,
         related_name='form_fields',
     )
+
 
 class ContactPage(WagtailCaptchaEmailForm):
 
@@ -35,8 +38,8 @@ class ContactPage(WagtailCaptchaEmailForm):
         MultiFieldPanel([
             FieldRowPanel([
                 FieldPanel('from_address', classname="col6"),
-                FieldPanel('to_address', classname="col6")
+                FieldPanel('to_address', classname="col6"),
             ]),
-                FieldPanel("subject"),
+            FieldPanel("subject"),
         ], heading="Email Settings"),
     ]
