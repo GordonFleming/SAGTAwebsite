@@ -1,5 +1,4 @@
-import os
-import ast
+from .base import *
 
 from mysite.settings.base import DATABASES
 

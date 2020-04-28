@@ -1,4 +1,4 @@
-from mysite.settings.base import INSTALLED_APPS, MIDDLEWARE
+from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
