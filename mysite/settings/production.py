@@ -1,7 +1,5 @@
 from .base import *
 
-from mysite.settings.base import DATABASES
-
 SECRET_KEY = os.environ.get('SECRET_KEY')
 DEBUG = ast.literal_eval(os.environ.get('DEBUG', 'False'))
 WAGTAIL_SITE_NAME = os.environ.get('SITE_NAME')
