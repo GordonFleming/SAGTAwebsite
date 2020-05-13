@@ -5,7 +5,7 @@
 {% block content %}
     {% image self.banner_image fill-500x200 as img %}
     <div class="jumbotron mb-0" style="background-image: url('{{ img.url }}'); background-size: cover; color: #fff !important">
-        <div class="row">
+        <div class="row pl-5 pr-5">
             <div class="col-10">
                 <h1 class="display-4">{{ self.banner_title }}</h1>
                 <div class = "lead">{{ self.banner_subtitle|richtext }}</div>        

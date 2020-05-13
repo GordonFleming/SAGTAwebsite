@@ -199,7 +199,6 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_SESSION_REMEMBER = True
 
-
 # Don't download files hook
 
 from django.http import HttpResponse
@@ -215,3 +214,12 @@ def serve_pdf(document, request):
     if request.GET.get('download', False) in [True, 'True', 'true']:
         response['Content-Disposition'] = 'attachment; ' + response['Content-Disposition']
     return response
+
+# Email Settings
+
+EMAIL_HOST = 'smtp.afrihost.co.za'
+EMAIL_HOST_USER = 'website@sagta.org.za'
+EMAIL_HOST_PASSWORD = 'VCvJq2WmJyyRFmK'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
