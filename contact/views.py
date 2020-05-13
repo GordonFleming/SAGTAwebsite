@@ -6,9 +6,11 @@ def index(request):
     if request.method == 'POST':
         message = request.POST['message']
         
-        send_mail('Contact Form',
+        send_mail(
+            'Contact Form',
             message,
             settings.EMAIL_HOST_USER,
-            'flemingrgordon@gmail.com',
-            fail_silently=False)
-        return render(request, 'contact/contact_page.html')
+            ['flemingrgordon@gmail.com'],
+            fail_silently=False,
+            )
+    return render(request, 'contact/contact_page.html')
