@@ -1,10 +1,10 @@
 body {
     background-color: rgb(96, 120, 146);
-
+    background-image: linear-gradient(rgb(96, 120, 146),rgb(33, 68, 105));
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-} 
+}
 p{
     font-size: 18px;
 }
@@ -12,18 +12,19 @@ a{
     color: rgba(185, 213, 236, 0.925);
 }
 a :hover{
-    color: rgb(71, 100, 131);
+    color: rgb(95, 108, 122);
+}
+h3{
+    font-family: Arial;
+    padding-bottom: 15px;
 }
 .list-group-item{
-    background-color: rgb(96, 120, 146);
+    background-color: inherit;
     font-size: 20px;
 }
 .carousel-caption {
     position: static;
     text-align: left;
-}
-.youtube-map-tut{
-    margin-top: 15px;
 }
 .youtube-map-tut a{
     color: white;
