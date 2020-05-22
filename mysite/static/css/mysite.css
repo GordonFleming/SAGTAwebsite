@@ -23,6 +23,9 @@ h3{
 .login{
     margin-top: 3rem;
 }
+.login input{
+    width: 20rem;
+}
 .login label{
     display: block;
 }
@@ -40,6 +43,9 @@ h3{
 }
 .signup label{
     display: block;
+}
+.signup input{
+    width: 20rem;
 }
 /* Contact-Form */
 .contact-form {
