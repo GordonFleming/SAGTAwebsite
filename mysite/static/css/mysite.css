@@ -19,6 +19,25 @@ h3{
     font-family: Arial;
     padding-bottom: 15px;
 }
+/* JoGESA */
+.box{
+    padding: 0 60px 0 60px;
+}
+#earth{
+    animation: earth 4s ease-in-out infinite alternate;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+@keyframes earth {
+    from {
+      -webkit-transform: rotateZ(-10deg) translateY(0px);
+              transform: rotateZ(-10deg) translateY(0px);
+    }
+    to {
+      -webkit-transform: rotateZ(10deg) translateY(0px);
+              transform: rotateZ(10deg) translateY(0px);
+    }
+  }
 /* Login, reset and register form */
 .login{
     margin-top: 3rem;
