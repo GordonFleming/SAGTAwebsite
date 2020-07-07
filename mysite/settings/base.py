@@ -216,9 +216,10 @@ def serve_pdf(document, request):
     return response
 
 # Email Settings
-EMAIL_HOST = 'mail.domain.co.za'
+EMAIL_HOST = 'smtp.afrihost.co.za'
 EMAIL_HOST_USER = 'website@sagta.org.za'
 EMAIL_HOST_PASSWORD = 'VCvJq2WmJyyRFmK'
-EMAIL_PORT = 25
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+DEFAULT_FROM_EMAIL = 'SAGTA Team <noreply@sagta.org.za>'

@@ -37,7 +37,7 @@ h3{
       -webkit-transform: rotateZ(10deg) translateY(0px);
               transform: rotateZ(10deg) translateY(0px);
     }
-  }
+}
 /* Login, reset and register form */
 .login{
     margin-top: 3rem;
