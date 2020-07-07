@@ -176,11 +176,11 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "mysite"
+WAGTAIL_SITE_NAME = "SAGTA"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'https://sagta.org.za'
 
 # Recaptcha settings
 RECAPTCHA_PUBLIC_KEY = "6LfOaOsUAAAAAOo7jXLW5wTwN2LO3iM8Tz49wVGZ"
@@ -216,10 +216,9 @@ def serve_pdf(document, request):
     return response
 
 # Email Settings
-
 EMAIL_HOST = 'mail.domain.co.za'
 EMAIL_HOST_USER = 'website@sagta.org.za'
 EMAIL_HOST_PASSWORD = 'VCvJq2WmJyyRFmK'
 EMAIL_PORT = 25
-EMAIL_USE_TLS = False
+EMAIL_USE_TLS = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

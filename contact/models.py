@@ -13,8 +13,6 @@ from wagtail.contrib.forms.models import (
     AbstractFormField,
 )
 from wagtailcaptcha.models import WagtailCaptchaEmailForm
-# Create your models here.
-
 
 class FormField(AbstractFormField):
     page = ParentalKey(
