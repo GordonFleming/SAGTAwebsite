@@ -16,6 +16,7 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
     url(r'^', include('allauth.account.urls')),
+    url(r'^', include('django.contrib.auth.urls')),
 
     url(r"", include(wagtail_urls)),
 ]
@@ -32,6 +33,7 @@ if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
+        path('accounts/', include('django.contrib.auth.urls')),
     ] + urlpatterns
 
 urlpatterns = urlpatterns + [
