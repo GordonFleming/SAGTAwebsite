@@ -15,7 +15,7 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
-    url(r'', include('allauth.urls')),
+    url(r'^', include('allauth.account.urls')),
 
     url(r"", include(wagtail_urls)),
 ]
