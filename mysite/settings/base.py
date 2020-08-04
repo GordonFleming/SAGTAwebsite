@@ -199,28 +199,13 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_SESSION_REMEMBER = True
 
-# Don't download files hook
-
-from django.http import HttpResponse
-from wagtail.core import hooks
-from django.shortcuts import redirect
-
-@hooks.register('before_serve_document')
-def serve_pdf(document, request):
-    if document.file_extension != 'pdf':
-        return  # Empty return results in the existing response
-    response = HttpResponse(document.file.read(), content_type='application/pdf')
-    response['Content-Disposition'] = 'filename="' + document.file.name.split('/')[-1] + '"'
-    if request.GET.get('download', False) in [True, 'True', 'true']:
-        response['Content-Disposition'] = 'attachment; ' + response['Content-Disposition']
-    return response
-
 # Email Settings
-EMAIL_HOST = 'smtp.afrihost.co.za'
+EMAIL_HOST = 'mail.sagta.org.za'
 EMAIL_HOST_USER = 'website@sagta.org.za'
 EMAIL_HOST_PASSWORD = 'VCvJq2WmJyyRFmK'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'SAGTA Team <noreply@sagta.org.za>'
 

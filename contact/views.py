@@ -1,14 +1,18 @@
 from django.shortcuts import render
 from django.core.mail import send_mail
+from django.core.mail import EmailMessage
 from django.conf import base
 
 def index(request):
     if request.method == 'POST':
-        message = request.POST['name','email','message']
+        name = request.POST['name']
+        email = request.POST['email']
+        message = request.POST['message']
+        full_message = 'From: {name} <{email}>\n\n{message}'.format(name=name, email=email, message=message)
         
         send_mail(
             'Contact Form',
-            message,
+            full_message,
             'website@sagta.org.za',
             ['flemingrgordon@gmail.com'],
             fail_silently=False,
