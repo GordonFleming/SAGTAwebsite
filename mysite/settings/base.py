@@ -91,6 +91,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'wagtail.contrib.settings.context_processors.settings',
             ],
         },
     },
@@ -188,12 +189,12 @@ NOCAPTCHA = True
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/prep-share/'
-ACCOUNT_AUTHENTICATION_METHOD = "email"
+ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_LOGOUT_ON_GET = True
-ACCOUNT_LOGIN_ON_PASSWORD_RESET = True
+ACCOUNT_LOGIN_ON_PASSWORD_RESET = False
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_SESSION_REMEMBER = True
@@ -211,3 +212,19 @@ DEFAULT_FROM_EMAIL = 'SAGTA Team <noreply@sagta.org.za>'
 
 #Set Wagtail default login to site design
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'account/login.html'
+
+# Don't download files hook
+
+from django.http import HttpResponse
+from wagtail.core import hooks
+from django.shortcuts import redirect
+
+@hooks.register('before_serve_document')
+def serve_pdf(document, request):
+    if document.file_extension != 'pdf':
+        return  # Empty return results in the existing response
+    response = HttpResponse(document.file.read(), content_type='application/pdf')
+    response['Content-Disposition'] = 'filename="' + document.file.name.split('/')[-1] + '"'
+    if request.GET.get('download', False) in [True, 'True', 'true']:
+        response['Content-Disposition'] = 'attachment; ' + response['Content-Disposition']
+    return response
