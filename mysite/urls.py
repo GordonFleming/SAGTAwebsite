@@ -19,6 +19,7 @@ urlpatterns = [
     url(r'^accounts/', include('allauth.urls')),
 
     url(r"", include(wagtail_urls)),
+    path('admin/', admin.site.urls),
 ]
 
 
@@ -33,7 +34,6 @@ if settings.DEBUG:
     import debug_toolbar
     urlpatterns = [
         path('__debug__/', include(debug_toolbar.urls)),
-        path('admin/', admin.site.urls),
     ] + urlpatterns
 
 urlpatterns = urlpatterns + [
