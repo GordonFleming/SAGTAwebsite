@@ -20,7 +20,6 @@ urlpatterns = [
     url(r'^', include('django.contrib.auth.urls')),
 
     url(r"", include(wagtail_urls)),
-    path('admin/', admin.site.urls),
 ]
 
 
