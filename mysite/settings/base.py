@@ -61,7 +61,7 @@ INSTALLED_APPS = [
     'wagtailcaptcha',
 ]
 
-SITE_ID = 2
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
