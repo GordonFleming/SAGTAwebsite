@@ -25,8 +25,6 @@ class FormField(AbstractFormField):
 class ContactPage(WagtailCaptchaEmailForm):
 
     template = "contact/contact_page.html"
-    subpage_types = []
-    parent_page_types = ['home.HomePage']
     
     landing_page_template = "contact/contact_page_landing.html"
 
