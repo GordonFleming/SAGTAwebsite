@@ -25,6 +25,10 @@ class FormField(AbstractFormField):
 class ContactPage(WagtailCaptchaEmailForm):
 
     template = "contact/contact_page.html"
+    subpage_types = []
+    parent_page_types = ['home.HomePage']
+    
+    landing_page_template = "contact/contact_page_landing.html"
 
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
@@ -39,5 +43,5 @@ class ContactPage(WagtailCaptchaEmailForm):
                 FieldPanel('to_address', classname="col6"),
             ]),
             FieldPanel("subject"),
-        ], "Email"),
+        ], heading="Email Settings"),
     ]
