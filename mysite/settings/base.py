@@ -212,3 +212,5 @@ DEFAULT_FROM_EMAIL = 'SAGTA Team <website@sagta.org.za>'
 
 #Set Wagtail default login to site design
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'account/login.html'
+
+DEFAULT_FROM_DOMAIN = 'https://sagta.org.za'
