@@ -1,11 +1,10 @@
-/* Content tag styling */
 body {
     background-color: rgb(96, 120, 146);
-    background-image: linear-gradient(rgb(96, 120, 146),rgb(33, 68, 105));
+
     display: flex;
     flex-direction: column;
     min-height: 100vh;
-}
+} 
 p{
     font-size: 18px;
 }
@@ -13,83 +12,18 @@ a{
     color: rgba(185, 213, 236, 0.925);
 }
 a :hover{
-    color: rgb(95, 108, 122);
-}
-h3{
-    font-family: Arial;
-    padding-bottom: 15px;
-}
-/* JoGESA */
-.box{
-    padding: 0 15px 0 15px;
-}
-#earth{
-    animation: earth 4s ease-in-out infinite alternate;
-    transform-origin: center;
-    transform-box: fill-box;
-}
-@keyframes earth {
-    from {
-      -webkit-transform: rotateZ(-10deg) translateY(0px);
-              transform: rotateZ(-10deg) translateY(0px);
-    }
-    to {
-      -webkit-transform: rotateZ(10deg) translateY(0px);
-              transform: rotateZ(10deg) translateY(0px);
-    }
-}
-/* Login, reset and register form */
-.login{
-    margin-top: 3rem;
-}
-.login input{
-    width: 20rem;
-}
-.login label{
-    display: block;
-}
-.password_reset{
-    margin-top: 3rem;
-}
-.password_reset p{
-    margin-top: 2rem;
-}
-.password_reset label{
-    display: block;
-}
-.signup{
-    margin-top: 3rem;
-}
-.signup label{
-    display: block;
-}
-.signup input{
-    width: 20rem;
-}
-/* Contact-Form */
-.contact-form {
-    list-style-type: none;
-    padding-left: 0;
-}
-.contact-form li {
-    margin-bottom: 1.5rem;
-}
-.contact-form label {
-    display: block;
-    font-weight: bold;
-}
-.contact-form .helptext {
-    display: block;
-    font-size: 80%;
+    color: rgb(71, 100, 131);
 }
 .list-group-item{
-    background-color: inherit;
+    background-color: rgb(96, 120, 146);
     font-size: 20px;
 }
-/* Main-page */
 .carousel-caption {
     position: static;
     text-align: left;
+}
+.youtube-map-tut{
+    margin-top: 15px;
 }
 .youtube-map-tut a{
     color: white;

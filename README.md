@@ -15,8 +15,8 @@ Assuming root directory is the repo directory for every start of the scripts sec
 Create a virtual environment for development purposes
 
 ```shell script
-virtualenv env
-source env/bin/activate
+python3 -m venv virtualenv
+source virtualenv/bin/activate
 ```
 
 Install dependencies for development
@@ -38,6 +38,12 @@ Start Django web development server
 
 ```shell script
 ./manage.py runserver 0.0.0.0:8080
+```
+
+Create Super User
+
+``` shell script
+./manage.py createsuperuser
 ```
 
 Web development server will available at http://localhost:8080

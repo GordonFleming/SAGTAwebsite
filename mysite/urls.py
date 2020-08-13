@@ -16,6 +16,8 @@ urlpatterns = [
 
     url(r'^search/$', search_views.search, name='search'),
     url(r'', include('allauth.urls')),
+    url(r'^accounts/', include('allauth.urls')),
+    url(r'^', include('django.contrib.auth.urls')),
 
     url(r"", include(wagtail_urls)),
 ]

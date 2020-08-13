@@ -28,7 +28,7 @@ INSTALLED_APPS = [
     'search',
     'flex',
     'streams',
-    'contact_us',
+    'contact',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -72,7 +72,8 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-    'wagtail.core.middleware.SiteMiddleware',
+	#DeprecationWarning
+    #'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 
@@ -212,5 +213,3 @@ DEFAULT_FROM_EMAIL = 'SAGTA Team <website@sagta.org.za>'
 
 #Set Wagtail default login to site design
 WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'account/login.html'
-
-DEFAULT_FROM_DOMAIN = 'https://sagta.org.za'
