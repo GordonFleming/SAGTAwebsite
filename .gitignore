@@ -1,10 +1,7 @@
-env/
-db.sqlite3
 .vscode/
 SAGTA-Workspace.code-workspace
-__*
+__pycache__
 .python-version
-media/
 
 .env
 .idea
@@ -15,3 +12,56 @@ setup.cfg
 
 New/
 Old/
+
+
+#### Safe to ignore generally ####
+
+# Python
+*.py[cod]
+*.egg*
+local.py
+.mypy_cache
+*.djcache
+
+# Temporary files
+*.swp
+*.swo
+*.tmp
+*~
+*.todo
+.vimcache
+.vscode
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.sqlite3
+*.db
+postgres-data/
+
+# OS generated files
+.DS_Store*
+thumbs.db
+Thumbs.db
+Desktop.ini
+
+media/*
+
+# Envs
+.venv/
+env/
+virtualenv/
+
+# Local static files
+/static/
