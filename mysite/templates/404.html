@@ -3,7 +3,10 @@
 {% block body_class %}template-404{% endblock %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{% static 'css/notfound.css' %}">
+    <head>
+        <link rel="stylesheet" type="text/css" href="{% static 'css/notfound.css' %}">
+    </head>
+
     <div class="moon"></div>
     <div class="moon__crater moon__crater1"></div>
     <div class="moon__crater moon__crater2"></div>
