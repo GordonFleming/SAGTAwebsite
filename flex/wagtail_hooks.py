@@ -6,6 +6,8 @@ from django.shortcuts import redirect
 
 @hooks.register('before_serve_document')
 def serve_pdf(document, request):
+    """Forces open in browser view before download"""
+
     if document.file_extension != 'pdf':
         return  # Empty return results in the existing response
     response = HttpResponse(document.file.read(), content_type='application/pdf')
