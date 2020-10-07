@@ -12,12 +12,19 @@ p{
 a{
     color: rgba(185, 213, 236, 0.925);
 }
-a :hover{
+a:hover{
     color: rgb(95, 108, 122);
 }
 h3{
-    font-family: Arial;
-    padding-bottom: 15px;
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 0.3rem;
+    text-align: center;
+}
+h5{
+    text-align: center;
+}
+.padding{
+    margin-top: 3rem;
 }
 /* JoGESA */
 .box{
