@@ -11,6 +11,7 @@ p{
 }
 a{
     color: rgba(185, 213, 236, 0.925);
+    cursor: pointer;
 }
 a:hover{
     color: rgb(95, 108, 122);
@@ -24,7 +25,7 @@ h5{
     text-align: center;
 }
 .padding{
-    margin-top: 3rem;
+    margin-top: 4rem;
 }
 /* JoGESA */
 .box{
