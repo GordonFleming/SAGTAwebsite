@@ -10,11 +10,28 @@ p{
     font-size: 18px;
 }
 a{
-    color: rgba(185, 213, 236, 0.925);
+    color: rgba(140, 182, 216, 0.925);
     cursor: pointer;
+}
+::-webkit-scrollbar {
+    width: 16px;
+}
+::-webkit-scrollbar-track {
+    background: #f8f8f89a;
+}
+::-webkit-scrollbar-thumb {
+    background: #1f6986;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #3c73aa;
 }
 a:hover{
     color: rgb(95, 108, 122);
+}
+i:hover{
+    color: #246ebd;
+    transition-duration: 1.2s;
 }
 h3{
     font-family: 'Poppins', sans-serif;
