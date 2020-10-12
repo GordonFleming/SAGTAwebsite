@@ -213,5 +213,5 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'SAGTA Team <website@sagta.org.za>'
 
 #Set Wagtail default login to site design
-WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'account/login.html'
+#WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'account/login.html'
 WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
