@@ -205,7 +205,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 # Email Settings
 EMAIL_HOST = 'mail.sagta.org.za'
 EMAIL_HOST_USER = 'website@sagta.org.za'
-EMAIL_HOST_PASSWORD = 'VCvJq2WmJyyRFmK'
+EMAIL_HOST_PASSWORD = 'rM(ZREmR3B{P'
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
