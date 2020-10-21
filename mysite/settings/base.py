@@ -204,13 +204,13 @@ ACCOUNT_USERNAME_REQUIRED = False
 
 # Email Settings
 EMAIL_HOST = 'mail.sagta.org.za'
-EMAIL_HOST_USER = 'noreply@sagta.org.za'
+EMAIL_HOST_USER = 'website@sagta.org.za'
 EMAIL_HOST_PASSWORD = 'rM(ZREmR3B{P'
 EMAIL_PORT = 465
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'SAGTA Team <noreply@sagta.org.za>'
+DEFAULT_FROM_EMAIL = 'SAGTA Team <website@sagta.org.za>'
 
 #Set Wagtail default login to site design
 #WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'account/login.html'

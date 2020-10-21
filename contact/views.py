@@ -14,7 +14,7 @@ def index(request):
             'Contact Form',
             full_message,
             'website@sagta.org.za',
-            ['flemingrgordon@gmail.com'],
+            ['help@sagta.org.za'],
             fail_silently=False,
             )
     return render(request, 'contact/contact_page.html')
