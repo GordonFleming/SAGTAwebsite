@@ -173,6 +173,8 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
@@ -183,11 +185,6 @@ WAGTAIL_SITE_NAME = "SAGTA"
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'https://sagta.org.za'
-
-# Recaptcha settings
-RECAPTCHA_PUBLIC_KEY = "6LfOaOsUAAAAAOo7jXLW5wTwN2LO3iM8Tz49wVGZ"
-RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
-NOCAPTCHA = True
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'

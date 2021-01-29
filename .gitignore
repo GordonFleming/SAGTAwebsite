@@ -60,6 +60,7 @@ media/*
 .venv/
 env/
 virtualenv/
+sagta_env/
 
 # Local static files
 /static/

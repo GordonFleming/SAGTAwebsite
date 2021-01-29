@@ -14,15 +14,24 @@ Assuming root directory is the repo directory for every start of the scripts sec
 
 Create a virtual environment for development purposes
 
+Linux
 ```shell script
 python3 -m venv virtualenv
 source virtualenv/bin/activate
+```
+
+Windows
+```shell script
+python -m venv sagta_env
+.\sagta_env\Scripts\activate.bat
 ```
 
 Install dependencies for development
 
 ```shell script
 pip install -r requirements.txt -r requirements.dev.txt
+or
+pip3 install --user -r requirements.txt -r requirements.dev.txt
 ```
 
 Uncomment the DEBUG section in urls.py
@@ -38,6 +47,7 @@ Start Django web development server
 
 ```shell script
 ./manage.py runserver 0.0.0.0:8080
+
 ```
 
 Create Super User
