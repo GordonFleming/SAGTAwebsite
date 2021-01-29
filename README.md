@@ -47,7 +47,6 @@ Start Django web development server
 
 ```shell script
 ./manage.py runserver 0.0.0.0:8080
-
 ```
 
 Create Super User
