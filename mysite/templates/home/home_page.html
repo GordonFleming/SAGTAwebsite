@@ -4,7 +4,8 @@
 
 {% block content %}
     {% image self.banner_image fill-500x200 as img %}
-    <div class="jumbotron mb-0" style="background-image: url('{{ img.url }}'); background-size: cover; color: #fff !important">
+    <!-- {{ img.url }} -->
+    <div class="jumbotron mb-0" style="background-image: url('https://res.cloudinary.com/splyce/image/upload/v1612115207/patrick-langwallner-wiFOaBrX_wc-unsplash_pmhczr.webp'); background-size: cover; background-color: #546E8A; color: #fff !important; background-attachment: fixed; background-position: center; background-repeat: no-repeat;">
         <div class="row pl-5 pr-5">
             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
                 <h1 class="display-2">{{ self.banner_title }}</h1>
