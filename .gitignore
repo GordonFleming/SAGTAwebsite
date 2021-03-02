@@ -1,5 +1,4 @@
 .vscode/
-sagta_VS_workspace.code-workspace
 __pycache__
 .python-version
 
@@ -12,7 +11,7 @@ setup.cfg
 
 New/
 
-#### Safe to ignore generally ####
+#### Generally safe to ignore ####
 
 # Python
 *.py[cod]
