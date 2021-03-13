@@ -41,23 +41,9 @@ h3{
     margin-top: 2.2rem;
 }
 /* JoGESA */
-.box{
-    padding: 0 15px 0 15px;
-}
-#earth{
-    animation: earth 4s ease-in-out infinite alternate;
-    transform-origin: center;
-    transform-box: fill-box;
-}
-@keyframes earth {
-    from {
-      -webkit-transform: rotateZ(-10deg) translateY(0px);
-              transform: rotateZ(-10deg) translateY(0px);
-    }
-    to {
-      -webkit-transform: rotateZ(10deg) translateY(0px);
-              transform: rotateZ(10deg) translateY(0px);
-    }
+/* Bootsrap Mods */
+.btn-primary{
+    background-color: #526880;
 }
 /* Login, reset and register form */
 .login{
