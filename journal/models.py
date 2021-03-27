@@ -1,4 +1,4 @@
-"""Flexible page"""
+"""Journal page"""
 from django.db import models
 
 from wagtail.admin.edit_handlers import FieldPanel, StreamFieldPanel
@@ -8,10 +8,10 @@ from wagtail.core import blocks as streamfield_blocks
 
 from streams import blocks
 
-class FlexPage(Page):
-    """Flexible page class."""
+class JournalPage(Page):
+    """Journal page class."""
 
-    template = "flex/flex_page.html"
+    template = "journal/journal_page.html"
     
     content = StreamField(
         [
@@ -33,5 +33,5 @@ class FlexPage(Page):
     ]
 
     class Meta: # noqa
-        verbose_name = "Flex Page"
-        verbose_name_plural = "Flex Pages"
+        verbose_name = "Journal Page"
+        verbose_name_plural = "Journal Pages"

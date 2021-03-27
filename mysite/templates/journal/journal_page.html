@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+    <div class="container text-center mt-5">
+        <ul class="nav nav-tabs mb-5">
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#home">Overview</a>
+            </li>
+            <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#profile">Journal Listing</a>
+            </li>
+            <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
+            <div class="dropdown-menu">
+                <a class="dropdown-item" href="#">Action</a>
+                <a class="dropdown-item" href="#">Another action</a>
+                <a class="dropdown-item" href="#">Something else here</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Separated link</a>
+            </div>
+            </li>
+        </ul>
+        <h2>{{ self.subtitle }} - ({{ self.title }})</h2>
+        <div class = "row mt-5">
+            <div class = "col">
+                <h5><a href="https://sagta.org.za/e-journal/">Journal of Geography Education in Africa (JoGEA)</a> by <a href="https://sagta.org.za/e-journal/">Clinton David van der Merwe</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1">Attribution-NonCommercial-NoDerivatives 4.0 International</a></h5>
+            </div>
+            <div class="col">
+                <p>ISSN 2517-9861</p>
+                <img class="img-fluid" src="/media/images/cc-By-nc.original.png" alt="cc" width="135px">
+            </div>
+        </div>
+    </div>
+
+    <div class = "container text-center mt-5">
+        <div class = "row">
+            <div class="col">
+                <h5><a href="/documents/35/JoGESA_Editorial_Board.pdf" target="_blank">JoGESA Editorial Board</a></h5>
+            </div>
+            <div class="col">
+                <h5><a href="/documents/34/JoGESA_Editoral_Policy.pdf" target="_blank">JoGESA Editoral Policy</a></h5>
+            </div>
+            <div class="col">
+                <h5><a href="/documents/13/JoGESA.callforpapers_FINAL.pdf" target="_blank">Call for Special Issue</a></h5>
+           </div>
+        </div>
+    </div>
+
+    <div class="container pr-5 pl-5">
+        <div class="row">
+            <div class="col-md-10 offset-md-1 col-sm-12">
+                {% for block in page.content %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

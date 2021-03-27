@@ -10,8 +10,6 @@
             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
                 <h1 class="display-2">{{ self.banner_title }}</h1>
                 <div class = "lead">{{ self.banner_subtitle|richtext }}</div>        
-                {% if self.banner_cta %}
-                {% endif %}
             </div>
             <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 pt-2 text-center">
                 <img src="https://sagta.org.za/media/images/logo.original.png" class="img-fluid">
@@ -19,21 +17,14 @@
             </div>
         </div>        
     </div>
-    <!-- <div class="alert alert-dismissible alert-info col text-center mb-0 pb-1">
-        <button type="button" class="close" data-dismiss="alert">&times;</button>
-        <strong>Berg to Beach Confence 2021, </strong><a href="/conferences/wessa-sagta-2020-conference/" class="alert-link"> information is coming soon!</a>
-    </div> -->
     <div class="p-3 card bg-danger text-white col text-center">
         <a href="https://sacoronavirus.co.za" target="_blank" style="color:inherit;">Stay informed! Visit the SA Department of Health's website for COVID-19 updates: www.sacoronavirus.co.za</a>
     </div>
     <!-- Notices -->
-    <div class="container mt-5 text-center">
-        <h3>Notices:</h3>
-        <h4>Berg to Beach Confence <strong>2021</strong></h4>
-        <h5>More information coming soon!</h5>
-        <!-- <h4>SAGTA webinar <strong>23 February 2021</strong></h4>
-        <h5></h5> -->
-        <a href="/geomentoring/"><img src="https://firebasestorage.googleapis.com/v0/b/villagevetshop-e2f38.appspot.com/o/SAGTA%20Advert.jpg?alt=media&token=024b81b7-18ad-4a8d-93fb-df263113fc0a" alt="notice" class="img-fluid mt-4"></a>
+    <div class="container mt-3 text-center">
+        {% for block in page.content %}
+            {% include_block block %}
+        {% endfor %}
     </div>
     <div class="p-5 mb-2 text-white">
         <center><h3 class="padding">Teacher Support</h3></center>
