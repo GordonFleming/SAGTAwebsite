@@ -2,29 +2,22 @@
 {% load wagtailcore_tags %}
 
 {% block content %}
-    <div class="container text-center mt-5">
+    <div class="container text-center mt-5" id="overview">
         <ul class="nav nav-tabs mb-5">
             <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#home">Overview</a>
+            <a class="nav-link" href="#overview">Overview</a>
             </li>
             <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#profile">Journal Listing</a>
+            <a class="nav-link" href="#articles">Published Articles</a>
             </li>
-            <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-            <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <a class="dropdown-item" href="#">Something else here</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Separated link</a>
-            </div>
+            <li class="nav-item">
+                <a class="nav-link" href="#board">Board Members</a>
             </li>
         </ul>
         <h2>{{ self.subtitle }} - ({{ self.title }})</h2>
         <div class = "row mt-5">
             <div class = "col">
-                <h5><a href="https://sagta.org.za/e-journal/">Journal of Geography Education in Africa (JoGEA)</a> by <a href="https://sagta.org.za/e-journal/">Clinton David van der Merwe</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1">Attribution-NonCommercial-NoDerivatives 4.0 International</a></h5>
+                <h5>Journal of Geography Education in Africa <a href="https://sagta.org.za/e-journal/">(JoGEA)</a> by <a href="https://sagta.org.za/e-journal/">Clinton David van der Merwe</a> is licensed under <a href="https://creativecommons.org/licenses/by-nc-nd/4.0/?ref=chooser-v1">Attribution-NonCommercial-NoDerivatives 4.0 International</a></h5>
             </div>
             <div class="col">
                 <p>ISSN 2517-9861</p>
@@ -36,13 +29,19 @@
     <div class = "container text-center mt-5">
         <div class = "row">
             <div class="col">
-                <h5><a href="/documents/35/JoGESA_Editorial_Board.pdf" target="_blank">JoGESA Editorial Board</a></h5>
+                <h4>JoGESA Editorial Board</h4>
+                <br>
+                <a href="/documents/35/JoGESA_Editorial_Board.pdf" target="_blank"><i class="fas fa-file-pdf fa-4x"></i></a>
             </div>
             <div class="col">
-                <h5><a href="/documents/34/JoGESA_Editoral_Policy.pdf" target="_blank">JoGESA Editoral Policy</a></h5>
+                <h4>JoGESA Editoral Policy</h4>
+                <br>
+                <a href="/documents/34/JoGESA_Editoral_Policy.pdf" target="_blank"><i class="fas fa-file-pdf fa-4x"></i></a>
             </div>
             <div class="col">
-                <h5><a href="/documents/13/JoGESA.callforpapers_FINAL.pdf" target="_blank">Call for Special Issue</a></h5>
+                <h4>Call for Special Issue</h4>
+                <br>
+                <a href="/documents/13/JoGESA.callforpapers_FINAL.pdf" target="_blank"><i class="fas fa-file-pdf fa-4x"></i></a>
            </div>
         </div>
     </div>

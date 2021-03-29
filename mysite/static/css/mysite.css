@@ -1,7 +1,7 @@
 /* Content tag styling */
 body {
-    background-color: rgb(104, 133, 163);
-    background-image: linear-gradient(rgb(104, 133, 163),rgb(46, 77, 109));
+    background-color: #59718C;
+    background-image: linear-gradient(#59718C,#4b719c);
     display: flex;
     flex-direction: column;
     min-height: 100vh;
@@ -10,7 +10,7 @@ p{
     font-size: 1.2em;
 }
 li{
-    font-size: 1.1em;
+    font-size: 1.03em;
 }
 a{
     color: rgba(169, 200, 226, 0.925);
@@ -33,8 +33,8 @@ a:hover{
     background: #3c73aa;
 }
 i:hover{
-    color: #246ebd;
-    transition-duration: 1.2s;
+    color: #467bb4;
+    transition-duration: 0.2s;
 }
 h3{
     font-family: 'Poppins', sans-serif;
