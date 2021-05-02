@@ -1,26 +1,30 @@
 {% load wagtailimages_tags %}
 
 <div class="container mb-sm-5 mt-sm-5">
-    <h3 class="text-center mb-sm-5">{{ self.title }}</h3>
-    <div class="card-deck">
-        {% for card in self.cards %}
-            {% image card.image fill-300x200 as img %}
-            <div class="card">
-                <img src="{{ img.url }}" alt="{{ img.alt }}" class="card-img-top img-fluid" />
-                <div class="card-body">
-                    <h4 class="card-title">{{ card.title }}</h4>
-                    <p class="card-text">{{ card.text }}</p>
-                    {% if card.button_page %}
-                        <a href="{{ card.button_page.url }}" class="btn btn-primary">
-                            Learn More
-                        </a>
-                    {% elif card.button_url %}
-                        <a href="{{ card.button_url }}" class="btn btn-primary">
-                            About Me
-                        </a>
-                    {% endif %}
+        <h3 class="text-center">{{ self.title }}</h3>
+        <div class="card-deck">
+            <div class="row">
+            {% for card in self.cards %}
+                {% image card.image fill-300x300 as img %}
+                <div class="col-lg-4 col-md-6 col-sm-12 mt-4">
+                    <div class="card">
+                        <img src="{{ img.url }}" alt="{{ img.alt }}" class="card-img-top img-fluid" />
+                        <div class="card-body">
+                            <h4 class="card-title">{{ card.title }}</h4>
+                            <p class="card-text">{{ card.text }}</p>
+                            {% if card.button_page %}
+                                <a href="{{ card.button_page.url }}" class="btn btn-primary">
+                                    Learn More
+                                </a>
+                            {% elif card.button_url %}
+                                <a href="{{ card.button_url }}" class="btn btn-primary">
+                                    About Me
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
 </div>

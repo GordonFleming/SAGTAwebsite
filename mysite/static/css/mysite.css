@@ -48,6 +48,10 @@ h3{
 .btn-primary{
     background-color: #526880;
 }
+.card{
+    background-color: transparent;
+    border: 0;
+}
 /* Login, reset and register form */
 .login{
     margin-top: 3rem;
