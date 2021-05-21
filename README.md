@@ -39,20 +39,20 @@ Uncomment the DEBUG section in urls.py
 Run initial manage.py command
 
 ```shell script
-./manage.py migrate
-./manage.py collectstatic
+python manage.py migrate
+python manage.py collectstatic
 ```
 
 Start Django web development server
 
 ```shell script
-./manage.py runserver 0.0.0.0:8080
+python manage.py runserver 0.0.0.0:8080
 ```
 
 Create Super User
 
 ``` shell script
-./manage.py createsuperuser
+python manage.py createsuperuser
 ```
 
 Web development server will available at http://localhost:8080
