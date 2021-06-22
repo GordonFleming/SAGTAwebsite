@@ -9,13 +9,13 @@
 
     <div class="container mt-5 mb-5">
         <div class="row">
-            <div class="alert alert-dismissible alert-danger p col-md-12 text-center">
+            <!-- <div class="alert alert-dismissible alert-danger p col-md-12 text-center">
                 <button type="button" class="close" data-dismiss="alert">&times;</button>
                 <strong>Important!</strong> The login for SAGTA has moved to a new system and is unable to move users data, especially your encrypted passwords.
                 <br><br>
                 <p>Please would you <a href="/signup">sign up</a> again in order to gain access.</p>
                 <p>Prep-share is only now open to SAGTA paying users.</p>
-            </div>
+            </div> -->
             <div class="col-md-6 offset-md-3">           
                 <h1>{% trans "Sign In" %}</h1>
 
@@ -40,7 +40,7 @@
 
                 {% else %}
                 <p>{% blocktrans %}If you have not created an account yet, then please
-                <a href="{{ signup_url }}">sign up</a> first.{% endblocktrans %}</p>
+                <a href="{{ signup_url }}"><strong>register</strong></a> first.{% endblocktrans %}</p>
                 {% endif %}
 
                 <form class="login" method="POST" action="{% url 'account_login' %}">
@@ -52,7 +52,7 @@
 
                     <button class="btn btn-primary" type="submit">{% trans "Sign In" %}</button>
 
-                    <a class="btn btn-link" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+                    <a style="margin-left: 1rem; font-size: 1.1em;" href="{% url 'account_reset_password' %}"><strong>{% trans "Forgot Password?" %}</strong></a>
 
                 </form>
             </div>

@@ -1,6 +1,6 @@
 /* Content tag styling */
 body {
-    background-color: #697f97;
+    background-color: #6b8199;
     background-image: linear-gradient(#697f97,#54759b);
     display: flex;
     flex-direction: column;
@@ -13,7 +13,7 @@ li{
     font-size: 1.03em;
 }
 a{
-    color: #9cb6c7;
+    color: #2b598a;
     cursor: pointer;
 }
 a:hover{
@@ -79,6 +79,11 @@ h3{
 }
 .signup input{
     width: 20rem;
+}
+.errorlist{
+    color: rgb(207, 42, 13);
+    font-size: 1.08em;
+    font-weight: 800;
 }
 /* Contact-Form */
 .contact-form {
