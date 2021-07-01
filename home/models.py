@@ -28,6 +28,7 @@ class HomePage(Page):
 
     banner_title = models.CharField(max_length=100, blank=False, null=True)
     banner_subtitle = RichTextField(features=["bold","italic","h2","h3","h4"])
+    banner_img_link = models.CharField(max_length=400, blank=False, null=True)
     banner_image = models.ForeignKey(
         "wagtailimages.Image", 
         null=True,
@@ -38,6 +39,7 @@ class HomePage(Page):
     content_panels = Page.content_panels + [
         FieldPanel("banner_title"),
         FieldPanel("banner_subtitle"),
+        FieldPanel("banner_img_link"),
         ImageChooserPanel("banner_image"),
         StreamFieldPanel("content"),
     ]

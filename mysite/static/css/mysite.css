@@ -13,8 +13,11 @@ li{
     font-size: 1.03em;
 }
 a{
-    color: #2b598a;
+    color: #000;
     cursor: pointer;
+}
+a i{  
+    color: #2b598a;
 }
 a:hover{
     color: rgb(119, 150, 184);
@@ -84,6 +87,9 @@ h3{
     color: rgb(207, 42, 13);
     font-size: 1.08em;
     font-weight: 800;
+}
+input[type=email] {
+    width: 350px;
 }
 /* Contact-Form */
 .contact-form {

@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'contact',
     'blog',
     'journal',
+    'prepshare',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

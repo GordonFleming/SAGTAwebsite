@@ -4,8 +4,7 @@
 
 {% block content %}
     {% image self.banner_image fill-500x200 as img %}
-    <!-- {{ img.url }} -->
-    <div class="jumbotron mb-0" style="background-image: url('https://krdzvhhzruyanmmvjuzp.supabase.co/storage/v1/object/sign/Images/nick-perez--2Ck_Sgzvmw-unsplash.webp?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1cmwiOiJJbWFnZXMvbmljay1wZXJlei0tMkNrX1NnenZtdy11bnNwbGFzaC53ZWJwIiwiaWF0IjoxNjIxNTkzNTM2LCJleHAiOjE5MzY5NTM1MzZ9.ky1hCM0zt-Z73fBmJCKn9d8DCOXQ8BqlNBQbCqidSrU'); background-size: cover; background-color: #546E8A; color: #fff !important; background-attachment: fixed; background-position: center; background-repeat: no-repeat;">
+    <div class="jumbotron mb-0" style="background-image: url('{{ self.banner_img_link }}'); background-size: cover; background-color: #546E8A; color: #fff !important; background-attachment: fixed; background-position: center; background-repeat: no-repeat;">
         <div class="row pl-5 pr-5">
             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
                 <h1 style="color: rgb(51, 53, 52); text-shadow: 2px 2px 2px #f1eded;" class="display-2">{{ self.banner_title }}</h1>

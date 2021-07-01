@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+    <div class="embed-responsive embed-responsive-16by9">
+        <iframe src='{{ self.filestash_link }}' title="sagta prep-share"></iframe>
+    </div>
+
+{% endblock %}
