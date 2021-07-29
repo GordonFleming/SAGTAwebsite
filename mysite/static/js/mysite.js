@@ -1,5 +1,5 @@
 $('.carousel').carousel({
-    interval: 2000
+    interval: 3500
 })
 
 var apply = document.getElementById("applyNav");
