@@ -22,6 +22,9 @@ a i{
 a:hover{
     color: rgb(119, 150, 184);
 }
+small{
+    font-size: 75%;
+}
 ::-webkit-scrollbar {
     width: 16px;
 }
