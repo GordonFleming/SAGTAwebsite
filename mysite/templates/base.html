@@ -102,7 +102,6 @@
                             Hi {{ request.user.username }},
                             <a href="{% url 'account_logout' %}" class="nav-link d-inline">Logout</a>
                         {% else %}
-                            You are not logged in
                             <a href="{% url 'account_login' %}" class="nav-link d-inline">Login</a>
                         {% endif %}
                     </li>
