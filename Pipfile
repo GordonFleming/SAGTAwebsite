@@ -6,7 +6,7 @@ verify_ssl = true
 [dev-packages]
 
 [packages]
-Django==4.0.2
+Django>=4
 wagtail==2.16
 
 [requires]
