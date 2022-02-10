@@ -1,7 +1,6 @@
 from django.conf import settings
-from django.conf.urls import include, url
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
@@ -9,17 +8,17 @@ from wagtail.documents import urls as wagtaildocs_urls
 from search import views as search_views
 
 urlpatterns = [
-    url(r'^django-admin/', admin.site.urls),
+    path('django-admin/', admin.site.urls),
 
-    url(r'^admin/', include(wagtailadmin_urls)),
-    url(r'^documents/', include(wagtaildocs_urls)),
+    path('admin/', include(wagtailadmin_urls)),
+    path('documents/', include(wagtaildocs_urls)),
 
-    url(r'^search/$', search_views.search, name='search'),
-    url(r'', include('allauth.urls')),
-    url(r'^accounts/', include('allauth.urls')),
-    url(r'^', include('django.contrib.auth.urls')),
+    #path(r'search/$', search_views.search, name='search'),
+    path('', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
+    path('', include('django.contrib.auth.urls')),
 
-    url(r"", include(wagtail_urls)),
+    path("", include(wagtail_urls)),
 ]
 
 
@@ -43,5 +42,5 @@ urlpatterns = urlpatterns + [
 
     # Alternatively, if you want Wagtail pages to be served from a subpath
     # of your site, rather than the site root:
-    #    url(r"^pages/", include(wagtail_urls)),
+    #    path(r"^pages/", include(wagtail_urls)),
 ]
