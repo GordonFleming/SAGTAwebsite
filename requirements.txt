@@ -1,4 +1,4 @@
-Django>=4.0.2
+Django==4.0.2
 wagtail==2.16
 django-allauth==0.47.0
 wagtail-django-recaptcha==1.0
