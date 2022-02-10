@@ -6,10 +6,10 @@ LABEL maintainer="hello@wagtail.io"
 ENV PYTHONUNBUFFERED 1
 
 COPY ./requirements.txt /code/requirements.txt
-RUN pip install --upgrade pip
+RUN pip3 install --upgrade pip
 # Install any needed packages specified in requirements.txt
-RUN pip install -r /code/requirements.txt
-RUN pip install gunicorn
+RUN pip3 install -r /code/requirements.txt
+RUN pip3 install gunicorn
 
 # Copy the current directory contents into the container at /code/
 COPY . /code/
