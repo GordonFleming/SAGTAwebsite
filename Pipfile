@@ -10,4 +10,4 @@ Django>=4.0.2
 wagtail==2.16
 
 [requires]
-python_version = "3.7"
+python_version = "3.9"
