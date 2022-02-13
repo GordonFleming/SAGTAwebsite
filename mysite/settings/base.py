@@ -65,6 +65,7 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
+CSRF_TRUSTED_ORIGINS = ['https://sagta.org.za','https://www.sagta.org.za']
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
