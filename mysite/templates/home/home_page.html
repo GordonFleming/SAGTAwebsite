@@ -3,7 +3,7 @@
 {% load wagtailcore_tags wagtailimages_tags%}
 
 {% block content %}
-    {% image self.banner_image fill-500x200 as img %}
+    {% image self.notify_image max-1000x420 as notify_img %}
     <div class="jumbotron mb-0" style="background-image: url('{{ self.banner_img_link }}'); background-size: cover; background-color: #546E8A; color: #fff !important; background-attachment: fixed; background-position: center; background-repeat: no-repeat;">
         <div class="row pl-5 pr-5">
             <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
@@ -21,6 +21,9 @@
     </div>
     <!-- Notices -->
     <div class="container mt-5 text-center">
+        {% if notify_img %}
+            <img src="{{ notify_img.url }}" alt="notice" class="img-fluid mt-2 mb-4">
+        {% endif %}
         {% for block in page.content %}
             {% include_block block %}
         {% endfor %}
