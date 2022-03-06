@@ -1,5 +1,7 @@
 # README
 
+[![Publish DockerHub image](https://github.com/GordonFleming/SAGTAwebsite/actions/workflows/build-push-docker.yml/badge.svg)](https://github.com/GordonFleming/SAGTAwebsite/actions/workflows/build-push-docker.yml)
+
 Run the site locally for development
 
 For production deployment configuration, refer to [Deployment README](deployment/README.md)
