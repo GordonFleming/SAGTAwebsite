@@ -5,7 +5,7 @@ wagtail-django-recaptcha==1.0
 
 django-debug-toolbar>=3.2.4
 
-django-oauth-toolkit
-django-cors-headers
+django-oauth-toolkit==1.7.0
+django-cors-headers==3.11.0
 
-djangorestframework
+djangorestframework==3.13.1
