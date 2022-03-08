@@ -24,11 +24,11 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ('username', 'email', "first_name", "last_name")
 
 
-class UserLoggedIn(APIView):
+class UserInfo(APIView):
     permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
     def get(self, request, format=None):
         """
-        Return a list of all users.
+        Return user info detail.
         """
         return Response(UserSerializer(request.user).data)
 
