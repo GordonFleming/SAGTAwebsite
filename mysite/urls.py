@@ -37,7 +37,7 @@ urlpatterns = [
     path('django-admin/', admin.site.urls),
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
-    path('user_info/', UserLoggedIn.as_view()),
+    path('user_info/', UserInfo.as_view()),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 
     #path(r'search/$', search_views.search, name='search'),
