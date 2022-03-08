@@ -1,17 +1,44 @@
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from django.contrib.auth.models import User, Group
 from wagtail.admin import urls as wagtailadmin_urls
 from wagtail.core import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from search import views as search_views
 
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+
+from rest_framework import generics, permissions, serializers
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ('username', 'email', "first_name", "last_name")
+
+
+class UserInfo(APIView):
+    permission_classes = [permissions.IsAuthenticated, TokenHasReadWriteScope]
+    def get(self, request, format=None):
+        """
+        Return user info detail.
+        """
+        return Response(UserSerializer(request.user).data)
+
+
 urlpatterns = [
     path('django-admin/', admin.site.urls),
-
     path('admin/', include(wagtailadmin_urls)),
     path('documents/', include(wagtaildocs_urls)),
+    path('user_info/', UserInfo.as_view()),
+    path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 
     #path(r'search/$', search_views.search, name='search'),
     path('', include('allauth.urls')),

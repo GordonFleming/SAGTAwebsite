@@ -23,6 +23,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Application definition
 
+CORS_ORIGIN_ALLOW_ALL = True
 INSTALLED_APPS = [
     'home',
     'search',
@@ -56,6 +57,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
 
+    'oauth2_provider',
+    'corsheaders',
+    'rest_framework',
+
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -64,11 +69,29 @@ INSTALLED_APPS = [
     'wagtailcaptcha',
 ]
 
+OAUTH2_PROVIDER = {
+    # this is the list of available scopes
+    'SCOPES': {'read': 'Read scope', 'write': 'Write scope', 'groups': 'Access to your groups'}
+}
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',
+    ),
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.IsAuthenticated',
+    )
+}
+
+
 SITE_ID = 1
 CSRF_TRUSTED_ORIGINS = ['https://sagta.org.za','https://www.sagta.org.za']
 
 MIDDLEWARE = [
+
+    'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -216,3 +239,4 @@ DEFAULT_FROM_EMAIL = 'SAGTA Team <mail@sagta.org.za>'
 #Set Wagtail default login to site design
 #WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'account/login.html'
 WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
+
