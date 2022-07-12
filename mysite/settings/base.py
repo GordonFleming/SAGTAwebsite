@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'blog',
     'journal',
     'prepshare',
+    'base',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -217,7 +218,7 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
-ACCOUNT_EMAIL_VERIFICATION = "mandatory"
+ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_LOGOUT_ON_GET = True
 ACCOUNT_LOGIN_ON_PASSWORD_RESET = False
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
@@ -225,6 +226,7 @@ ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_FORM_CLASS = 'auth.forms.SignupForm'
+ACCOUNT_ADAPTER =  'auth.adapter.RestrictEmailAdapter'
 
 # Email Settings
 EMAIL_HOST = 'mail.sagta.org.za'
