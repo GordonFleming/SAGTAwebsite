@@ -11,4 +11,4 @@ django-cors-headers==3.11.0
 djangorestframework==3.13.1
 
 gspread==5.4.0
-# python-dotenv==0.20.0
+python-dotenv==0.20.0
