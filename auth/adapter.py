@@ -24,17 +24,13 @@ cred = {
 
 gc = gspread.service_account_from_dict(cred)
 
-# Open a sheet from a spreadsheet in one go
 sheet = gc.open_by_key(SHEET_ID)
 sht = sheet.sheet1
-
-# Email column is column 4
-member_email_list = sht.col_values(4)
  
 class RestrictEmailAdapter(DefaultAccountAdapter):
     def clean_email(self, email):
-        RestrictedList = member_email_list
-        if email not in RestrictedList:
+        member_email_check = sht.find(email)
+        if not member_email_check:
             raise ValidationError('You are restricted from registering.\
                                 Please contact us if you are a member.')
         return email
