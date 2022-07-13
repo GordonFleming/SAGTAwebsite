@@ -226,7 +226,7 @@ ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_FORM_CLASS = 'auth.forms.SignupForm'
-ACCOUNT_ADAPTER =  'auth.adapter.RestrictEmailAdapter'
+# ACCOUNT_ADAPTER =  'auth.adapter.RestrictEmailAdapter'
 
 # Email Settings
 EMAIL_HOST = 'mail.sagta.org.za'
