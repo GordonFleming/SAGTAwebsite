@@ -1,9 +1,11 @@
 from allauth.account.adapter import DefaultAccountAdapter
 from django.forms import ValidationError
 import os
-from dotenv import load_dotenv
+import sys
 
-load_dotenv()
+if 'runserver' in sys.argv:
+    from dotenv import load_dotenv
+    load_dotenv()
 
 import gspread
 from django.contrib.auth.models import Group
