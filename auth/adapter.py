@@ -22,6 +22,8 @@ class RestrictEmailAdapter(DefaultAccountAdapter):
         "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/387800386672-compute%40developer.gserviceaccount.com"
     }
 
+    print(cred)
+
     gc = gspread.service_account_from_dict(cred)
 
     sheet = gc.open_by_key(SHEET_ID)
