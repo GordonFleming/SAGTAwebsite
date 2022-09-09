@@ -2,8 +2,7 @@ from django.db import models
 
 from wagtail.core.models import Page
 from wagtail.core.fields import RichTextField, StreamField
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, StreamFieldPanel
-from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel
 from wagtail.core import blocks as streamfield_blocks
 
 from streams import blocks
@@ -24,6 +23,7 @@ class HomePage(Page):
         ],
         null=True,
         blank=True,
+	    use_json_field=True,
     )
 
     banner_title = models.CharField(max_length=100, blank=False, null=True)
@@ -40,8 +40,8 @@ class HomePage(Page):
         FieldPanel("banner_title"),
         FieldPanel("banner_subtitle"),
         FieldPanel("banner_img_link"),
-        ImageChooserPanel("notify_image"),
-        StreamFieldPanel("content"),
+        FieldPanel("notify_image"),
+        FieldPanel("content"),
     ]
 
     class Meta:
