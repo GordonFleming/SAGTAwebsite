@@ -68,6 +68,8 @@ INSTALLED_APPS = [
 
     'captcha',
     'wagtailcaptcha',
+
+    'debug_toolbar',
 ]
 
 OAUTH2_PROVIDER = {
@@ -103,6 +105,8 @@ MIDDLEWARE = [
 	#DeprecationWarning
     #'wagtail.core.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'mysite.urls'
