@@ -7,7 +7,7 @@ verify_ssl = true
 
 [packages]
 Django>=4.1
-wagtail==4.0.1
+wagtail==4.0.4
 
 [requires]
 python_version = "3.9"
