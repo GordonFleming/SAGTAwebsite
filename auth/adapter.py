@@ -28,7 +28,7 @@ sht = sheet.sheet1
  
 class RestrictEmailAdapter(DefaultAccountAdapter):
     def clean_email(self, email):
-        member_email_check = sht.find(email)
+        member_email_check = sht.find(email.lower())
         if not member_email_check:
             raise ValidationError('You are restricted from registering.\
                                 Please contact us if you are a member.')
