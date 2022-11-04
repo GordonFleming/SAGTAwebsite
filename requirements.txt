@@ -3,8 +3,6 @@ wagtail==4.1
 django-allauth==0.51.0
 wagtail-django-recaptcha==1.0
 
-django-debug-toolbar==3.6.0
-
 django-oauth-toolkit==1.7.0
 django-cors-headers==3.11.0
 
