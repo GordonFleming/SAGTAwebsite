@@ -5,12 +5,13 @@
 {% block content %}
 
     <div class="container">
+        <h1 class="text-center mt-5 mb-5">{{ self.title }}</h1>
         {% for post in posts %}
             <div class="row mt-5 mb-5">
                 <div class="col-sm-3">
                     {% image post.blog_image fill-250x250 as blog_img %}
                     <a href="{{ post.url }}">
-                        <img src="{{ blog_img.url }}" alt="{{ blog_img.alt }}">
+                        <img class="img-fluid rounded" src="{{ blog_img.url }}" alt="{{ blog_img.alt }}">
                     </a>
                 </div>
                 <div class="col-sm-9">
