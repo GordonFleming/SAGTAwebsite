@@ -12,6 +12,12 @@
 
                 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}"><strong>sign in</strong></a>.{% endblocktrans %}</p>
 
+                <div style="line-height: 0.35em;">
+                    <p><strong>Please Note:</strong></p>
+                    <p>Only if you have applied to be a member may you register.</p>
+                    <p>Navigate to the <a href="/membership/">members</a> page to apply to be a member.</p>
+                </div>
+
                 <form class="signup mb-3" id="signup_form" method="post" action="{% url 'account_signup' %}">
                 {% csrf_token %}
                 {{ form.as_p }}
