@@ -1,7 +1,7 @@
 """Streamfields live in here."""
 
-from wagtail.core import blocks
-from wagtail.core.templatetags.wagtailcore_tags import richtext
+from wagtail import blocks
+from wagtail.templatetags.wagtailcore_tags import richtext
 from wagtail.images.blocks import ImageChooserBlock
 
 class TitleAndTextBlock(blocks.StructBlock):

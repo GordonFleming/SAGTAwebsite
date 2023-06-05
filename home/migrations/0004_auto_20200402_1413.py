@@ -2,7 +2,7 @@
 
 from django.db import migrations, models
 import django.db.models.deletion
-import wagtail.core.fields
+import wagtail.fields
 
 
 class Migration(migrations.Migration):
@@ -31,7 +31,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='homepage',
             name='banner_subtitle',
-            field=wagtail.core.fields.RichTextField(default='Test text'),
+            field=wagtail.fields.RichTextField(default='Test text'),
             preserve_default=False,
         ),
     ]

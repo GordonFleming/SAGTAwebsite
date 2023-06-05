@@ -1,7 +1,7 @@
 # Don't download files hook
 
 from django.http import HttpResponse
-from wagtail.core import hooks
+from wagtail import hooks
 from django.shortcuts import redirect
 
 @hooks.register('before_serve_document')

@@ -1,6 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM python:3.9
-LABEL maintainer="hello@wagtail.io"
+FROM python:3.9-slim
 
 # Set environment varibles
 ENV PYTHONUNBUFFERED 1

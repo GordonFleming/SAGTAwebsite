@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'wagtail.images',
     'wagtail.search',
     'wagtail.admin',
-    'wagtail.core',
+    'wagtail',
 
     'modelcluster',
     'taggit',
@@ -101,7 +101,7 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
 
 	#DeprecationWarning
-    #'wagtail.core.middleware.SiteMiddleware',
+    #'wagtail.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 ]
 

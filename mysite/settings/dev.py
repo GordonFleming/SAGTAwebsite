@@ -21,6 +21,9 @@ MIDDLEWARE = MIDDLEWARE + [
 
 INTERNAL_IPS = ("127.0.0.1")
 
+# WAGTAILADMIN_BASE_URL required for notification emails
+WAGTAILADMIN_BASE_URL = "http://localhost:8000"
+
 try:
     from .local import *
 except ImportError:
