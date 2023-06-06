@@ -6,6 +6,7 @@ from wagtail.admin import urls as wagtailadmin_urls
 from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
+from auth.views import CustomLogoutView
 from search import views as search_views
 
 from django.shortcuts import render
@@ -42,6 +43,7 @@ urlpatterns = [
 
     #path(r'search/$', search_views.search, name='search'),
     path('', include('allauth.urls')),
+    path('accounts/logout/', CustomLogoutView.as_view(), name='account_logout'),
     path('accounts/', include('allauth.urls')),
     path('', include('django.contrib.auth.urls')),
 
