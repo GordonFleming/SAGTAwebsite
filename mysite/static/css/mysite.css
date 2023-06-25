@@ -1,10 +1,28 @@
-/* Content tag styling */
+:root{
+    --prim-txt: #000;
+    --sncd-back: #D5E7F2;
+    --accent-back: #5982A7;
+    --scnd-txt: #fff;
+    --link-txt: #2b598a;
+    --cream-wht: #f8f8f8;
+}
 body {
-    background-color: #6b8199b7;
-    background-image: linear-gradient(#6b8199b7,#54759b9d);
+    background-color: var(--cream-wht);
+    /* background-image: linear-gradient(#6b8199b7,#54759b9d); */
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    color: var(--prim-txt);
+}
+.back-snd{
+    background-color: var(--sncd-back);
+}
+.back-act{
+    background-color: var(--accent-back);
+}
+.benefits li {
+    margin-bottom: 10px;
+    font-size: 1.3em;
 }
 p{
     font-size: 1.2em;
@@ -13,11 +31,11 @@ li{
     font-size: 1.03em;
 }
 a{
-    color: #000;
+    color: var(--link-txt);
     cursor: pointer;
 }
 a i{  
-    color: #2b598a;
+    color: var(--link-txt);
 }
 a:hover{
     color: rgb(66, 66, 66);
@@ -51,6 +69,16 @@ h3{
 }
 /* JoGESA */
 /* Bootsrap Mods */
+.navbar{
+    border-bottom: 5px solid var(--accent-back);
+}
+.nav-link{
+    color: var(--cream-wht) !important;
+    font-weight: 600;
+}
+.nav-link:hover{
+    color: #cac5c5 !important;
+}
 .btn-primary{
     background-color: #526880;
 }
@@ -119,14 +147,23 @@ input[type=email] {
     position: static;
     text-align: left;
 }
+.carousel-item img {
+    /* make so image has max dimensions but resizes nicely */
+    width: auto !important;
+    height: 100%;
+    max-height: 500px;
+    margin: 0 auto;
+}
 /* Footer */
 .footer_look {
     background: #375A7F;
     padding: 30px;
     margin-top: auto;
+    /* top border with accent back */
+    border-top: 5px solid var(--accent-back);
 }
 .segment-two h3{
-    color: cornsilk;
+    color: var(--scnd-txt);
     font-size: 22px;
     text-transform: uppercase;   
     margin: 10px 0;
@@ -151,7 +188,7 @@ input[type=email] {
     color: white;
 }
 .segment-three h3{
-    color: cornsilk;
+    color: var(--scnd-txt);
     font-size: 22px;
     text-transform: uppercase;   
     margin: 10px 0;
@@ -169,6 +206,9 @@ input[type=email] {
     height: 40px;
     display: inline-block;
     border-radius: 30%;
+}
+.segment-four{
+    color: var(--scnd-txt);
 }
 .segment-four h5{
     margin-top: 30px;
