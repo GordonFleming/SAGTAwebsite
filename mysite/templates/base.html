@@ -120,8 +120,12 @@
                     <div class="col-md-3 col-sm-6 col-xs-12 segment-two">
                         <h3>Useful Links</h3>
                         <ul>
-                            <li><a href="/signup/">Register</a></li>
-                            <li><a href="/login/">Login</a></li>
+                            {% if request.user.is_authenticated %}
+                                <li><a href="{% url 'account_logout' %}">Logout</a></li>
+                            {% else %}
+                                <li><a href="{% url 'account_login' %}">Login</a></li>
+                                <li><a href="/signup/">Register</a></li>
+                            {% endif %}
                             <li><a href="/newsletter">Newsletter</a></li>       
                             <li><a href="/contact-us/">Contact Us</a></li>
                             <li><a href="/terms-and-conditions/">Terms & Conditions</a></li>
