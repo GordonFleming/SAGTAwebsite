@@ -30,11 +30,12 @@ class MapDownloadView(APIView):
             )
             if not map_downloads.exists() or map_downloads.count() < 2:
                 allowed = True
-                MapDownload.objects.create(
-                    user=request.user
-                )
             else:
                 allowed = False
+
+        MapDownload.objects.create(
+            user=request.user
+        )
 
         return Response({
             'allowed': allowed
