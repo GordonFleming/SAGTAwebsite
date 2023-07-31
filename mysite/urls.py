@@ -46,6 +46,7 @@ urlpatterns = [
     path('accounts/logout/', CustomLogoutView.as_view(), name='account_logout'),
     path('accounts/', include('allauth.urls')),
     path('', include('django.contrib.auth.urls')),
+    path('', include('download.urls')),
 
     path("", include(wagtail_urls)),
 ]
