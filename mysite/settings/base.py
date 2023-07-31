@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'journal',
     'prepshare',
     'base',
+    'download',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
