@@ -28,11 +28,13 @@ class ContactPage(WagtailCaptchaEmailForm):
 
     intro = RichTextField(blank=True)
     thank_you_text = RichTextField(blank=True)
+    contact_img_link = models.CharField(max_length=400, blank=False, null=True)
 
     content_panels = AbstractEmailForm.content_panels + [
         FieldPanel('intro'),
         InlinePanel('form_fields', label='Form Fields'),
         FieldPanel('thank_you_text'),
+        FieldPanel("contact_img_link"),
         MultiFieldPanel([
             FieldRowPanel([
                 FieldPanel('from_address', classname="col6"),
