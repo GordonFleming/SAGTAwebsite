@@ -66,9 +66,6 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
-
-    'captcha',
-    'wagtailcaptcha',
 ]
 
 OAUTH2_PROVIDER = {
@@ -200,8 +197,6 @@ STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesSto
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
-
-SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
