@@ -1,5 +1,5 @@
 Django==4.2.5
-wagtail==5.1.1
+wagtail==5.1.2
 django-allauth==0.51.0
 
 django-oauth-toolkit==1.7.0
@@ -9,3 +9,4 @@ djangorestframework==3.14.0
 
 gspread==5.4.0
 python-dotenv==0.20.0
+mailersend==0.5.6
