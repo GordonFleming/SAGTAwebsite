@@ -230,14 +230,15 @@ ACCOUNT_SIGNUP_FORM_CLASS = 'auth.forms.SignupForm'
 ACCOUNT_ADAPTER =  'auth.adapter.RestrictEmailAdapter'
 
 # Email Settings
-EMAIL_HOST = 'mail.sagta.org.za'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
 EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
-EMAIL_PORT = 465
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
 EMAIL_USE_TLS = False
 EMAIL_USE_SSL = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 DEFAULT_FROM_EMAIL = 'SAGTA Team <mail@sagta.org.za>'
+TO_EMAIL = os.environ.get('TO_EMAIL')
 
 #Set Wagtail default login to site design
 #WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'account/login.html'
