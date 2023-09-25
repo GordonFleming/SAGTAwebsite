@@ -73,13 +73,13 @@ class ContactPage(AbstractEmailForm):
 
         mail_from = {
             "name": "SAGTA Contact Form",
-            "email": "sagta@splyce.dev",
+            "email": self.from_address,
         }
 
         recipients = [
             {
                 "name": 'SAGTA',
-                "email": os.environ.get('TO_EMAIL'),
+                "email": self.to_address,
             }
         ]
 
