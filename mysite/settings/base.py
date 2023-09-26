@@ -66,6 +66,8 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+
+    'turnstile',
 ]
 
 OAUTH2_PROVIDER = {
@@ -239,3 +241,6 @@ ACCOUNT_ADAPTER =  'auth.adapter.RestrictEmailAdapter'
 #WAGTAIL_FRONTEND_LOGIN_TEMPLATE = 'account/login.html'
 WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
 
+TURNSTILE_SITEKEY = '0x4AAAAAAAKtTKaweG7JUwGC'
+TURNSTILE_SECRET = '0x4AAAAAAAKtTFw3428mE7ahnQTLriiIr98'
+TURNSTILE_TIMEOUT = 5

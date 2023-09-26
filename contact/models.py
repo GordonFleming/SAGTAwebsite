@@ -20,6 +20,19 @@ from wagtail.contrib.forms.models import (
     AbstractFormField,
 )
 
+from .forms import WagtailTurnstileFormBuilder
+
+class WagtailTurnstileEmailForm(AbstractEmailForm):
+    """Pages implementing a turnstile form with email notification should inhert from this"""
+
+    form_builder = WagtailTurnstileFormBuilder
+
+    def process_form_submission(self, form):
+        return super(WagtailTurnstileEmailForm, self).process_form_submission(form)
+
+    class Meta:
+        abstract = True
+
 class FormField(AbstractFormField):
     page = ParentalKey(
         'ContactPage',
@@ -27,7 +40,7 @@ class FormField(AbstractFormField):
         related_name='form_fields',
     )
 
-class ContactPage(AbstractEmailForm):
+class ContactPage(WagtailTurnstileEmailForm):
 
     template = "contact/contact_page.html"
 
