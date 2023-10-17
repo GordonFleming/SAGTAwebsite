@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'prepshare',
     'base',
     'download',
+    'authusers',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
