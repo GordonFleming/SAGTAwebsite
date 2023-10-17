@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount',
 
     'turnstile',
+    'wagtail.api.v2',
 ]
 
 OAUTH2_PROVIDER = {
@@ -244,3 +245,8 @@ WAGTAIL_FRONTEND_LOGIN_URL = '/accounts/login/'
 TURNSTILE_SITEKEY = '0x4AAAAAAAKtTKaweG7JUwGC'
 TURNSTILE_SECRET = os.environ.get('TURNSTILE_SECRET')
 TURNSTILE_TIMEOUT = 5
+
+
+WAGTAILAPI_ENDPOINTS = {
+    'home': 'auth.api.HomePageAPIEndpoint',
+}

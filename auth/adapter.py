@@ -33,3 +33,5 @@ class RestrictEmailAdapter(DefaultAccountAdapter):
             raise ValidationError('You are restricted from registering.\
                                 Please contact us if you are a member.')
         return email
+
+

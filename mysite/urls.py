@@ -18,6 +18,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from oauth2_provider.contrib.rest_framework import TokenHasReadWriteScope, TokenHasScope
 
+from .api import api_router
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -47,6 +48,8 @@ urlpatterns = [
     path('accounts/', include('allauth.urls')),
     path('', include('django.contrib.auth.urls')),
     path('', include('download.urls')),
+
+    path('api/v2/', api_router.urls),
 
     path("", include(wagtail_urls)),
 ]
