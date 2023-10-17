@@ -49,6 +49,7 @@ urlpatterns = [
     path('', include('django.contrib.auth.urls')),
     path('', include('download.urls')),
 
+    path('api/custom/', include('authusers.urls')),
     path('api/v2/', api_router.urls),
 
     path("", include(wagtail_urls)),

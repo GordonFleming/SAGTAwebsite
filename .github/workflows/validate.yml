@@ -1,0 +1,22 @@
+name: Daily HTTP Request with Basic Auth
+
+on:
+  schedule:
+    - cron: '0 0 * * *' # This schedule triggers the workflow every day at midnight UTC
+
+jobs:
+  send_request:
+    runs-on: ubuntu-latest
+
+    env:
+      BASIC_AUTH_USERNAME: ${{ secrets.BASIC_AUTH_USERNAME }}
+      BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Send HTTP Request
+      run: |
+        curl -X GET -u $BASIC_AUTH_USERNAME:$BASIC_AUTH_PASSWORD https://sagta.org.za/api/custom/check/
+
