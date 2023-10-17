@@ -39,18 +39,13 @@ def validate_users():
     all_users = User.objects.exclude(groups__name='Members')
     # Users from google sheet
     all_members = set(sht.col_values(7))
+    
+    common_members = []
+    for user in all_users:
+        if user.username in all_members:
+            common_members.append(user.username)
+            group = Group.objects.get(name='Members')
+            user.groups.add(group)
+            user.save()
 
-    common_members = [member for member in all_users if member.username in all_members]
-
-    # Validate this is correct
-    # then for each of the users in the above add them to the group "Members"... EZ PZ
-
-    for user in common_members:
-        print(f"Email: {user}")
-
-    # for member in all_members:
-    #     print(f"Member: {member}")
-    # group = Group.objects.get(name='Members')
-    # user.groups.add(group)
-    # user.save()
-    return "This is a result from another app."
+    return common_members

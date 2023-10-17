@@ -9,7 +9,8 @@ def index(request):
     # You can use the result in your response
     response_data = {
         "message": "Validation task run!",
-        "result_from_otherapp": result,
+        "members_now_activated": result,
+        "count": len(result),
     }
 
     return JsonResponse(response_data)
