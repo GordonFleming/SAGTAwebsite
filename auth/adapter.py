@@ -35,17 +35,37 @@ class RestrictEmailAdapter(DefaultAccountAdapter):
         return email
 
 def validate_users():
-    # Users from wagtail
-    all_users = User.objects.exclude(groups__name='Members')
+    # Users from wagtail which are not members
+    non_members = User.objects.exclude(groups__name='Members')
     # Users from google sheet
     all_members = set(sht.col_values(7))
     
-    common_members = []
-    for user in all_users:
-        if user.username in all_members:
-            common_members.append(user.username)
+    # Validate users
+    validated_members = []
+    for user in non_members:
+        if user.email in all_members:
+            validated_members.append(user.email)
             group = Group.objects.get(name='Members')
             user.groups.add(group)
+            user.is_active = True
             user.save()
 
-    return common_members
+    # Users from wagtail which are members
+    current_users = User.objects.filter(groups__name='Members')
+    
+    # Invalidate users
+    invalidated_members = []
+    for user in current_users:
+        if user.email not in all_members:
+            invalidated_members.append(user.email)
+            group = Group.objects.get(name='Members')
+            user.groups.remove(group)
+            user.is_active = False
+            user.save()
+
+    return  { 
+            "Users validated": validated_members,
+            "count_val": len(validated_members), 
+            "Users invalidated": invalidated_members,
+            "count_inv": len(invalidated_members),
+        }
