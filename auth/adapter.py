@@ -43,7 +43,7 @@ def validate_users():
     # Validate users
     validated_members = []
     for user in non_members:
-        if user.email in all_members:
+        if user.email.lower() in all_members:
             validated_members.append(user.email)
             group = Group.objects.get(name='Members')
             user.groups.add(group)
@@ -56,7 +56,7 @@ def validate_users():
     # Invalidate users
     invalidated_members = []
     for user in current_users:
-        if user.email not in all_members:
+        if user.email.lower() not in all_members:
             invalidated_members.append(user.email)
             group = Group.objects.get(name='Members')
             user.groups.remove(group)
