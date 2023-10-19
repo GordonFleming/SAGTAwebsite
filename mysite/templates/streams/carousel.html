@@ -1,0 +1,9 @@
+{% load wagtailimages_tags %}
+
+<!-- TODO: Add if here to check if there are carousel images -->
+{% for item in self.images %}
+    {% image item.image max-1000x800 as img %}
+    <div class="carousel-item {% if forloop.first %} active {% endif %}">
+        <img class="img-fluid d-block w-100 rounded" src="{{ img.url }}" alt="{{ img.alt }}">
+    </div>
+{% endfor %}

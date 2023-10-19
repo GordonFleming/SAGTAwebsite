@@ -3,7 +3,6 @@ from django.db import models
 from wagtail.models import Page
 from wagtail.fields import RichTextField, StreamField
 from wagtail.admin.panels import FieldPanel
-# from wagtail.blocks import streamfield_blocks
 
 from streams import blocks
 
@@ -36,15 +35,23 @@ class HomePage(Page):
         on_delete=models.SET_NULL,
         related_name="+"
     )
+
+    carousel_images = StreamField([
+        ('carousel_image', blocks.CarouselBlock()),
+        ], 
+        blank=True,
+        use_json_field=True,
+    )
+
     content_panels = Page.content_panels + [
         FieldPanel("banner_title"),
         FieldPanel("banner_subtitle"),
         FieldPanel("banner_img_link"),
         FieldPanel("notify_image"),
         FieldPanel("content"),
+        FieldPanel('carousel_images'),
     ]
 
     class Meta:
-
         verbose_name = "Home Page"
         verbose_name_plural = "Home Pages"

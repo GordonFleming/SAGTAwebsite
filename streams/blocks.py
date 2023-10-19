@@ -67,3 +67,17 @@ class RawHTMLBlock(blocks.RawHTMLBlock):
     class Meta:
         icon = "code"
         label = "Raw HTML"
+
+class CarouselBlock(blocks.StructBlock):
+    images = blocks.ListBlock(
+        blocks.StructBlock(
+            [
+                ("image", ImageChooserBlock(required=True)),
+            ]
+        )
+    )
+
+    class Meta:
+        template = "streams/carousel.html"
+        icon = 'image'
+        label = 'Carousel Image'
