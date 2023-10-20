@@ -131,14 +131,7 @@
                 </ul>
             </div>
             <div class="col-8 mx-auto justify-content-center d-block mt-5">
-
-                <div class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        {% for item in page.carousel_images %}
-                            {{ item }}
-                        {% endfor %}
-                    </div>
-                </div> 
+                {{ self.carousel_images }}
 
                 <div class="row mt-5">
                     <div class="col-6"><h4 style="text-align: right;" class="mt-3">IGSG Joint Declaration PDF</h4></div>
