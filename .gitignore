@@ -57,6 +57,7 @@ media/*
 
 # Envs
 .venv/
+venv/
 env/
 virtualenv/
 sagta_env/
