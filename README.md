@@ -18,7 +18,7 @@ Create a virtual environment for development purposes
 
 Linux
 ```shell script
-python3 -m venv virtualenv
+python3 -m venv virtualenv / virtualenv -p python3 yourVenv
 source virtualenv/bin/activate
 ```
 

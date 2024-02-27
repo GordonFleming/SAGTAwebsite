@@ -1,6 +1,6 @@
-Django==4.2.7
-wagtail==5.2.2
-django-allauth==0.58.2
+Django==5.0.2
+wagtail==6.0.1
+django-allauth==0.61.1
 
 django-oauth-toolkit==1.7.1
 django-cors-headers==4.3.1

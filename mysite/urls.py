@@ -7,7 +7,6 @@ from wagtail import urls as wagtail_urls
 from wagtail.documents import urls as wagtaildocs_urls
 
 from auth.views import CustomLogoutView
-from search import views as search_views
 
 from django.shortcuts import render
 from django.http import JsonResponse
@@ -42,7 +41,6 @@ urlpatterns = [
     path('user_info/', UserInfo.as_view()),
     path('o/', include('oauth2_provider.urls', namespace='oauth2_provider')),
 
-    #path(r'search/$', search_views.search, name='search'),
     path('', include('allauth.urls')),
     path('accounts/logout/', CustomLogoutView.as_view(), name='account_logout'),
     path('accounts/', include('allauth.urls')),

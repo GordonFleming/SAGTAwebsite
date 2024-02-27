@@ -26,7 +26,6 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 CORS_ORIGIN_ALLOW_ALL = True
 INSTALLED_APPS = [
     'home',
-    'search',
     'flex',
     'streams',
     'contact',
@@ -45,7 +44,6 @@ INSTALLED_APPS = [
     'wagtail.snippets',
     'wagtail.documents',
     'wagtail.images',
-    'wagtail.search',
     'wagtail.admin',
     'wagtail',
 
@@ -230,17 +228,18 @@ ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_FORM_CLASS = 'auth.forms.SignupForm'
-ACCOUNT_ADAPTER =  'auth.adapter.RestrictEmailAdapter'
+ACCOUNT_ADAPTER = 'auth.adapter.RestrictEmailAdapter'
+ACCOUNT_EMAIL_NOTIFICATIONS = True
 
 # Email Settings
 EMAIL_HOST = os.environ.get("EMAIL_HOST")
 EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
-EMAIL_PORT = 587
+EMAIL_PORT = 465
 EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'SAGTA Team <sagta@splyce.dev>'
+DEFAULT_FROM_EMAIL = 'SAGTA Team <no-reply@sagta.org.za>'
 #TO_EMAIL = ''
 
 #Set Wagtail default login to site design
