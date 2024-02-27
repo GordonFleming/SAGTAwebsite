@@ -11,4 +11,4 @@ from wagtail.admin.menu import MenuItem
 
 @hooks.register('register_admin_menu_item')
 def register_check_menu_item():
-    return MenuItem('Check', reverse('check'), icon_name='repeat')
+    return MenuItem('Check', reverse('check'), icon_name='glasses', order=1000)
