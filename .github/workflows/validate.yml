@@ -3,6 +3,7 @@ name: Daily HTTP Request with Basic Auth
 on:
   schedule:
     - cron: '0 0 * * *' # This schedule triggers the workflow every day at midnight UTC
+  workflow_dispatch: 
 
 jobs:
   send_request:
