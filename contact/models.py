@@ -1,4 +1,5 @@
 from django.db import models
+from datetime import date
 from modelcluster.fields import ParentalKey
 from wagtail.admin.panels import (
     FieldPanel,
@@ -53,3 +54,30 @@ class ContactPage(WagtailTurnstileEmailForm):
             FieldPanel("subject"),
         ], "Email"),
     ]
+
+    def render_email(self, form):
+        # Get the original content (string)
+        email_content = super().render_email(form)
+
+        # Remove turnstile field from email
+        for field in form:
+            if field.name == 'turnstile':
+                email_content = email_content.replace(field.label_tag(), '')
+                email_content = email_content.replace(field, '')
+
+        # Add a title (not part of original method)
+        title = '{}: {}'.format('Form', self.title)
+
+        content = [title, '', email_content, '']
+
+        # Add a link to the form page
+        content.append('{}: {}'.format('Submitted Via', self.full_url))
+
+        # Add the date the form was submitted
+        submitted_date_str = date.today().strftime('%x')
+        content.append('{}: {}'.format('Submitted on', submitted_date_str))
+
+        # Content is joined with a new line to separate each text line
+        content = '\n'.join(content)
+
+        return content
