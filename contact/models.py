@@ -14,6 +14,7 @@ from wagtail.contrib.forms.models import (
 )
 
 from .forms import WagtailTurnstileFormBuilder
+import re
 
 class WagtailTurnstileEmailForm(AbstractEmailForm):
     """Pages implementing a turnstile form with email notification should inhert from this"""
@@ -60,10 +61,7 @@ class ContactPage(WagtailTurnstileEmailForm):
         email_content = super().render_email(form)
 
         # Remove turnstile field from email
-        for field in form:
-            if field.name == 'turnstile':
-                email_content = email_content.replace(field.label_tag(), '')
-                email_content = email_content.replace(field, '')
+        email_content = re.sub(r"Turnstile:.*(\n|$)", "", email_content)
 
         # Add a title (not part of original method)
         title = '{}: {}'.format('Form', self.title)
