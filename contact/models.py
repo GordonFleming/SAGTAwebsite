@@ -68,9 +68,6 @@ class ContactPage(WagtailTurnstileEmailForm):
 
         content = [title, '', email_content, '']
 
-        # Add a link to the form page
-        content.append('{}: {}'.format('Submitted Via', self.full_url))
-
         # Add the date the form was submitted
         submitted_date_str = date.today().strftime('%x')
         content.append('{}: {}'.format('Submitted on', submitted_date_str))
