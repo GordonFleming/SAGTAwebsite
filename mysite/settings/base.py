@@ -30,7 +30,6 @@ INSTALLED_APPS = [
     'streams',
     'contact',
     'blog',
-    'journal',
     'prepshare',
     'base',
     'download',
