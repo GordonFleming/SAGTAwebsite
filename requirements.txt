@@ -10,3 +10,4 @@ djangorestframework==3.14.0
 gspread==5.12.2
 python-dotenv==0.20.0
 django-turnstile==0.1.0
+wagtailmenus==4.0.0

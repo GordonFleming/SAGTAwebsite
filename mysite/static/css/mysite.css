@@ -213,3 +213,7 @@ input[type=email] {
 .segment-four h5{
     margin-top: 30px;
 }
+
+.nav-link.active{
+    color: rgb(159, 158, 158) !important;
+}

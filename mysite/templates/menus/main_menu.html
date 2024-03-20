@@ -1,0 +1,20 @@
+<ul class="navbar-nav mr-auto">
+    {% for item in menu_items %}
+        <li class="nav-item {% if item.sub_menu %}dropdown{% endif %}">
+            <a class="nav-link {{ item.active_class }} {% if item.sub_menu %}dropdown-toggle{% endif %}" 
+                {% if item.sub_menu %}
+                    data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"
+                {% endif %}
+                href="{{ item.href }}">
+                {{ item.text }}
+            </a>
+            {% if item.sub_menu %}
+                <div class="dropdown-menu" style="position: absolute; transform: translate3d(0px, 42px, 0px); top: 0px; left: 0px; will-change: transform;" x-placement="bottom-start">
+                    {% for sub_item in item.sub_menu.items %}
+                        <a class="dropdown-item {{ sub_item.active_class }}" href="{{ sub_item.href }}">{{ sub_item.text }}</a>
+                    {% endfor %}
+                </div>
+            {% endif %}
+        </li>
+{% endfor %}
+</ul>
