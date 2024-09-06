@@ -1,13 +1,13 @@
-Django==5.0.2
-wagtail==6.0.1
-django-allauth==0.61.1
+Django==5.0.9
+wagtail==6.2.1
+django-allauth==64.2.1
 
-django-oauth-toolkit==1.7.1
-django-cors-headers==4.3.1
+django-oauth-toolkit==2.4.0
+django-cors-headers==4.4.0
 
-djangorestframework==3.14.0
+djangorestframework==3.15.2
 
-gspread==5.12.2
+gspread==6.1.2
 python-dotenv==0.20.0
 django-turnstile==0.1.0
-wagtailmenus==4.0.0
+wagtailmenus==4.0.1
