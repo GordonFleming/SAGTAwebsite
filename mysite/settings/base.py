@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'prepshare',
     'base',
     'download',
+    'member',
     'authusers',
 
     'wagtail.contrib.forms',
@@ -216,6 +217,7 @@ WAGTAIL_SITE_NAME = "SAGTA"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 WAGTAILADMIN_BASE_URL = 'https://sagta.org.za'
 
+# django-allauth settings
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
@@ -228,7 +230,7 @@ ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_SESSION_REMEMBER = True
 ACCOUNT_USERNAME_REQUIRED = False
-ACCOUNT_SIGNUP_FORM_CLASS = 'auth.forms.SignupForm'
+ACCOUNT_SIGNUP_FORM_CLASS = 'auth.forms.CustomSignupForm'
 ACCOUNT_ADAPTER = 'auth.adapter.RestrictEmailAdapter'
 ACCOUNT_EMAIL_NOTIFICATIONS = True
 

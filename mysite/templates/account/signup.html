@@ -8,10 +8,19 @@
     <div class="container mt-5 mb-5">
         <div class="row">
             <div class="col-md-6 offset-md-3">
-                <h1>{% trans "Sign Up" %}</h1>
+                <div class="row">
+                    <div class="col-6 d-flex align-items-center">
+                        <h1>{% trans "Sign Up" %}</h1>
+                    </div>
+                    <div class="col-6">
+                        <img src="https://sagta.org.za/media/images/logo.original.png" class="img-fluid mb-4" style="max-width: 250px; height: auto;" alt="logo">
+                    </div>
+                </div>
+                
 
                 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}"><strong>sign in</strong></a>.{% endblocktrans %}</p>
 
+                <!-- TODO: phase the bottom out as SAGTA integrates payment -->
                 <div style="line-height: 0.35em;">
                     <p><strong>Please Note:</strong></p>
                     <p>Only if you have applied to be a member may you register.</p>
@@ -32,5 +41,13 @@
             </div>
         </div>        
     </div>
+    <style>
+        input{
+            width: 100% !important; 
+            padding: 5px 8px;
+            margin: 4px 0;
+            box-sizing: border-box;           
+        }
+    </style>
 
 {% endblock %}

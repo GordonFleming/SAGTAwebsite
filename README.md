@@ -36,7 +36,7 @@ or
 pip3 install --user -r requirements.txt -r requirements.dev.txt
 ```
 
-Uncomment the DEBUG section in urls.py
+### Make sure .env is configured
 
 Run initial manage.py command
 
