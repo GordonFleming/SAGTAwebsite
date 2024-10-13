@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container mt-5 mb-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">  
+            <h2 style="color:#0fad00">Success</h2>
+            {% if message %}
+                <br><h2 style="color:#0fad00">{{ message }}</h2>
+            {% endif %}
+
+            <h3>{{ request.user.username }}, you are now a SAGTA member!</h3>
+            <p style="font-size:20px;color:#5C5C5C;">transaction was successful</p>
+            <p style="font-size:20px;color:#1c1c1c;">Start by visiting</p>
+            <a href="/prep-share/" class="btn btn-primary mb-4">Prep-share</a>
+            <br>
+            <p>OR</p>
+            <br>
+            <a href="https://maps.sagta.org.za/" class="btn btn-primary">Map downloader</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

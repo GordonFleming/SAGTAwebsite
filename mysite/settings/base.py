@@ -220,7 +220,8 @@ WAGTAILADMIN_BASE_URL = 'https://sagta.org.za'
 
 # django-allauth settings
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/prep-share/'
+ACCOUNT_SIGNUP_REDIRECT_URL = '/payments/initiate-payment/'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True

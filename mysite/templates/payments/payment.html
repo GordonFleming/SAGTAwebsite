@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mx-auto mt-5">
+    <section class="pb-4">
+        <div style="width: fit-content;" class="bg-white border rounded-5">
+            <section class="w-100 p-4 d-flex justify-content-center pb-4">
+            <form action="{% url 'initiate_payment' %}" method="POST">
+                <img class="img-fluid mb-5" src="https://sagta.org.za/media/original_images/SAGTA_logo_128x128.png" alt="logo">
+                <h2>SAGTA membership:</h2>
+                {% csrf_token %}
+
+                <div class="form-outline mb-4">
+                    <p>Payment amount for <strong>{{ request.user.member.get_membership_type_display }}</strong></p>
+                    <input type="hidden" value="{{ request.user.email }}" readonly required id="email" name="email">
+                    <input type="hidden" value="{{ request.user.member.membership_type }}" readonly required id="membership_type" name="membership_type">
+                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+
+                <button type="submit" class="btn btn-primary btn-block mb-4 p-2 w-50">Pay</button>
+                <img class="img_fluid mt-5" src="https://cdn-assets-cloud.frontify.com/s3/frontify-cloud-files-us/eyJwYXRoIjoiZnJvbnRpZnlcL2FjY291bnRzXC8yYVwvMTQxNzczXC9wcm9qZWN0c1wvMTc4NjE0XC9hc3NldHNcL2E5XC8zNTI0MTM2XC9jYmJkNzA1OTEyN2NlOGU3ZDI5ZDM5NmJkMzhmMzkwNi0xNTY5MjE3MjIzLnBuZyJ9:frontify:xd65O1_BCk88mGEkjq6maiXPQH5Ol5Vhn97tbY1vl0c?width=250" alt="paystack_logo">
+                <br>
+                <img class="img-fluid mt-3" style="max-width: 350px;" src="https://cdn-assets-cloud.frontify.com/s3/frontify-cloud-files-us/eyJwYXRoIjoiZnJvbnRpZnlcL2ZpbGVcL2NmYnBXam02alRQMkh1ZEM3dUt5LnBuZyJ9:frontify:2DHACurvdbkXgwKhzAvSL9QyhCiLTYU_8zHAt80tb_w?width=350" alt="paystack_options">
+
+            </form>
+            </section>    
+        </div>  
+    </section>
+</div>
+{% endblock %}

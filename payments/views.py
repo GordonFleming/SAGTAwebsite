@@ -6,9 +6,17 @@ load_dotenv()
 
 def initiate_payment(request):
 	if request.method == "POST":
-		amount = request.POST['amount']
+		membership_type = request.POST['membership_type']
 		email = request.POST['email']
-
+		
+        # For student and retired
+		amount = 240
+	    # Logic for different payment amounts based on membership type
+		if membership_type == "individual":
+			amount = 480
+		elif membership_type == "corporate_institutional":
+			amount = 2200
+        
 		pk = os.environ.get('PAYSTACK_PUBLIC_KEY')
 
 		payment = Payment.objects.create(amount=amount, email=email, user=request.user)
@@ -20,9 +28,9 @@ def initiate_payment(request):
 			'paystack_pub_key': pk,
 			'amount_value': payment.amount_value(),
 		}
-		return render(request, 'make_payment.html', context)
+		return render(request, 'payments/make_payment.html', context)
 
-	return render(request, 'payment.html')
+	return render(request, 'payments/payment.html')
 
 
 def verify_payment(request, ref):
@@ -36,5 +44,5 @@ def verify_payment(request, ref):
 		user_wallet.balance += payment.amount
 		user_wallet.save()
 		print(request.user.username, " funded wallet successfully")
-		return render(request, "success.html")
-	return render(request, "success.html")
+		return render(request, "payments/success.html")
+	return render(request, "payments/success.html")

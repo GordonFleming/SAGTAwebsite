@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block content %}
+<script src="https://js.paystack.co/v2/inline.js"></script>
+
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 col-sm-12">
+            <img class="img-fluid mb-5" src="https://sagta.org.za/media/original_images/SAGTA_logo_128x128.png" alt="logo">
+            <br>
+            <img class="img-fluid mt-5" style="max-width: 450px;" src="https://cdn-assets-cloud.frontify.com/s3/frontify-cloud-files-us/eyJwYXRoIjoiZnJvbnRpZnlcL2ZpbGVcL2NmYnBXam02alRQMkh1ZEM3dUt5LnBuZyJ9:frontify:2DHACurvdbkXgwKhzAvSL9QyhCiLTYU_8zHAt80tb_w?width=450" alt="paystack_options">
+        </div>
+      <div class="col-md-6 col-sm-12 text-center w-50 p-4 mt-5 bg-white border">
+		<p>You are about to pay: <br> <strong>R {{ payment.amount }}</strong></p>
+        <button style="width: 80%; font-size: 2em;" onclick="payWithPaystack()" class="btn btn-primary mt-5 mb-4">Pay R {{ payment.amount }}</button>
+        <br>
+        <img class="img-fluid mt-5" style="max-width: 160px;" src="https://cdn-assets-cloud.frontify.com/s3/frontify-cloud-files-us/eyJwYXRoIjoiZnJvbnRpZnlcL2FjY291bnRzXC8yYVwvMTQxNzczXC9wcm9qZWN0c1wvMTc4NjE0XC9hc3NldHNcL2RkXC82MTE2ODk5XC9iODI1MzBlMzI1YmEzYmM1MThlZjhlM2E2NmQ2NTYyMS0xNjM5MDYyMzI1LnBuZyJ9:frontify:_BAqqJ4OOL2gtUez9Oh_8oV49NJMxn2eHL5_w7fSm3w?width=200" alt="paystack">
+    </div>  
+  </div>
+</div>
+
+
+<script>
+	function payWithPaystack() {
+		let currency = "ZAR";
+		let plan = "";
+		let ref = "{{ payment.ref }}";
+		let amount = "{{ payment.amount }}";
+		let obj = {
+			key: "{{ paystack_pub_key }}",
+			email: "{{ payment.email }}",
+			amount: "{{ amount_value }}",
+			ref: ref,
+			callback: function (response) {
+				window.location.href = "{% url 'verify_payment' payment.ref %}";
+			},
+		};
+		if (Boolean(currency)) {
+			obj.currency = currency.toUpperCase();
+		}
+		if (Boolean(plan)) {
+			obj.plan - plan;
+		}
+
+		var handler = PaystackPop.setup(obj);
+		handler.openIframe();
+	}
+</script>
+
+{% endblock %}

@@ -6,7 +6,6 @@ load_dotenv()
 class Paystack:
 	PAYSTACK_SK = os.environ.get('PAYSTACK_SECRET_KEY')
 	base_url = "https://api.paystack.co/"
-	print(PAYSTACK_SK)
 
 	def verify_payment(self, ref, *args, **kwargs):
 		path = f'transaction/verify/{ref}'

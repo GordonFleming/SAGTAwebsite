@@ -40,7 +40,19 @@ class CustomEmailPaymentAdapter(DefaultAccountAdapter):# Check balance for login
             # Redirect to payment page if balance is insufficient
             return reverse('initiate_payment')
         
-        return '/'
+        return '/prep-share/'
+    
+    def get_signup_redirect_url(self, request):
+        user = request.user
+
+        # Ensure the UserWallet exists, create if not
+        wallet, created = UserWallet.objects.get_or_create(user=user)
+
+        if wallet.balance <= 0:
+            # Redirect to payment page if balance is insufficient
+            return reverse('initiate_payment')
+        
+        return '/prep-share/'
     
     def clean_email(self, email):
         # Paystack check
