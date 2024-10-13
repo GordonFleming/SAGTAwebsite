@@ -1,8 +1,10 @@
 from allauth.account.adapter import DefaultAccountAdapter
 from django.forms import ValidationError
 import os
+from django.urls import reverse
 import gspread
 from django.contrib.auth.models import Group, User
+from payments.models import UserWallet
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -26,8 +28,22 @@ gc = gspread.service_account_from_dict(cred)
 sheet = gc.open_by_key(SHEET_ID)
 sht = sheet.sheet1
  
-class RestrictEmailAdapter(DefaultAccountAdapter):
+class CustomEmailPaymentAdapter(DefaultAccountAdapter):# Check balance for login
+    # Paystack check to redirect user to payment page if balance is insufficient
+    def get_login_redirect_url(self, request):
+        user = request.user
+
+        # Ensure the UserWallet exists, create if not
+        wallet, created = UserWallet.objects.get_or_create(user=user)
+
+        if wallet.balance <= 0:
+            # Redirect to payment page if balance is insufficient
+            return reverse('initiate_payment')
+        
+        return '/'
+    
     def clean_email(self, email):
+        # Paystack check
         member_email_check = sht.find(email.lower())
         if not member_email_check:
             raise ValidationError('You are restricted from registering.\
