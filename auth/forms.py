@@ -15,8 +15,6 @@ class SignupForm(forms.Form):
         user.last_name = self.cleaned_data['last_name']
         user.save()
 
-        print(request)
-        print(self.cleaned_data)
         # Now, create and save the associated Member instance
         member = Member(
             user=user,  # Associate the new member with the newly created user
@@ -33,6 +31,10 @@ class SignupForm(forms.Form):
             membership_type=self.cleaned_data.get('membership_type'),
         )
         member.save()  # Save the Member object to the database
+
+        # TODO: optional save to Google Sheet with gspread
+        # refer to this: https://stackoverflow.com/questions/67082749/append-a-new-row-to-the-end-of-sheets-using-gspread
+
 
         return user  # Return the user instance as required by Allauth
 
