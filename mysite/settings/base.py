@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'download',
     'member',
     'authusers',
+    'payments',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -253,6 +254,9 @@ TURNSTILE_SITEKEY = '0x4AAAAAAAKtTKaweG7JUwGC'
 TURNSTILE_SECRET = os.environ.get('TURNSTILE_SECRET')
 TURNSTILE_TIMEOUT = 5
 
+# Paystack Settings
+PAYSTACK_SECRET_KEY = os.environ.get("PAYSTACK_SECRET_KEY")
+PAYSTACK_PUBLIC_KEY = os.environ.get("PAYSTACK_PUBLIC_KEY")
 
 WAGTAILAPI_ENDPOINTS = {
     'home': 'auth.api.HomePageAPIEndpoint',

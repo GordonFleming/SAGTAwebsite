@@ -48,6 +48,7 @@ urlpatterns = [
     path('', include('download.urls')),
 
     path('api/custom/', include('authusers.urls')),
+    path('payments/', include('payments.urls')),
     path('api/v2/', api_router.urls),
 
     path("", include(wagtail_urls)),
