@@ -27,6 +27,12 @@ gc = gspread.service_account_from_dict(cred)
 
 sheet = gc.open_by_key(SHEET_ID)
 sht = sheet.sheet1
+
+def is_valid_member(email):
+    member_email_check = sht.find(email.lower())
+    if not member_email_check:
+        return False
+    return True
  
 class CustomEmailPaymentAdapter(DefaultAccountAdapter):# Check balance for login
     # Paystack check to redirect user to payment page if balance is insufficient
@@ -36,11 +42,16 @@ class CustomEmailPaymentAdapter(DefaultAccountAdapter):# Check balance for login
         # Ensure the UserWallet exists, create if not
         wallet, created = UserWallet.objects.get_or_create(user=user)
 
+        eft_legacy_member = user.groups.filter(name='Members').exists()
+        paid_member = wallet.balance > 0
+        if eft_legacy_member or paid_member:
+            return '/prep-share/'
+
         if wallet.balance <= 0:
             # Redirect to payment page if balance is insufficient
             return reverse('initiate_payment')
         
-        return '/prep-share/'
+        return '/'
     
     def get_signup_redirect_url(self, request):
         user = request.user
@@ -48,19 +59,25 @@ class CustomEmailPaymentAdapter(DefaultAccountAdapter):# Check balance for login
         # Ensure the UserWallet exists, create if not
         wallet, created = UserWallet.objects.get_or_create(user=user)
 
+        eft_legacy_member = user.groups.filter(name='Members').exists()
+        paid_member = wallet.balance > 0
+        if eft_legacy_member or paid_member:
+            return '/prep-share/'
+
         if wallet.balance <= 0:
             # Redirect to payment page if balance is insufficient
             return reverse('initiate_payment')
         
-        return '/prep-share/'
+        return '/'
     
-    def clean_email(self, email):
-        # Paystack check
-        member_email_check = sht.find(email.lower())
-        if not member_email_check:
-            raise ValidationError('You are restricted from registering.\
-                                Please contact us if you are a member.')
-        return email
+    # Deprecated: as checks need to be on payment & Gsheet for manual process (EFT)
+
+    # def clean_email(self, email):
+    #     # Paystack check
+    #     if not is_valid_member(email):
+    #         raise ValidationError('You are restricted from registering.\
+    #                             Please contact us if you are a member.')
+    #     return email
 
 def validate_users():
     # Users from wagtail which are not members

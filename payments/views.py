@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Payment, UserWallet
+from django.contrib.auth.models import Group
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -36,13 +37,20 @@ def initiate_payment(request):
 def verify_payment(request, ref):
 	payment = Payment.objects.get(ref=ref)
 	verified = payment.verify_payment()
+	user = request.user
 
 	if verified:
 		# Check if UserWallet exists for the user, create if it doesn't
-		user_wallet, created = UserWallet.objects.get_or_create(user=request.user)
+		user_wallet, created = UserWallet.objects.get_or_create(user=user)
 		
 		user_wallet.balance += payment.amount
 		user_wallet.save()
+		
+        # Add the user to the members user group
+		group = Group.objects.get(name='Members')
+		user.groups.add(group)
+		user.save()
+	
 		print(request.user.username, " funded wallet successfully")
 		return render(request, "payments/success.html")
 	return render(request, "payments/success.html")
