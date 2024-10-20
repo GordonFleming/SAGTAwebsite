@@ -4,7 +4,9 @@ import os
 from django.urls import reverse
 import gspread
 from django.contrib.auth.models import Group, User
-from payments.models import UserWallet
+from payments.models import UserWallet, Payment
+from datetime import timedelta
+from django.utils import timezone
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -80,33 +82,36 @@ class CustomEmailPaymentAdapter(DefaultAccountAdapter):# Check balance for login
     #     return email
 
 def validate_users():
-    # Users from wagtail which are not members
-    non_members = User.objects.exclude(groups__name='Members')
-    # Users from google sheet
+    # Members from google sheet (Paid via EFT directly)
     all_members = set(sht.col_values(7))
     
-    # Validate users
     validated_members = []
-    for user in non_members:
-        if user.email.lower() in all_members:
+    invalidated_members = []
+    users = User.objects.all()
+
+    for user in users:
+        latest_payment = Payment.objects.filter(verified=True).order_by('-created_at').first()
+        user_wallet, created = UserWallet.objects.get_or_create(user=user)
+        group = Group.objects.get(name='Members')
+
+        # Conditions
+        already_member = user.groups.filter(name='Members').exists()
+        sheet_member = user.email.lower() in all_members
+        under_year = latest_payment.created_at > timezone.now() - timedelta(days=365)
+        has_balance = user_wallet.balance > 0
+
+        if not already_member and (sheet_member or (under_year and has_balance)):
             validated_members.append(user.email)
-            group = Group.objects.get(name='Members')
             user.groups.add(group)
             user.is_active = True
-            user.save()
-
-    # Users from wagtail which are members
-    current_users = User.objects.filter(groups__name='Members')
-    
-    # Invalidate users
-    invalidated_members = []
-    for user in current_users:
-        if user.email.lower() not in all_members:
+        elif already_member and not (sheet_member or (under_year and has_balance)):
             invalidated_members.append(user.email)
-            group = Group.objects.get(name='Members')
             user.groups.remove(group)
-            user.is_active = False
-            user.save()
+            user_wallet.balance = 0
+            user_wallet.save()
+        
+        user.save()
+
 
     return  { 
             "Users validated": validated_members,
