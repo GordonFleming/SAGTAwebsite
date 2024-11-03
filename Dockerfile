@@ -2,8 +2,6 @@ FROM python:3.10-slim
 
 # For python logs
 ENV PYTHONUNBUFFERED 1
- 
-COPY ./requirements.txt /code/requirements.txt
 
 RUN apt-get update \
     && apt-get install -y tzdata \
@@ -17,22 +15,21 @@ RUN apt-get update \
     # cleaning up unused files
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/*
+
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
  
+COPY ./requirements.txt /requirements.txt
 RUN pip install --no-cache-dir -r /requirements.txt \
     && rm -rf /requirements.txt
- 
-# Copy the current directory contents into the container at /code/
-COPY . /code/
-# Set the working directory to /code/
-WORKDIR /code/
 
 RUN useradd wagtail
-RUN chown -R wagtail /code
+RUN chown -R wagtail /usr/src/app
 USER wagtail
  
 ENV UWSGI_PORT 8000
 
 EXPOSE ${UWSGI_PORT}
-ENTRYPOINT ["/code/entrypoint.sh"]
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
  
 CMD gunicorn mysite.wsgi:application --bind 0.0.0.0:${UWSGI_PORT} --workers 3
