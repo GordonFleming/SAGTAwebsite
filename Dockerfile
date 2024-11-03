@@ -23,6 +23,8 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install --no-cache-dir -r /requirements.txt \
     && rm -rf /requirements.txt
 
+COPY . /usr/src/app
+
 RUN useradd wagtail
 RUN chown -R wagtail /usr/src/app
 USER wagtail
