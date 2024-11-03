@@ -4,9 +4,6 @@ FROM python:3.12-slim
 ENV PYTHONUNBUFFERED=1 \
     UWSGI_PORT=8000
 
-# Create a non-root user and group called wagtail
-RUN groupadd -r wagtail && useradd -r -g wagtail wagtail
-
 # Install system dependencies
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
@@ -23,8 +20,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Create application directory and set permissions
-RUN mkdir -p /usr/src/app \
-    && chown -R wagtail:wagtail /usr/src/app
+RUN mkdir -p /usr/src/app
 
 WORKDIR /usr/src/app
 
@@ -37,10 +33,7 @@ RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt \
 RUN pip install --no-cache-dir gunicorn
 
 # Copy application code
-COPY --chown=wagtail:wagtail . /usr/src/app
-
-# Change to non-root user
-USER wagtail
+COPY . /usr/src/app
 
 # Expose the UWSGI port
 EXPOSE ${UWSGI_PORT}
