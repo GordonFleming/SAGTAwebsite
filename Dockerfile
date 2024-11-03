@@ -36,11 +36,11 @@ RUN pip install --no-cache-dir gunicorn
 COPY . /usr/src/app
 
 # Expose the UWSGI port
-EXPOSE ${UWSGI_PORT}
+EXPOSE 80
 
 # Set the entrypoint script
 RUN chmod +x /usr/src/app/entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 
 # Command to run Gunicorn
-CMD ["gunicorn", "mysite.wsgi:application", "--bind=0.0.0.0:${UWSGI_PORT}", "--workers=4"]
+CMD ["gunicorn", "mysite.wsgi:application", "--bind=0.0.0.0:80", "--workers=4"]
