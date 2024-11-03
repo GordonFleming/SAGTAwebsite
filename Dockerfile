@@ -46,6 +46,7 @@ USER wagtail
 EXPOSE ${UWSGI_PORT}
 
 # Set the entrypoint script
+RUN chmod +x /usr/src/app/entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 
 # Command to run Gunicorn

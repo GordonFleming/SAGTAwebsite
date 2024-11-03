@@ -1,7 +1,11 @@
 #!/usr/bin/env sh
 
-# Run migrate and collectstatic
-./manage.py migrate --noinput
-./manage.py collectstatic --noinput
+# Exit on error
+set -e
 
+# Run migrations and collect static files
+python manage.py migrate --noinput
+python manage.py collectstatic --noinput
+
+# Execute the main command
 exec "$@"
