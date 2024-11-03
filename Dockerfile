@@ -18,6 +18,10 @@ RUN apt-get update \
     && apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false \
     && rm -rf /var/lib/apt/lists/*
  
+RUN useradd wagtail
+RUN chown -R wagtail /code
+USER wagtail
+
 RUN pip install --no-cache-dir -r /requirements.txt \
     && rm -rf /requirements.txt
  
@@ -25,10 +29,6 @@ RUN pip install --no-cache-dir -r /requirements.txt \
 COPY . /code/
 # Set the working directory to /code/
 WORKDIR /code/
-
-RUN useradd wagtail
-RUN chown -R wagtail /code
-USER wagtail
  
 ENV UWSGI_PORT 8000
 
