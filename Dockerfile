@@ -1,8 +1,7 @@
 FROM python:3.12-slim
 
 # For python logs
-ENV PYTHONUNBUFFERED=1 \
-    UWSGI_PORT=8000
+ENV PYTHONUNBUFFERED=1
 
 # Install system dependencies
 RUN apt-get update \

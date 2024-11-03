@@ -12,3 +12,5 @@ gspread==6.1.4
 python-dotenv==1.0.1
 django-turnstile==0.1.2
 wagtailmenus==4.0.1
+
+whitenoise==6.8.2
