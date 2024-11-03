@@ -4,8 +4,6 @@
 
 Run the site locally for development
 
-For production deployment configuration, refer to [Deployment README](deployment/README.md)
-
 ## Prerequisites
 
 - Python 3
