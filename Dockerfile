@@ -25,9 +25,7 @@ RUN pip install --no-cache-dir -r /requirements.txt \
 
 COPY . /usr/src/app
 
-RUN useradd wagtail
-RUN chown -R wagtail /usr/src/app
-USER wagtail
+
  
 ENV UWSGI_PORT 8000
 
