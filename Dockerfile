@@ -23,8 +23,14 @@ COPY ./requirements.txt /requirements.txt
 RUN pip install --no-cache-dir -r /requirements.txt \
     && rm -rf /requirements.txt
 
+RUN pip install gunicorn
+
 COPY . /usr/src/app
  
-EXPOSE 80
- 
-CMD ["sh", "./runserver.sh"]
+ENV UWSGI_PORT 8000
+
+EXPOSE ${UWSGI_PORT}
+ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+
+
+CMD gunicorn mysite.wsgi:application --bind 0.0.0.0:${UWSGI_PORT} --workers 4
