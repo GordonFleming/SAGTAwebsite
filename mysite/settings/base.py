@@ -92,7 +92,8 @@ SITE_ID = 1
 CSRF_TRUSTED_ORIGINS = ['https://sagta.org.za','https://www.sagta.org.za']
 
 MIDDLEWARE = [
-
+    # whitenoise
+    "whitenoise.middleware.WhiteNoiseMiddleware"
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
@@ -102,9 +103,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
-    # whitenoise
-    "whitenoise.middleware.WhiteNoiseMiddleware"
 
     # allauth
     'allauth.account.middleware.AccountMiddleware',
