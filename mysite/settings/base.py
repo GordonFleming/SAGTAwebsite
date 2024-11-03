@@ -92,8 +92,6 @@ SITE_ID = 1
 CSRF_TRUSTED_ORIGINS = ['https://sagta.org.za','https://www.sagta.org.za']
 
 MIDDLEWARE = [
-    # whitenoise
-    "whitenoise.middleware.WhiteNoiseMiddleware"
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
@@ -110,6 +108,9 @@ MIDDLEWARE = [
 	#DeprecationWarning
     #'wagtail.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
+    # whitenoise
+    "whitenoise.middleware.WhiteNoiseMiddleware"
 ]
 
 ROOT_URLCONF = 'mysite.urls'
