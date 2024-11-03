@@ -25,11 +25,10 @@ RUN pip install --no-cache-dir -r /requirements.txt \
 
 COPY . /usr/src/app
 
-
+RUN useradd wagtail
+RUN chown -R wagtail /usr/src/app
+USER wagtail
  
-ENV UWSGI_PORT 8000
-
-EXPOSE ${UWSGI_PORT}
-ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
+EXPOSE 80
  
-CMD gunicorn mysite.wsgi:application --bind 0.0.0.0:${UWSGI_PORT} --workers 3
+CMD ["sh", "./runserver.sh"]
