@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.10-slim-buster
 
 # For python logs
 ENV PYTHONUNBUFFERED 1
