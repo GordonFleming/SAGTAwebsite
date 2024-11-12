@@ -104,15 +104,15 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
 
-    # whitenoise
-    "whitenoise.middleware.WhiteNoiseMiddleware"
-
     # allauth
     'allauth.account.middleware.AccountMiddleware',
 
 	#DeprecationWarning
     #'wagtail.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
+
+    # whitenoise
+    "whitenoise.middleware.WhiteNoiseMiddleware"
 ]
 
 ROOT_URLCONF = 'mysite.urls'
