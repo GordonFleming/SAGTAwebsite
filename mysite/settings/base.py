@@ -89,7 +89,7 @@ REST_FRAMEWORK = {
 
 
 SITE_ID = 1
-CSRF_TRUSTED_ORIGINS = ['https://sagta.org.za','https://www.sagta.org.za']
+CSRF_TRUSTED_ORIGINS = ['https://sagta.org.za','https://www.sagta.org.za','https://sagta.glass.thinkteacher.co.za']
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
