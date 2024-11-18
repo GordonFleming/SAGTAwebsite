@@ -3,15 +3,8 @@ from .base import *
 import ast
 import os
 
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {},
-    },
-    "staticfiles": {
-        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
-    },
-}
+MEDIA_URL = 'https://%s/media/' % os.environ.get("ENDPOINT_URL")
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
 DEBUG = os.getenv("DJANGO_DEBUG", "off") == "on"
