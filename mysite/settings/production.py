@@ -3,7 +3,6 @@ from .base import *
 import ast
 import os
 
-MEDIA_URL = 'https://%s/media/' % os.environ.get("ENDPOINT_URL")
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
