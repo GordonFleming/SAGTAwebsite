@@ -5,8 +5,7 @@ import os
 
 STORAGES = {
     "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-        "OPTIONS": {},
+        "BACKEND": "storages.backends.s3boto3.S3StaticStorage",
     },
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
