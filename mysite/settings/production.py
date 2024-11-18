@@ -3,7 +3,7 @@ from .base import *
 import ast
 import os
 
-MEDIA_URL = "https://sagta.org.za/media/"
+MEDIA_URL = "https://s3.sagta.org.za/"
 STORAGES = {
     "default": {
         "BACKEND": "storages.backends.s3boto3.S3Boto3Storage",
