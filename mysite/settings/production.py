@@ -14,7 +14,7 @@ STORAGES = {
 }
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = os.getenv("DJANGO_DEBUG", "off") == "on"
+DEBUG = os.getenv("DEBUG")
 WAGTAIL_SITE_NAME = os.environ.get("SITE_NAME")
 HTTP_PORT = os.environ.get("HTTP_PORT")
 ALLOWED_HOSTS = ["{}".format(WAGTAIL_SITE_NAME), "www.{}".format(WAGTAIL_SITE_NAME)]
