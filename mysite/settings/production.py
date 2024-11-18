@@ -3,7 +3,6 @@ from .base import *
 import ast
 import os
 
-MEDIA_URL = os.environ.get("ENDPOINT_URL")
 STORAGES = {
     "default": {
         "BACKEND": "storages.backends.s3.S3Storage",
