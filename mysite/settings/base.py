@@ -268,7 +268,8 @@ WAGTAILAPI_ENDPOINTS = {
     'home': 'auth.api.HomePageAPIEndpoint',
 }
 
-bucket_name=os.environ.get("BUCKET_NAME")
-endpoint_url=os.environ.get("ENDPOINT_URL")
-access_key=os.environ.get("ACCESS_KEY_S3")
-secret_key=os.environ.get("SECRET_KEY_S3")
+AWS_STORAGE_BUCKET_NAME = os.environ.get("BUCKET_NAME")
+AWS_S3_ENDPOINT_URL = os.environ.get("ENDPOINT_URL")
+AWS_S3_ACCESS_KEY_ID = os.environ.get("ACCESS_KEY_S3")
+AWS_S3_SECRET_ACCESS_KEY = os.environ.get("SECRET_KEY_S3")
+AWS_S3_SIGNATURE_VERSION = 's3v4'
