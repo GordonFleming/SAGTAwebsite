@@ -14,3 +14,5 @@ django-turnstile==0.1.2
 wagtailmenus==4.0.1
 
 whitenoise==6.8.2
+django-storages[s3]==1.14.4
+boto3==1.35.63

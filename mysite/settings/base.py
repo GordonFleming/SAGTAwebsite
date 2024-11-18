@@ -70,6 +70,7 @@ INSTALLED_APPS = [
     'turnstile',
     'wagtail.api.v2',
     'wagtailmenus',
+    'storages'
 ]
 
 OAUTH2_PROVIDER = {
@@ -264,3 +265,8 @@ PAYSTACK_PUBLIC_KEY = os.environ.get("PAYSTACK_PUBLIC_KEY")
 WAGTAILAPI_ENDPOINTS = {
     'home': 'auth.api.HomePageAPIEndpoint',
 }
+
+bucket_name=os.environ.get("BUCKET_NAME")
+endpoint_url=os.environ.get("ENDPOINT_URL")
+access_key=os.environ.get("ACCESS_KEY_S3")
+secret_key=os.environ.get("SECRET_KEY_S3")
