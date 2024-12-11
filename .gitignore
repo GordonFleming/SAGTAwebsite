@@ -64,3 +64,4 @@ sagta_env/
 
 # Local static files
 /static/
+db.sqlite3.original

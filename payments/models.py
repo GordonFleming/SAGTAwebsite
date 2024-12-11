@@ -4,6 +4,7 @@ from django.utils import timezone
 import secrets
 from .paystack import Paystack
 
+# Reference: https://dev.to/joshthecodingaddict/integrating-paystack-payments-in-django-website-1i1l
 # Create your models here.
 class UserWallet(models.Model):
 	user = models.OneToOneField(User, null=True, on_delete=models.CASCADE)
