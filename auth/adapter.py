@@ -110,7 +110,7 @@ def validate_users():
             validated_members.append(user.email)
             user.groups.add(group)
             user.is_active = True
-        else:
+        elif already_member and not (sheet_member or (under_year and has_balance)):
             invalidated_members.append(user.email)
             user.groups.remove(group)
             user_wallet.balance = 0
