@@ -90,21 +90,27 @@ def validate_users():
     users = User.objects.all()
 
     for user in users:
-        latest_payment = Payment.objects.filter(verified=True).order_by('-created_at').first()
+        try:
+            latest_payment = Payment.objects.filter(verified=True).order_by('-created_at').first()
+        except IndexError:  # Handle case where no payments exist
+            latest_payment = None 
+
         user_wallet, created = UserWallet.objects.get_or_create(user=user)
         group = Group.objects.get(name='Members')
 
         # Conditions
         already_member = user.groups.filter(name='Members').exists()
         sheet_member = user.email.lower() in all_members
-        under_year = latest_payment.created_at > timezone.now() - timedelta(days=365)
+        
+        under_year = latest_payment and latest_payment.created_at > timezone.now() - timedelta(days=365)
+        
         has_balance = user_wallet.balance > 0
 
         if not already_member and (sheet_member or (under_year and has_balance)):
             validated_members.append(user.email)
             user.groups.add(group)
             user.is_active = True
-        elif already_member and not (sheet_member or (under_year and has_balance)):
+        else:
             invalidated_members.append(user.email)
             user.groups.remove(group)
             user_wallet.balance = 0
