@@ -1,4 +1,4 @@
-Django==5.1.2
+Django==5.1.4
 wagtail==6.3
 django-allauth==65.1.0
 
