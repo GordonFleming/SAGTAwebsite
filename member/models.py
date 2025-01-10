@@ -28,10 +28,10 @@ SADC_CHOICES = {
     "zimbabwe": "Zimbabwe"
 }
 MEMBERSHIP_CHOICES = {
-    "individual": "Individual, SAGTA / AAG Joint Membership R500 / 1 year",
-    "retired_teachers": "Retired teachers, SAGTA / AAG Joint Membership R250 / 1 year",
-    "student_teachers": "Student teachers, SAGTA / AAG Joint Membership R250 / 1 year",
-    "corporate_institutional": "Corporate Institutional Membership (max. 5 staff members) R2300 / 1 year"
+    "individual": "Individual, SAGTA / AAG Joint Membership R520 / 1 year",
+    "retired_teachers": "Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year",
+    "student_teachers": "Student teachers, SAGTA / AAG Joint Membership R260 / 1 year",
+    "corporate_institutional": "Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year"
 }
 
 

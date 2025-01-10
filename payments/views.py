@@ -11,12 +11,12 @@ def initiate_payment(request):
 		email = request.POST['email']
 		
         # For student and retired
-		amount = 250
+		amount = 260
 	    # Logic for different payment amounts based on membership type
 		if membership_type == "individual":
-			amount = 500
+			amount = 520
 		elif membership_type == "corporate_institutional":
-			amount = 2300
+			amount = 2370
         
 		pk = os.environ.get('PAYSTACK_PUBLIC_KEY')
 
