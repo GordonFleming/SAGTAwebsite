@@ -36,41 +36,42 @@ def is_valid_member(email):
         return False
     return True
  
-class CustomEmailPaymentAdapter(DefaultAccountAdapter):# Check balance for login
-    # Paystack check to redirect user to payment page if balance is insufficient
-    def get_login_redirect_url(self, request):
+class CustomEmailPaymentAdapter(DefaultAccountAdapter):
+    def _should_redirect_to_payment(self, request):
+        """Helper method to determine if user should be redirected to payment"""
         user = request.user
-
+        
         # Ensure the UserWallet exists, create if not
         wallet, created = UserWallet.objects.get_or_create(user=user)
-
+        
+        # Check if user is legacy member or has positive balance
         eft_legacy_member = user.groups.filter(name='Members').exists()
         paid_member = wallet.balance > 0
-        if eft_legacy_member or paid_member:
-            return '/prep-share/'
-
-        if wallet.balance <= 0:
-            # Redirect to payment page if balance is insufficient
-            return reverse('initiate_payment')
         
-        return '/'
+        return not (eft_legacy_member or paid_member)
+
+    def _get_redirect_url(self, request):
+        """Helper method to get the appropriate redirect URL"""
+        # If user shouldn't be redirected to payment, send them to prep-share
+        if not self._should_redirect_to_payment(request):
+            return '/prep-share/'
+            
+        # Check if we're already on the payment page to prevent infinite loops
+        current_path = request.path
+        payment_path = reverse('initiate_payment')
+        
+        # If we're already on the payment page, redirect to home
+        if current_path == payment_path:
+            return '/'
+            
+        # Otherwise, redirect to payment
+        return payment_path
+
+    def get_login_redirect_url(self, request):
+        return self._get_redirect_url(request)
     
     def get_signup_redirect_url(self, request):
-        user = request.user
-
-        # Ensure the UserWallet exists, create if not
-        wallet, created = UserWallet.objects.get_or_create(user=user)
-
-        eft_legacy_member = user.groups.filter(name='Members').exists()
-        paid_member = wallet.balance > 0
-        if eft_legacy_member or paid_member:
-            return '/prep-share/'
-
-        if wallet.balance <= 0:
-            # Redirect to payment page if balance is insufficient
-            return reverse('initiate_payment')
-        
-        return '/'
+        return self._get_redirect_url(request)
     
     # Deprecated: as checks need to be on payment & Gsheet for manual process (EFT)
 

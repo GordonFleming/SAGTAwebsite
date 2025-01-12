@@ -1,5 +1,5 @@
 Django==5.1.4
-wagtail==6.3.1
+wagtail==6.3.2
 django-allauth==65.1.0
 
 # django-oauth-toolkit==2.4.0 gives error needs fixing map downloader side? (PKCE_REQUIRED = False)
