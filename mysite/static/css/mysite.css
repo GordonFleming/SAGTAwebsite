@@ -28,6 +28,12 @@ label.required::after {
     margin-bottom: 10px;
     font-size: 1.3em;
 }
+.img-enlarge{
+    transition: transform .2s ease-in-out;
+}
+.img-enlarge:hover{
+    transform: scale(1.05);
+}
 p{
     font-size: 1.2em;
 }

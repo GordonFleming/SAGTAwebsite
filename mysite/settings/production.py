@@ -13,7 +13,7 @@ STORAGES = {
 }
 SECRET_KEY = os.environ.get("SECRET_KEY")
 
-DEBUG = os.environ.get("DEBUG")
+DEBUG = os.environ.get("DEBUG", "False").lower() in ("true", "1")
 WAGTAIL_SITE_NAME = os.environ.get("SITE_NAME")
 HTTP_PORT = os.environ.get("HTTP_PORT")
 ALLOWED_HOSTS = ["{}".format(WAGTAIL_SITE_NAME), "www.{}".format(WAGTAIL_SITE_NAME)]
