@@ -19,26 +19,26 @@
                         <div>
                             <button type="button" id="change-membership-btn" class="btn btn-sm btn-secondary">Change membership option</button>
                         </div>
+
+                        <div id="membership-selection" class="mb-3 mt-4" style="display: none;">
+                            <label for="membership_type" class="form-label">Select <strong>New</strong> Membership Type:</label>
+                            <select class="form-select" id="membership_type" name="membership_type">
+                                <option value="individual" name="individual">Individual, SAGTA / AAG Joint Membership R520 / 1 year</option>
+                                <option value="retired_teachers" name="retired_teachers">Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
+                                <option value="student_teachers" name="student_teachers">Student teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
+                                <option value="corporate_institutional" name="corporate_institutional">Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year</option>
+                            </select>
+                        </div>
                     {% else %}
                         <label for="membership_type" class="form-label">Select Membership Type:</label>
                         <select class="form-select" id="membership_type" name="membership_type">
-                            <option value="individual">Individual, SAGTA / AAG Joint Membership R520 / 1 year</option>
-                            <option value="retired_teachers">Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
-                            <option value="student_teachers">Student teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
-                            <option value="corporate_institutional">Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year</option>
+                            <option value="individual" name="individual">Individual, SAGTA / AAG Joint Membership R520 / 1 year</option>
+                            <option value="retired_teachers" name="retired_teachers">Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
+                            <option value="student_teachers" name="student_teachers">Student teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
+                            <option value="corporate_institutional" name="corporate_institutional">Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year</option>
                         </select>
                     {% endif %}
-                    
-                    <div id="membership-selection" class="mb-3 mt-4" style="display: none;">
-                        <label for="membership_type" class="form-label">Select <strong>New</strong> Membership Type:</label>
-                        <select class="form-select" id="membership_type" name="membership_type">
-                            <option value="individual">Individual, SAGTA / AAG Joint Membership R520 / 1 year</option>
-                            <option value="retired_teachers">Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
-                            <option value="student_teachers">Student teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
-                            <option value="corporate_institutional">Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year</option>
-                        </select>
-                    </div>
-
+                
                     <input type="hidden" value="{{ request.user.email }}" readonly required id="email" name="email">
                 <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
 
