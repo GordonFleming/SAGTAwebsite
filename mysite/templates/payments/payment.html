@@ -2,54 +2,78 @@
 {% block content %}
 
 <div class="container mx-auto mt-5">
-    <section class="pb-4">
-        <div style="width: fit-content;" class="bg-white border rounded-5">
-            <section class="w-100 p-4 d-flex justify-content-center pb-4">
-            <form action="{% url 'initiate_payment' %}" method="POST">
-                <img class="img-fluid mb-5" src="https://s3.sagta.org.za/images/SAGTA_logo_128x128.original.png" alt="logo">
-                <h2>SAGTA membership:</h2>
-                {% csrf_token %}
+    <div class="row">
+        <div class="col-xs-12 col-sm-8">
+            <section class="pb-4">
+                <div style="width: fit-content;" class="bg-white border rounded-5">
+                    <section class="w-100 p-4 d-flex justify-content-center pb-4">
+                    <form action="{% url 'initiate_payment' %}" method="POST">
+                        <img class="img-fluid mb-5" src="https://s3.sagta.org.za/images/SAGTA_logo_128x128.original.png" alt="logo">
+                        <h2>SAGTA membership:</h2>
+                        {% csrf_token %}
+        
+                        <div class="form-outline mb-4">
+                            {% if request.user.member and request.user.member.membership_type %}
+                                <div class="d-flex align-items-center gap-2 mb-3">
+                                    <p class="mb-0">Current membership type: <strong id="current-membership">{{ request.user.member.get_membership_type_display }}</strong></p>
+                                </div>
+        
+                                <div>
+                                    <button type="button" id="change-membership-btn" class="btn btn-sm btn-secondary">Change membership option</button>
+                                </div>
+        
+                                <div id="membership-selection" class="mb-3 mt-4" style="display: none;">
+                                    <label for="membership_type" class="form-label">Select <strong>New</strong> Membership Type:</label>
+                                    <select class="form-select" id="membership_type" name="membership_type">
+                                        <option value="individual" name="individual">Individual, SAGTA / AAG Joint Membership R520 / 1 year</option>
+                                        <option value="retired_teachers" name="retired_teachers">Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
+                                        <option value="student_teachers" name="student_teachers">Student teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
+                                        <option value="corporate_institutional" name="corporate_institutional">Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year</option>
+                                    </select>
+                                </div>
+                            {% else %}
+                                <label for="membership_type" class="form-label">Select Membership Type:</label>
+                                <select class="form-select" id="membership_type" name="membership_type">
+                                    <option value="individual" name="individual">Individual, SAGTA / AAG Joint Membership R520 / 1 year</option>
+                                    <option value="retired_teachers" name="retired_teachers">Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
+                                    <option value="student_teachers" name="student_teachers">Student teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
+                                    <option value="corporate_institutional" name="corporate_institutional">Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year</option>
+                                </select>
+                            {% endif %}
+                        
+                            <input type="hidden" value="{{ request.user.email }}" readonly required id="email" name="email">
+                        <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
+        
+                        <button type="submit" class="btn btn-primary btn-block mb-4 p-2 w-50">Pay</button>
+                        <img class="img_fluid mt-5" src="https://cdn-assets-cloud.frontify.com/s3/frontify-cloud-files-us/eyJwYXRoIjoiZnJvbnRpZnlcL2FjY291bnRzXC8yYVwvMTQxNzczXC9wcm9qZWN0c1wvMTc4NjE0XC9hc3NldHNcL2E5XC8zNTI0MTM2XC9jYmJkNzA1OTEyN2NlOGU3ZDI5ZDM5NmJkMzhmMzkwNi0xNTY5MjE3MjIzLnBuZyJ9:frontify:xd65O1_BCk88mGEkjq6maiXPQH5Ol5Vhn97tbY1vl0c?width=250" alt="paystack_logo">
+                        <br>
+                        <img class="img-fluid mt-3" style="max-width: 350px;" src="https://cdn-assets-cloud.frontify.com/s3/frontify-cloud-files-us/eyJwYXRoIjoiZnJvbnRpZnlcL2ZpbGVcL2NmYnBXam02alRQMkh1ZEM3dUt5LnBuZyJ9:frontify:2DHACurvdbkXgwKhzAvSL9QyhCiLTYU_8zHAt80tb_w?width=350" alt="paystack_options">
+                    </form>
+                    </section>    
+                </div>  
+            </section>
+        </div>
 
-                <div class="form-outline mb-4">
-                    {% if request.user.member and request.user.member.membership_type %}
-                        <div class="d-flex align-items-center gap-2 mb-3">
-                            <p class="mb-0">Current membership type: <strong id="current-membership">{{ request.user.member.get_membership_type_display }}</strong></p>
-                        </div>
-
-                        <div>
-                            <button type="button" id="change-membership-btn" class="btn btn-sm btn-secondary">Change membership option</button>
-                        </div>
-
-                        <div id="membership-selection" class="mb-3 mt-4" style="display: none;">
-                            <label for="membership_type" class="form-label">Select <strong>New</strong> Membership Type:</label>
-                            <select class="form-select" id="membership_type" name="membership_type">
-                                <option value="individual" name="individual">Individual, SAGTA / AAG Joint Membership R520 / 1 year</option>
-                                <option value="retired_teachers" name="retired_teachers">Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
-                                <option value="student_teachers" name="student_teachers">Student teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
-                                <option value="corporate_institutional" name="corporate_institutional">Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year</option>
-                            </select>
-                        </div>
-                    {% else %}
-                        <label for="membership_type" class="form-label">Select Membership Type:</label>
-                        <select class="form-select" id="membership_type" name="membership_type">
-                            <option value="individual" name="individual">Individual, SAGTA / AAG Joint Membership R520 / 1 year</option>
-                            <option value="retired_teachers" name="retired_teachers">Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
-                            <option value="student_teachers" name="student_teachers">Student teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
-                            <option value="corporate_institutional" name="corporate_institutional">Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year</option>
-                        </select>
-                    {% endif %}
+        <div class="col-xs-12 col-sm-4">
+            <div style="width: fit-content;" class="bg-white border rounded-5">
+            <section class="w-100 p-2">
+                <h3>Or Pay via EFT:</h3>
+                <p class="py-3 font-weight-bold">Account Details for Electronic Transfers:</p>
+                <p>
+                    <strong>Account Name:</strong> Southern African Geography Teachers Association (SAGTA) <br>
+                    <strong>Bank:</strong> Standard Bank of South Africa <br>
+                    <strong>Account Number:</strong> 07 237 0904 <br>
+                    <strong>Branch Number:</strong> 033012 <br>
+                    <strong>Swift Code:</strong> SBZAZAJJ <br>
+                    <strong>REFERENCE:</strong> MB yoursurname (for individual memberships) <br>
+                    <strong>REFERENCE:</strong> MB yourinstitution (for school / institutional memberships)
+                </p>
                 
-                    <input type="hidden" value="{{ request.user.email }}" readonly required id="email" name="email">
-                <div class="form-notch"><div class="form-notch-leading" style="width: 9px;"></div><div class="form-notch-middle" style="width: 88.8px;"></div><div class="form-notch-trailing"></div></div></div>
-
-                <button type="submit" class="btn btn-primary btn-block mb-4 p-2 w-50">Pay</button>
-                <img class="img_fluid mt-5" src="https://cdn-assets-cloud.frontify.com/s3/frontify-cloud-files-us/eyJwYXRoIjoiZnJvbnRpZnlcL2FjY291bnRzXC8yYVwvMTQxNzczXC9wcm9qZWN0c1wvMTc4NjE0XC9hc3NldHNcL2E5XC8zNTI0MTM2XC9jYmJkNzA1OTEyN2NlOGU3ZDI5ZDM5NmJkMzhmMzkwNi0xNTY5MjE3MjIzLnBuZyJ9:frontify:xd65O1_BCk88mGEkjq6maiXPQH5Ol5Vhn97tbY1vl0c?width=250" alt="paystack_logo">
-                <br>
-                <img class="img-fluid mt-3" style="max-width: 350px;" src="https://cdn-assets-cloud.frontify.com/s3/frontify-cloud-files-us/eyJwYXRoIjoiZnJvbnRpZnlcL2ZpbGVcL2NmYnBXam02alRQMkh1ZEM3dUt5LnBuZyJ9:frontify:2DHACurvdbkXgwKhzAvSL9QyhCiLTYU_8zHAt80tb_w?width=350" alt="paystack_options">
-            </form>
-            </section>    
-        </div>  
-    </section>
+                <p class="mt-4 font-weight-bold">Please Email Proof of Payment to <a href="mailto:secretary@sagta.org.za">secretary@sagta.org.za</a></p>
+            </section>
+            </div>
+        </div>
+    </div>
 </div>
 
 <script>
