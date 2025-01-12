@@ -8,7 +8,10 @@
                 <br><h2 style="color:#0fad00">{{ message }}</h2>
             {% endif %}
 
-            <h3>{{ request.user.username }}, you are now a SAGTA member!</h3>
+            {% if request.user.first_name %}
+                <h3>{{ request.user.first_name }}, you are now a SAGTA member!</h3>
+            {% endif %}
+
             <p style="font-size:20px;color:#5C5C5C;">transaction was successful</p>
             <p style="font-size:20px;color:#1c1c1c;">Start by visiting</p>
             <a href="/prep-share/" class="btn btn-primary mb-4">Prep-share</a>

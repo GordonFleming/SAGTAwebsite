@@ -34,7 +34,6 @@ MEMBERSHIP_CHOICES = {
     "corporate_institutional": "Corporate Institutional Membership (max. 5 staff members) R2370 / 1 year"
 }
 
-
 # Create your models here.
 
 class Member(models.Model):
