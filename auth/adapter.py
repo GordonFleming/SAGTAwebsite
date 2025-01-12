@@ -52,19 +52,23 @@ class CustomEmailPaymentAdapter(DefaultAccountAdapter):
 
     def _get_redirect_url(self, request):
         """Helper method to get the appropriate redirect URL"""
-        # If user shouldn't be redirected to payment, send them to prep-share
-        if not self._should_redirect_to_payment(request):
-            return '/prep-share/'
-            
-        # Check if we're already on the payment page to prevent infinite loops
         current_path = request.path
         payment_path = reverse('initiate_payment')
+        prep_share_path = '/prep-share/'
         
-        # If we're already on the payment page, redirect to home
+        # If user has proper permissions, allow access to prep-share
+        if not self._should_redirect_to_payment(request):
+            # Only redirect to prep-share if that's not where we came from
+            if current_path != prep_share_path:
+                return prep_share_path
+            # If we're already on prep-share, go to home to prevent loops
+            return '/'
+            
+        # If we're already on the payment page, prevent infinite loop
         if current_path == payment_path:
             return '/'
             
-        # Otherwise, redirect to payment
+        # Redirect to payment by default for users without proper access
         return payment_path
 
     def get_login_redirect_url(self, request):
