@@ -7,7 +7,6 @@ from django.contrib.auth.models import Group, User
 from payments.models import UserWallet, Payment
 from datetime import timedelta
 from django.utils import timezone
-from django.contrib.auth import logout
 from dotenv import load_dotenv
 load_dotenv()
 
@@ -57,13 +56,6 @@ class CustomEmailPaymentAdapter(DefaultAccountAdapter):
 
     def _get_redirect_url(self, request):
         """Helper method to get the appropriate redirect URL"""
-        next_param = request.GET.get('next')
-        
-        # If trying to access prep-share without permissions, log out
-        if next_param == '/prep-share/' and self._should_redirect_to_payment(request):
-            logout(request)
-            return reverse('account_login')
-
         # If user shouldn't be redirected to payment, send them home
         if not self._should_redirect_to_payment(request):
             return '/'

@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Payment, UserWallet
+from member.models import Member
 from django.contrib.auth.models import Group
 import os
 from dotenv import load_dotenv
@@ -49,12 +50,11 @@ def verify_payment(request, ref, membership_type):
 	if verified:
 		# Check if UserWallet exists for the user, create if it doesn't
 		user_wallet, created = UserWallet.objects.get_or_create(user=user)
-		
 		user_wallet.balance += payment.amount
 		user_wallet.save()
-		
-		user.member.membership_type = membership_type
-		user.member.save()
+		member, created = Member.objects.get_or_create(user=user)
+		member.membership_type = membership_type
+		member.save()
 		
         # Add the user to the members user group
 		group = Group.objects.get(name='Members')
