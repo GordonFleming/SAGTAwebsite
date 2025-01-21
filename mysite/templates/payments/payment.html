@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-xs-12 col-sm-8">
             <section class="pb-4">
-                <div style="width: fit-content;" class="bg-white border rounded-5">
+                <div class="bg-white border rounded-5">
                     <section class="w-100 p-4 d-flex justify-content-center pb-4">
                     <form action="{% url 'initiate_payment' %}" method="POST">
                         <img class="img-fluid mb-5" src="https://s3.sagta.org.za/images/SAGTA_logo_128x128.original.png" alt="logo">
@@ -24,7 +24,7 @@
         
                                 <div id="membership-selection" class="mb-3 mt-4" style="display: none;">
                                     <label for="membership_type" class="form-label">Select <strong>New</strong> Membership Type:</label>
-                                    <select class="form-select" id="membership_type" name="membership_type">
+                                    <select class="form-select w-100" id="membership_type" name="membership_type">
                                         <option value="individual" name="individual">Individual, SAGTA / AAG Joint Membership R520 / 1 year</option>
                                         <option value="retired_teachers" name="retired_teachers">Retired teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
                                         <option value="student_teachers" name="student_teachers">Student teachers, SAGTA / AAG Joint Membership R260 / 1 year</option>
