@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+from member.admin import CustomUserAdmin
 from django.contrib.auth.models import User
 from .models import Payment, UserWallet
 
@@ -39,9 +39,9 @@ class UserWalletAdmin(admin.ModelAdmin):
     readonly_fields = ('created_at', 'updated_at')
     ordering = ('-updated_at',)
 
-class CustomUserAdmin(BaseUserAdmin):
-    inlines = [UserWalletInline, PaymentInline]
+class ExtendedCustomUserAdmin(CustomUserAdmin):
+    inlines = CustomUserAdmin.inlines + [UserWalletInline, PaymentInline]
 
 # Re-register UserAdmin
 admin.site.unregister(User)
-admin.site.register(User, CustomUserAdmin)
+admin.site.register(User, ExtendedCustomUserAdmin)

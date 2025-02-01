@@ -72,7 +72,8 @@ INSTALLED_APPS = [
     'turnstile',
     'wagtail.api.v2',
     'wagtailmenus',
-    'storages'
+    'storages',
+    'import_export'
 ]
 
 OAUTH2_PROVIDER = {
