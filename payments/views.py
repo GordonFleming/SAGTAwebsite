@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from .models import Payment, UserWallet
+from django.db.models import Sum
 from member.models import Member
 from django.contrib.auth.models import Group
 import os
@@ -50,7 +51,11 @@ def verify_payment(request, ref, membership_type):
 	if verified:
 		# Check if UserWallet exists for the user, create if it doesn't
 		user_wallet, created = UserWallet.objects.get_or_create(user=user)
-		user_wallet.balance += payment.amount
+
+		total_amount = Payment.objects.filter(user=user).aggregate(Sum('amount'))['amount__sum'] or 0
+		if user_wallet.balance < total_amount: 
+			user_wallet.balance += payment.amount
+
 		user_wallet.save()
 		member, created = Member.objects.get_or_create(user=user)
 		member.membership_type = membership_type
