@@ -28,11 +28,11 @@
 
                 <div class="socialaccount_ballot">
 
-                <ul class="socialaccount_providers">
-                    {% include "socialaccount/snippets/provider_list.html" with process="login" %}
-                </ul>
+                    <ul class="socialaccount_providers">
+                        {% include "socialaccount/snippets/provider_list.html" with process="login" %}
+                    </ul>
 
-                <div class="login-or">{% trans 'or' %}</div>
+                    <div class="login-or">{% trans 'or' %}</div>
 
                 </div>
 
@@ -40,7 +40,7 @@
 
                 {% else %}
                 <p>{% blocktrans %}If you have not created an account yet, then please
-                <a href="{{ signup_url }}"><strong>register</strong></a> first.{% endblocktrans %}</p>
+                <a href="{{ signup_url }}"><strong>sign up</strong></a> first.{% endblocktrans %}</p>
                 {% endif %}
 
                 <form class="login" method="POST" action="{% url 'account_login' %}">

@@ -20,13 +20,6 @@
 
                 <p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}"><strong>sign in</strong></a>.{% endblocktrans %}</p>
 
-                <!-- TODO: phase the bottom out as SAGTA integrates payment -->
-                <div style="line-height: 0.35em;">
-                    <p><strong>Please Note:</strong></p>
-                    <p>Only if you have applied to be a member may you register.</p>
-                    <p>Navigate to the <a href="/membership/">members</a> page to apply to be a member.</p>
-                </div>
-
                 <form class="signup mb-3" id="signup_form" method="post" action="{% url 'account_signup' %}">
                 {% csrf_token %}
                 {{ form.as_p }}
@@ -35,14 +28,27 @@
                 {% endif %}
                 <button type="submit" class="btn btn-primary">{% trans "Sign Up" %} &raquo;</button>
                 </form>
-                <small style="font-size: 0.9em;" class="font-weight-bold">Members are not allowed to share their login details. An individual membership allows only one
-                    person access to the website. An academic institutional membership allows only the staff members registered with SAGTA access to the website.
-                    Please note that membership will be deactivated if details are shared with unauthorised individuals.</small>
+                <div style="line-height: 0.35em; margin-bottom: 2.5rem;">
+                    <p><strong>Please Note:</strong></p>
+                    <p>You can now pay directly online.</p>
+                    <p>You will be redirected for payment after registration.</p>
+                </div>
+                <div>
+                    <small style="font-size: 0.9em;" class="font-weight-bold">Members are not allowed to share their login details. An individual membership allows only one
+                        person access to the website. An academic institutional membership allows only the staff members registered with SAGTA access to the website.
+                        Please note that membership will be deactivated if details are shared with unauthorised individuals.</small>
+                </div>
             </div>
         </div>        
     </div>
     <style>
         input{
+            width: 100% !important; 
+            padding: 5px 8px;
+            margin: 4px 0;
+            box-sizing: border-box;           
+        }
+        textarea{
             width: 100% !important; 
             padding: 5px 8px;
             margin: 4px 0;

@@ -30,6 +30,21 @@ gc = gspread.service_account_from_dict(cred)
 sheet = gc.open_by_key(SHEET_ID)
 sht = sheet.sheet1
 
+def append_row(row_data):
+    try:
+        # Get the second worksheet (new_users tab)
+        new_users = sheet.get_worksheet(1)  # Index 1 is the second sheet
+        if not new_users:
+            # If the sheet doesn't exist, create it
+            new_users = sheet.add_worksheet(title="new_users", rows="1000", cols="20")
+        
+        # Append the row
+        new_users.append_row(row_data)
+        return True
+    except Exception as e:
+        print(f"Error appending row: {str(e)}")
+        return False
+
 def is_valid_member(email):
     member_email_check = sht.find(email.lower())
     if not member_email_check:
