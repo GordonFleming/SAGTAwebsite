@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import redirect
+from django.urls import reverse
 from mysite.settings.base import WAGTAIL_FRONTEND_LOGIN_URL
 
 class PermissionDeniedMiddleware:
@@ -15,12 +15,6 @@ class PermissionDeniedMiddleware:
             response.url.startswith(WAGTAIL_FRONTEND_LOGIN_URL) and 
             request.user.is_authenticated):
             
-            # Return a script that shows alert and redirects
-            return HttpResponse(
-                '<script>'
-                'alert("You don\'t have permission to access this page.");'
-                'window.location.href="/";'  # Redirect to home page
-                '</script>'
-            )
+            return redirect(reverse('initiate_payment'))
             
         return response
