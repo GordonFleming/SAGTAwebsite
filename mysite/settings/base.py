@@ -96,6 +96,8 @@ SITE_ID = 1
 CSRF_TRUSTED_ORIGINS = ['https://sagta.org.za','https://www.sagta.org.za','https://sagta.glass.thinkteacher.co.za']
 
 MIDDLEWARE = [
+    'authusers.middleware.PermissionDeniedMiddleware',
+
     'corsheaders.middleware.CorsMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
 
@@ -114,7 +116,7 @@ MIDDLEWARE = [
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 
     # whitenoise
-    "whitenoise.middleware.WhiteNoiseMiddleware"
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'mysite.urls'
@@ -226,7 +228,7 @@ WAGTAILADMIN_BASE_URL = 'https://sagta.org.za'
 
 # django-allauth settings
 LOGIN_URL = '/login/'
-LOGIN_REDIRECT_URL = '/prep-share/'
+LOGIN_REDIRECT_URL = '/'
 ACCOUNT_SIGNUP_REDIRECT_URL = '/payments/initiate-payment/'
 ACCOUNT_AUTHENTICATION_METHOD = "username_email"
 ACCOUNT_EMAIL_REQUIRED = True
@@ -241,6 +243,7 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_FORM_CLASS = 'auth.forms.CustomSignupForm'
 ACCOUNT_ADAPTER = 'auth.adapter.CustomEmailPaymentAdapter'
 ACCOUNT_EMAIL_NOTIFICATIONS = True
+ACCOUNT_LOGIN_ON_GET = False
 
 # Email Settings
 EMAIL_HOST = os.environ.get("EMAIL_HOST")
