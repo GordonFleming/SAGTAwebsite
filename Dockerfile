@@ -17,11 +17,15 @@ RUN apt-get update \
         libffi-dev \
         shared-mime-info \
         wget \
+        ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Ofelia
-RUN wget -O /usr/local/bin/ofelia https://github.com/mcuadros/ofelia/releases/download/v0.3.7/ofelia-linux-amd64 \
-    && chmod +x /usr/local/bin/ofelia
+# Install Ofelia for job scheduling
+RUN wget -q https://github.com/mcuadros/ofelia/releases/download/v0.3.7/ofelia_0.3.7_linux_amd64.tar.gz \
+    && tar -xzf ofelia_0.3.7_linux_amd64.tar.gz \
+    && mv ofelia /usr/local/bin/ \
+    && chmod +x /usr/local/bin/ofelia \
+    && rm ofelia_0.3.7_linux_amd64.tar.gz
 
 # Create application directory and set permissions
 RUN mkdir -p /usr/src/app
