@@ -19,6 +19,5 @@ django-storages[s3]==1.14.4
 boto3==1.35.63
 
 django-dbbackup==4.2.1
-django-crontab==0.7.1
 
 django-debug-toolbar==4.4.6

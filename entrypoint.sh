@@ -3,13 +3,12 @@
 # Exit on error
 set -e
 
-cron
+# Start Ofelia in background
+ofelia daemon --config=/usr/src/app/ofelia.ini &
 
 # Run migrations and collect static files
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput
-# Add the cron jobs
-python manage.py crontab add
 
 # Execute the main command
 exec "$@"

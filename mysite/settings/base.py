@@ -58,7 +58,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
 
     'dbbackup',
-    'django_crontab',
         
     "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
@@ -293,9 +292,3 @@ DBBACKUP_STORAGE_OPTIONS = {
     'region_name': 'auto',  # R2 uses 'auto' usually
     'location': 'dbbackup/',
 }
-
-CRONTAB_COMMAND_SUFFIX = '2>&1'
-CRONJOBS = [
-   # ('0 5 * * *', 'core.backup.backup_job', '>> ' + os.path.join(BASE_DIR, 'backup/backup.log'))
-    ('* * * * *', 'mysite.backup.backup_job', '>> ' + os.path.join(BASE_DIR, 'backup/backup.log'))
-]
