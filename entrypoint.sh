@@ -3,6 +3,8 @@
 # Exit on error
 set -e
 
+cron
+
 # Run migrations and collect static files
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput

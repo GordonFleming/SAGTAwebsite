@@ -291,13 +291,8 @@ DBBACKUP_STORAGE_OPTIONS = {
     'bucket_name': os.environ.get("BUCKET_NAME"),
     'endpoint_url': os.environ.get("ENDPOINT_URL"),
     'region_name': 'auto',  # R2 uses 'auto' usually
+    'location': 'dbbackup/',
 }
-
-# Where backups are temporarily stored before uploading (inside container)
-DBBACKUP_TMP_DIR = '/tmp/'
-
-# Optional: only backup the DB, not media files
-DBBACKUP_BACKUP_DIRECTORY = 'dbbackups/'
 
 CRONTAB_COMMAND_SUFFIX = '2>&1'
 CRONJOBS = [
