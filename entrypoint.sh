@@ -6,6 +6,8 @@ set -e
 # Run migrations and collect static files
 python manage.py migrate --noinput
 python manage.py collectstatic --noinput
+# Add the cron jobs
+python manage.py crontab add
 
 # Execute the main command
 exec "$@"

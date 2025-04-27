@@ -55,4 +55,9 @@ Create Super User
 python manage.py createsuperuser
 ```
 
+Add the cron jobs
+``` shell script
+python manage.py crontab add
+```
+
 Web development server will available at http://localhost:8080
