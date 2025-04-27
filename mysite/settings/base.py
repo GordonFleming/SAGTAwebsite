@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
 
     'dbbackup',
-    'django_cron',
+    'django_crontab',
         
     "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
@@ -282,10 +282,6 @@ AWS_S3_SECRET_ACCESS_KEY = os.environ.get("SECRET_KEY_S3")
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_S3_CUSTOM_DOMAIN= "s3.sagta.org.za"
 
-CRON_CLASSES = [
-    "mysite.cron.DatabaseBackupCronJob",
-]
-
 # DBBACKUP settings
 DBBACKUP_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
@@ -302,3 +298,9 @@ DBBACKUP_TMP_DIR = '/tmp/'
 
 # Optional: only backup the DB, not media files
 DBBACKUP_BACKUP_DIRECTORY = 'dbbackups/'
+
+CRONTAB_COMMAND_SUFFIX = '2>&1'
+CRONJOBS = [
+   # ('0 5 * * *', 'core.backup.backup_job', '>> ' + os.path.join(BASE_DIR, 'backup/backup.log'))
+    ('* * * * *', 'mysite.backup.backup_job', '>> ' + os.path.join(BASE_DIR, 'backup/backup.log'))
+]
