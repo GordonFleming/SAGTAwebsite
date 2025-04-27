@@ -16,6 +16,7 @@ RUN apt-get update \
         libgdk-pixbuf2.0-0 \
         libffi-dev \
         shared-mime-info \
+        cron \
     && rm -rf /var/lib/apt/lists/*
 
 # Create application directory and set permissions
