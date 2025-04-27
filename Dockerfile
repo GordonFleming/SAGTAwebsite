@@ -21,11 +21,11 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Ofelia for job scheduling
-RUN wget -q https://github.com/mcuadros/ofelia/releases/download/v0.3.7/ofelia_0.3.7_linux_amd64.tar.gz \
-    && tar -xzf ofelia_0.3.7_linux_amd64.tar.gz \
+RUN wget -q https://github.com/mcuadros/ofelia/releases/download/v0.3.17/ofelia_0.3.17_linux_arm64.tar.gz \
+    && tar -xzf ofelia_v0.3.17_linux_arm64.tar.gz \
     && mv ofelia /usr/local/bin/ \
     && chmod +x /usr/local/bin/ofelia \
-    && rm ofelia_0.3.7_linux_amd64.tar.gz
+    && rm ofelia_v0.3.17_linux_arm64.tar.gz
 
 # Create application directory and set permissions
 RUN mkdir -p /usr/src/app
