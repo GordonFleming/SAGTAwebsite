@@ -1,4 +1,4 @@
-Django==5.1.7
+Django==5.1.8
 wagtail==6.4.1
 django-allauth==65.1.0
 
@@ -17,5 +17,8 @@ wagtailmenus==4.0.1
 whitenoise==6.8.2
 django-storages[s3]==1.14.4
 boto3==1.35.63
+
+django-dbbackup==4.2.1
+django-cron==0.6.0
 
 django-debug-toolbar==4.4.6

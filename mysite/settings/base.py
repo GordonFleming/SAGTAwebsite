@@ -56,6 +56,9 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+
+    'dbbackup',
+    'django_cron',
         
     "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
@@ -278,3 +281,24 @@ AWS_S3_ACCESS_KEY_ID = os.environ.get("ACCESS_KEY_S3")
 AWS_S3_SECRET_ACCESS_KEY = os.environ.get("SECRET_KEY_S3")
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_S3_CUSTOM_DOMAIN= "s3.sagta.org.za"
+
+CRON_CLASSES = [
+    "mysite.cron.DatabaseBackupCronJob",
+]
+
+# DBBACKUP settings
+DBBACKUP_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+DBBACKUP_STORAGE_OPTIONS = {
+    'access_key': os.environ.get("ACCESS_KEY_S3"),
+    'secret_key': os.environ.get("SECRET_KEY_S3"),
+    'bucket_name': os.environ.get("BUCKET_NAME"),
+    'endpoint_url': os.environ.get("ENDPOINT_URL"),
+    'region_name': 'auto',  # R2 uses 'auto' usually
+}
+
+# Where backups are temporarily stored before uploading (inside container)
+DBBACKUP_TMP_DIR = '/tmp/'
+
+# Optional: only backup the DB, not media files
+DBBACKUP_BACKUP_DIRECTORY = 'dbbackups/'
