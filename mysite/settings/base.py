@@ -255,7 +255,7 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 # EMAIL_USE_SSL = True
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-DEFAULT_FROM_EMAIL = 'SAGTA Team <no-reply@sagta.org.za>'
+DEFAULT_FROM_EMAIL = 'SAGTA Team <website@sagta.org.za>'
 #TO_EMAIL = ''
 
 #Set Wagtail default login to site design
