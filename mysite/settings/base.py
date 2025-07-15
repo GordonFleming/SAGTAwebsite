@@ -58,7 +58,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
 
     'dbbackup',
-        
+
     "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     'django.contrib.sites',
@@ -232,8 +232,8 @@ WAGTAILADMIN_BASE_URL = 'https://sagta.org.za'
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_SIGNUP_REDIRECT_URL = '/payments/initiate-payment/'
-ACCOUNT_AUTHENTICATION_METHOD = "username_email"
-ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_LOGIN_METHODS = {'email', 'username'}
+ACCOUNT_SIGNUP_FIELDS = ['email*', 'password1*', 'password2*']
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_VERIFICATION = "none"
 ACCOUNT_LOGOUT_ON_GET = True
@@ -241,7 +241,6 @@ ACCOUNT_LOGIN_ON_PASSWORD_RESET = False
 ACCOUNT_LOGOUT_REDIRECT_URL = '/'
 ACCOUNT_PRESERVE_USERNAME_CASING = False
 ACCOUNT_SESSION_REMEMBER = True
-ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_SIGNUP_FORM_CLASS = 'auth.forms.CustomSignupForm'
 ACCOUNT_ADAPTER = 'auth.adapter.CustomEmailPaymentAdapter'
 ACCOUNT_EMAIL_NOTIFICATIONS = True

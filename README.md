@@ -1,7 +1,5 @@
 # README
 
-[![Publish DockerHub image](https://github.com/GordonFleming/SAGTAwebsite/actions/workflows/build-push-docker.yml/badge.svg)](https://github.com/GordonFleming/SAGTAwebsite/actions/workflows/build-push-docker.yml)
-
 Run the site locally for development
 
 ## Prerequisites
@@ -20,18 +18,10 @@ python3 -m venv virtualenv / virtualenv -p python3 yourVenv
 source virtualenv/bin/activate
 ```
 
-Windows
-```shell script
-python -m venv sagta_env
-.\sagta_env\Scripts\activate.bat
-```
-
 Install dependencies for development
 
 ```shell script
 pip install -r requirements.txt -r requirements.dev.txt
-or
-pip3 install --user -r requirements.txt -r requirements.dev.txt
 ```
 
 ### Make sure .env is configured
