@@ -1,9 +1,9 @@
-name: Daily HTTP Request with Basic Auth
+name: Every Two Hours HTTP Request with Basic Auth
 
 on:
   schedule:
-    - cron: '0 0 * * *' # This schedule triggers the workflow every day at midnight UTC
-  workflow_dispatch: 
+    - cron: "0 */2 * * *" # Every 2 hours throughout the day
+  workflow_dispatch:
 
 jobs:
   send_request:
@@ -14,10 +14,9 @@ jobs:
       BASIC_AUTH_PASSWORD: ${{ secrets.BASIC_AUTH_PASSWORD }}
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-    - name: Send HTTP Request
-      run: |
-        curl -f -X GET -u $BASIC_AUTH_USERNAME:$BASIC_AUTH_PASSWORD https://sagta.org.za/api/custom/check/
-
+      - name: Send HTTP Request
+        run: |
+          curl -f -X GET -u $BASIC_AUTH_USERNAME:$BASIC_AUTH_PASSWORD https://sagta.org.za/api/custom/check/
