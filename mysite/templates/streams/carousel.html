@@ -5,7 +5,7 @@
         {% for item in self.images %}
             {% image item.image max-1000x800 format-webp as img %}
             <div class="carousel-item {% if forloop.first %} active {% endif %}">
-                <div style="aspect-ratio: 1000/800;">
+                <div>
                     <img class="img-fluid d-block w-100 h-100 rounded object-fit-cover" src="{{ img.url }}" alt="{{ img.alt }}">
                 </div>
             </div>
