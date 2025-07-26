@@ -12,7 +12,7 @@ class FlexPage(Page):
     """Flexible page class."""
 
     template = "flex/flex_page.html"
-    
+
     content = StreamField(
         [
             ("title_and_text", blocks.TitleAndTextBlock()),
@@ -20,6 +20,7 @@ class FlexPage(Page):
             ("simple_richtext", blocks.SimpleRichtextBlock()),
             ("Raw_HTML", blocks.RawHTMLBlock()),
             ("cards", blocks.CardBlock()),
+            ('carousel_image', blocks.CarouselBlock()),
         ],
         null=True,
         blank=True,
