@@ -291,3 +291,17 @@ DBBACKUP_STORAGE_OPTIONS = {
     'region_name': 'auto',  # R2 uses 'auto' usually
     'location': 'dbbackup/',
 }
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {
+        "console": {
+            "class": "logging.StreamHandler",
+        },
+    },
+    "root": {
+        "handlers": ["console"],
+        "level": "WARNING",
+    },
+}
