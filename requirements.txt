@@ -19,5 +19,4 @@ django-storages[s3]==1.14.4
 boto3==1.35.63
 
 django-dbbackup==4.3.0
-
 django-debug-toolbar==5.2.0
