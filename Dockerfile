@@ -34,8 +34,10 @@ RUN pip install --no-cache-dir -r /usr/src/app/requirements.txt \
 RUN pip install --no-cache-dir gunicorn
 # Copy application code
 COPY . /usr/src/app
+
 # Expose the UWSGI port
 EXPOSE 80
+
 # Set the entrypoint script
 RUN chmod +x /usr/src/app/entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
