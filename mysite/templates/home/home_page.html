@@ -4,207 +4,381 @@
 
 {% block content %}
 {% image self.notify_image max-1000x420 as notify_img %}
-<div class="jumbotron mb-0"
-  style="background-image: url('{{ self.banner_img_link }}'); background-size: cover; background-color: #546E8A; color: #fff !important; background-attachment: fixed; background-position: center; background-repeat: no-repeat;">
-  <div class="row pl-5 pr-5">
-    <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
-      <h1 style="color: rgb(51, 53, 52); text-shadow: 2px 2px 2px #f1eded;" class="display-2">{{ self.banner_title }}
-      </h1>
-      <div style="color: rgb(51, 53, 52); text-shadow: 1px 1px 2px #fff;" class="lead">{{self.banner_subtitle|richtext}}
-      </div>
+<div
+    class="jumbotron mb-0"
+    style="background-image: url('{{ self.banner_img_link }}'); background-size: cover; background-color: #546E8A; color: #fff !important; background-attachment: fixed; background-position: center; background-repeat: no-repeat;"
+>
+    <div class="row pl-5 pr-5">
+        <div class="col-xl-10 col-lg-10 col-md-10 col-sm-12 col-12">
+            <h1
+                style="color: rgb(51, 53, 52); text-shadow: 2px 2px 2px #f1eded"
+                class="display-2"
+            >
+                {{ self.banner_title }}
+            </h1>
+            <div
+                style="color: rgb(51, 53, 52); text-shadow: 1px 1px 2px #fff"
+                class="lead"
+            >
+                {{self.banner_subtitle|richtext}}
+            </div>
+        </div>
+        <div
+            class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 pt-2 text-center"
+        >
+            <img
+                src="https://s3.sagta.org.za/images/SAGTA_logo_with_NPO.original.png"
+                class="img-fluid"
+            />
+            <!-- <p id="hide">NPC #2017/035104/08</p> -->
+        </div>
     </div>
-    <div class="col-xl-2 col-lg-2 col-md-2 col-sm-12 col-12 pt-2 text-center">
-      <img src="https://s3.sagta.org.za/images/SAGTA_logo_with_NPO.original.png" class="img-fluid">
-      <!-- <p id="hide">NPC #2017/035104/08</p> -->
-    </div>
-  </div>
 </div>
-<div class="p-1 card col text-center" style="background-color: #375A7F;"></div>
+<div class="p-1 card col text-center" style="background-color: #375a7f"></div>
 <!-- Notices -->
 <div class="container mt-5 text-center">
-  {% if notify_img %}
-  <img src="{{ notify_img.url }}" alt="notice" class="img-fluid mt-2 mb-4">
-  {% endif %}
-  {% for block in page.content %}
-  {% include_block block %}
-  {% endfor %}
+    {% if notify_img %}
+    <img src="{{ notify_img.url }}" alt="notice" class="img-fluid mt-2 mb-4" />
+    {% endif %}
+    {% for block in page.content %}
+        {% include_block block %}
+    {% endfor %}
 </div>
 <div class="p-5 mb-2">
-  <div class="text-center">
-    <h3>Teacher Support</h3>
-    <h5 class="mt-3">Contact - <a href="mailto:help@sagta.org.za">Help@SAGTA</a> with any website, Map Downloader,
-      Geomentor and general queries not related to membership.</h5>
-    <h5>Contact - <a href="mailto:secretary@sagta.org.za">Secretary@SAGTA</a> with any membership and payment queries.
-    </h5>
-    <small class="text-secondary font-weight-bold" style="font-size: 0.9em;">Please check your spam folder for possible
-      emails from help@sagta.org.za and secretary@sagta.org.za as these emails are sometimes blocked by school email
-      filters.</small>
-    <h3 class="mt-5">Webinars</h3>
-    <h5><a href="https://www.youtube.com/channel/UCtGd5wQfZx6TfnbGKf31B4w/videos" target="_blank"><i
-          class="fab fa-youtube fa-4x"></i></a></h5>
-    <p>YouTube</p>
-    <h3 class="mt-5">Topo Map & OPM Downloader</h3>
-  </div>
-  <div class="container pr-5 pl-5 pt-4 mb-2">
-    <div class="row text-center pb-4">
-      <div class="col-12 col-md-6 pt-5">
-        <a class="btn btn-info btn-lg mt-5" href="https://maps.sagta.org.za/" target="_blank" role="button">View
-          Downloader</a>
-        <div>
-          <h5 class="padding">How the downloader works:</h5>
-          <div class="pt-3">
-            <a href="https://www.youtube.com/watch?v=UOB8zN3uxpg" target="_blank"><i
-                class="fab fa-youtube fa-4x"></i></a>
-            <p>YouTube</p>
-          </div>
-        </div>
-      </div>
-      <div class="col-12 col-md-6">
-        <a href="https://maps.sagta.org.za/" target="_blank">
-          <svg class="img-fluid" id="a2378823-09dc-4735-8abf-b7d0408d4a79" data-name="Layer 1"
-            xmlns="http://www.w3.org/2000/svg" width="721.11239" height="582.53467" viewBox="0 0 721.11239 582.53467">
-            <path
-              d="M719.63469,741.26733l-.153-.01452L480.3662,719.04034,262.93028,739.239a21.49791,21.49791,0,0,1-23.39415-19.41735q-.09207-.99134-.09215-1.988V200.70651a21.40162,21.40162,0,0,1,19.50937-21.40539l221.41288-20.56845.153.01452,239.11545,22.21245L937.06956,160.761a21.49792,21.49792,0,0,1,23.39429,19.41721q.0921.99142.09216,1.98819V699.29309a21.40186,21.40186,0,0,1-19.50927,21.40576Z"
-              transform="translate(-239.4438 -158.73267)" fill="#D5E7F2" />
-            <path
-              d="M572.76414,350.0441c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm378.18,204.73386q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969Zm378.18.50434q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969ZM572.76414,350.0441c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm143.92791.31421c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm378.18,204.73386q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969ZM261.83113,587.033v3.30737H392.45531v47.95673H261.83113v3.30737H395.76265V587.033Zm163.69779,84.33771v33.51184l3.30737-.306V674.678H938.16978v-3.30737Zm512.64086-81.03034V587.033H425.52892v54.57147H938.16978v-3.30737H428.83626V590.34033Zm-308.866-240.6105A1613.79575,1613.79575,0,0,0,428.83626,217.6422v-33.487l-3.30738.30592v33.74622l2.54673,2.80012A1610.4861,1610.4861,0,0,1,627.73247,352.69l.44653.34726H938.16978v-3.30737Zm-236.84851,0H261.83113v3.30737H395.76265V187.22276l-3.30737.30593ZM938.16978,382.8035H665.65166l3.56372,2.927q50.32928,41.41231,98.832,87.84354,6.896,6.59811,13.74219,13.30383,34.08224,33.301,66.83355,68.77655l2.72663,1.61236h86.82v-3.30737H851.55821q-32.39565-35.12421-66.1969-68.21429-6.75906-6.623-13.56817-13.155-47.45271-45.53-96.93085-86.47922H938.16978ZM261.83113,671.37067V674.678H392.45531v33.272l3.30737-.30591V671.37067Zm0-288.56717v3.30737H392.45531V553.95941H261.83113v3.30737H395.76265V382.8035Zm310.933-32.7594c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm378.18,204.73386q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969ZM572.76414,350.0441c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm378.18,204.73386q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969Z"
-              transform="translate(-239.4438 -158.73267)" fill="#5982A7" />
-            <path
-              d="M608.77959,376.37775c0,41.88122-75.83267,135.18-75.83267,135.18s-75.83267-93.29876-75.83267-135.18a75.83267,75.83267,0,0,1,151.66534,0Z"
-              transform="translate(-239.4438 -158.73267)" fill="#375A7F" />
-            <path
-              d="M567.61419,373.08068a34.66638,34.66638,0,1,1-34.66638-34.66638A34.65047,34.65047,0,0,1,567.61419,373.08068Z"
-              transform="translate(-239.4438 -158.73267)" fill="#5982A7" style="isolation:isolate" />
-            <circle cx="293.50312" cy="387.1146" r="20.44185" fill="#375A7F" />
-            <circle cx="489.36398" cy="100.27214" r="30.22324" fill="#ff6584" />
-            <path
-              d="M823.58447,352.14173H675.31834a3.02384,3.02384,0,0,1-.55407-.0439l70.12308-121.46324a4.90981,4.90981,0,0,1,8.54664,0l47.06138,81.51127,2.25462,3.90031Z"
-              transform="translate(-239.4438 -158.73267)" fill="#5982A7" />
-            <polygon
-              points="584.141 193.409 533.519 193.409 558.369 157.313 560.157 154.713 561.052 153.413 563.306 157.313 584.141 193.409"
-              opacity="0.2" style="isolation:isolate" />
-            <path
-              d="M906.138,352.14173H777.9l24.85-36.09556,1.78829-2.60022,32.38181-47.03945c2.12294-3.08293,7.23007-3.27491,9.726-.58148a5.853,5.853,0,0,1,.46631.58148Z"
-              transform="translate(-239.4438 -158.73267)" fill="#5982A7" />
-            <circle cx="676.20989" cy="349.33488" r="15.2965" fill="#5982A7" />
-            <polygon points="677.685 395.409 674.552 395.409 675.98 347.031 677.685 395.409" fill="#cbcbcb" />
-            <polygon points="676.256 356.2 679.62 351.546 676.21 357.352 675.842 356.707 676.256 356.2"
-              fill="#cbcbcb" />
-            <polygon points="675.888 360.899 672.524 356.246 675.934 362.051 676.302 361.406 675.888 360.899"
-              fill="#cbcbcb" />
-            <circle cx="632.71557" cy="327.36152" r="22.59163" fill="#5982A7" />
-            <polygon points="634.893 395.409 630.266 395.409 632.376 323.959 634.893 395.409" fill="#cbcbcb" />
-            <polygon points="632.784 337.5 637.751 330.628 632.716 339.202 632.172 338.249 632.784 337.5"
-              fill="#cbcbcb" />
-            <polygon points="632.24 344.441 627.272 337.569 632.308 346.142 632.852 345.19 632.24 344.441"
-              fill="#cbcbcb" />
-            <circle cx="108.20989" cy="349.33488" r="15.2965" fill="#5982A7" />
-            <polygon points="109.685 395.409 106.552 395.409 107.98 347.031 109.685 395.409" fill="#cbcbcb" />
-            <polygon points="108.256 356.2 111.62 351.546 108.21 357.352 107.842 356.707 108.256 356.2"
-              fill="#cbcbcb" />
-            <polygon points="107.888 360.899 104.524 356.246 107.934 362.051 108.302 361.406 107.888 360.899"
-              fill="#cbcbcb" />
-            <circle cx="64.71557" cy="327.36152" r="22.59163" fill="#5982A7" />
-            <polygon points="66.893 395.409 62.266 395.409 64.376 323.959 66.893 395.409" fill="#cbcbcb" />
-            <polygon points="64.784 337.5 69.751 330.628 64.716 339.202 64.172 338.249 64.784 337.5" fill="#cbcbcb" />
-            <polygon points="64.24 344.441 59.272 337.569 64.308 346.142 64.852 345.19 64.24 344.441" fill="#cbcbcb" />
-          </svg>
-        </a>
-      </div>
+    <div class="text-center">
+        <h3>Teacher Support</h3>
+        <h5 class="mt-3">
+            Contact - <a href="mailto:help@sagta.org.za">Help@SAGTA</a> with any
+            website, Map Downloader, Geomentor and general queries not related
+            to membership.
+        </h5>
+        <h5>
+            Contact -
+            <a href="mailto:secretary@sagta.org.za">Secretary@SAGTA</a> with any
+            membership and payment queries.
+        </h5>
+        <small class="text-secondary font-weight-bold" style="font-size: 0.9em"
+            >Please check your spam folder for possible emails from
+            help@sagta.org.za and secretary@sagta.org.za as these emails are
+            sometimes blocked by school email filters.</small
+        >
+        <h3 class="mt-5">Webinars</h3>
+        <h5>
+            <a
+                href="https://www.youtube.com/channel/UCtGd5wQfZx6TfnbGKf31B4w/videos"
+                target="_blank"
+                ><i class="fab fa-youtube fa-4x"></i
+            ></a>
+        </h5>
+        <p>YouTube</p>
+        <h3 class="mt-5">Topo Map & OPM Downloader</h3>
     </div>
-  </div>
+    <div class="container pr-5 pl-5 pt-4 mb-2">
+        <div class="row text-center pb-4">
+            <div class="col-12 col-md-6 pt-5">
+                <a
+                    class="btn btn-info btn-lg mt-5"
+                    href="https://maps.sagta.org.za/"
+                    target="_blank"
+                    role="button"
+                    >View Downloader</a
+                >
+                <div>
+                    <h5 class="padding">How the downloader works:</h5>
+                    <div class="pt-3">
+                        <a
+                            href="https://www.youtube.com/watch?v=UOB8zN3uxpg"
+                            target="_blank"
+                            ><i class="fab fa-youtube fa-4x"></i
+                        ></a>
+                        <p>YouTube</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <a href="https://maps.sagta.org.za/" target="_blank">
+                    <svg
+                        class="img-fluid"
+                        id="a2378823-09dc-4735-8abf-b7d0408d4a79"
+                        data-name="Layer 1"
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="721.11239"
+                        height="582.53467"
+                        viewBox="0 0 721.11239 582.53467"
+                    >
+                        <path
+                            d="M719.63469,741.26733l-.153-.01452L480.3662,719.04034,262.93028,739.239a21.49791,21.49791,0,0,1-23.39415-19.41735q-.09207-.99134-.09215-1.988V200.70651a21.40162,21.40162,0,0,1,19.50937-21.40539l221.41288-20.56845.153.01452,239.11545,22.21245L937.06956,160.761a21.49792,21.49792,0,0,1,23.39429,19.41721q.0921.99142.09216,1.98819V699.29309a21.40186,21.40186,0,0,1-19.50927,21.40576Z"
+                            transform="translate(-239.4438 -158.73267)"
+                            fill="#D5E7F2"
+                        />
+                        <path
+                            d="M572.76414,350.0441c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm378.18,204.73386q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969Zm378.18.50434q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969ZM572.76414,350.0441c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm143.92791.31421c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm378.18,204.73386q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969ZM261.83113,587.033v3.30737H392.45531v47.95673H261.83113v3.30737H395.76265V587.033Zm163.69779,84.33771v33.51184l3.30737-.306V674.678H938.16978v-3.30737Zm512.64086-81.03034V587.033H425.52892v54.57147H938.16978v-3.30737H428.83626V590.34033Zm-308.866-240.6105A1613.79575,1613.79575,0,0,0,428.83626,217.6422v-33.487l-3.30738.30592v33.74622l2.54673,2.80012A1610.4861,1610.4861,0,0,1,627.73247,352.69l.44653.34726H938.16978v-3.30737Zm-236.84851,0H261.83113v3.30737H395.76265V187.22276l-3.30737.30593ZM938.16978,382.8035H665.65166l3.56372,2.927q50.32928,41.41231,98.832,87.84354,6.896,6.59811,13.74219,13.30383,34.08224,33.301,66.83355,68.77655l2.72663,1.61236h86.82v-3.30737H851.55821q-32.39565-35.12421-66.1969-68.21429-6.75906-6.623-13.56817-13.155-47.45271-45.53-96.93085-86.47922H938.16978ZM261.83113,671.37067V674.678H392.45531v33.272l3.30737-.30591V671.37067Zm0-288.56717v3.30737H392.45531V553.95941H261.83113v3.30737H395.76265V382.8035Zm310.933-32.7594c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm378.18,204.73386q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969ZM572.76414,350.0441c-46.28643-33.7103-94.98727-65.67591-144.73815-95.00394l-2.49707-1.47175v99.46885H576.87376Zm-143.92791-.31421V259.36456c47.32852,27.9968,93.67273,58.37488,137.86749,90.36536Zm378.18,204.73386q-30.02664-31.21739-61.60767-61.01252Q736.702,485.22838,727.888,477.1377q-53.79025-49.412-111.11915-93.98694l-.44653-.34726H425.52892V557.26672H809.712Zm-378.18-.50434V386.11087H615.18938q55.27881,42.99975,107.5639,90.81186,9.07855,8.29728,18.03345,16.727,31.3038,29.419,61.14459,60.30969Z"
+                            transform="translate(-239.4438 -158.73267)"
+                            fill="#5982A7"
+                        />
+                        <path
+                            d="M608.77959,376.37775c0,41.88122-75.83267,135.18-75.83267,135.18s-75.83267-93.29876-75.83267-135.18a75.83267,75.83267,0,0,1,151.66534,0Z"
+                            transform="translate(-239.4438 -158.73267)"
+                            fill="#375A7F"
+                        />
+                        <path
+                            d="M567.61419,373.08068a34.66638,34.66638,0,1,1-34.66638-34.66638A34.65047,34.65047,0,0,1,567.61419,373.08068Z"
+                            transform="translate(-239.4438 -158.73267)"
+                            fill="#5982A7"
+                            style="isolation: isolate"
+                        />
+                        <circle
+                            cx="293.50312"
+                            cy="387.1146"
+                            r="20.44185"
+                            fill="#375A7F"
+                        />
+                        <circle
+                            cx="489.36398"
+                            cy="100.27214"
+                            r="30.22324"
+                            fill="#ff6584"
+                        />
+                        <path
+                            d="M823.58447,352.14173H675.31834a3.02384,3.02384,0,0,1-.55407-.0439l70.12308-121.46324a4.90981,4.90981,0,0,1,8.54664,0l47.06138,81.51127,2.25462,3.90031Z"
+                            transform="translate(-239.4438 -158.73267)"
+                            fill="#5982A7"
+                        />
+                        <polygon
+                            points="584.141 193.409 533.519 193.409 558.369 157.313 560.157 154.713 561.052 153.413 563.306 157.313 584.141 193.409"
+                            opacity="0.2"
+                            style="isolation: isolate"
+                        />
+                        <path
+                            d="M906.138,352.14173H777.9l24.85-36.09556,1.78829-2.60022,32.38181-47.03945c2.12294-3.08293,7.23007-3.27491,9.726-.58148a5.853,5.853,0,0,1,.46631.58148Z"
+                            transform="translate(-239.4438 -158.73267)"
+                            fill="#5982A7"
+                        />
+                        <circle
+                            cx="676.20989"
+                            cy="349.33488"
+                            r="15.2965"
+                            fill="#5982A7"
+                        />
+                        <polygon
+                            points="677.685 395.409 674.552 395.409 675.98 347.031 677.685 395.409"
+                            fill="#cbcbcb"
+                        />
+                        <polygon
+                            points="676.256 356.2 679.62 351.546 676.21 357.352 675.842 356.707 676.256 356.2"
+                            fill="#cbcbcb"
+                        />
+                        <polygon
+                            points="675.888 360.899 672.524 356.246 675.934 362.051 676.302 361.406 675.888 360.899"
+                            fill="#cbcbcb"
+                        />
+                        <circle
+                            cx="632.71557"
+                            cy="327.36152"
+                            r="22.59163"
+                            fill="#5982A7"
+                        />
+                        <polygon
+                            points="634.893 395.409 630.266 395.409 632.376 323.959 634.893 395.409"
+                            fill="#cbcbcb"
+                        />
+                        <polygon
+                            points="632.784 337.5 637.751 330.628 632.716 339.202 632.172 338.249 632.784 337.5"
+                            fill="#cbcbcb"
+                        />
+                        <polygon
+                            points="632.24 344.441 627.272 337.569 632.308 346.142 632.852 345.19 632.24 344.441"
+                            fill="#cbcbcb"
+                        />
+                        <circle
+                            cx="108.20989"
+                            cy="349.33488"
+                            r="15.2965"
+                            fill="#5982A7"
+                        />
+                        <polygon
+                            points="109.685 395.409 106.552 395.409 107.98 347.031 109.685 395.409"
+                            fill="#cbcbcb"
+                        />
+                        <polygon
+                            points="108.256 356.2 111.62 351.546 108.21 357.352 107.842 356.707 108.256 356.2"
+                            fill="#cbcbcb"
+                        />
+                        <polygon
+                            points="107.888 360.899 104.524 356.246 107.934 362.051 108.302 361.406 107.888 360.899"
+                            fill="#cbcbcb"
+                        />
+                        <circle
+                            cx="64.71557"
+                            cy="327.36152"
+                            r="22.59163"
+                            fill="#5982A7"
+                        />
+                        <polygon
+                            points="66.893 395.409 62.266 395.409 64.376 323.959 66.893 395.409"
+                            fill="#cbcbcb"
+                        />
+                        <polygon
+                            points="64.784 337.5 69.751 330.628 64.716 339.202 64.172 338.249 64.784 337.5"
+                            fill="#cbcbcb"
+                        />
+                        <polygon
+                            points="64.24 344.441 59.272 337.569 64.308 346.142 64.852 345.19 64.24 344.441"
+                            fill="#cbcbcb"
+                        />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="container-fluid text-center mb-5 pb-5">
-  <h3 class="padding">How to apply for <strong>Annual</strong> SAGTA membership</h3>
-  <br><br>
-  <div class="row align-items-center">
-    <div class="col-4 offset-2 text-center">
-        <div class="justify-content-right"><a href="/printable-form"
-          target="_blank"><i class="fas fa-file-alt fa-5x"></i></a></div>
-        <br>
-        <h4 class="pt-3">Printable Form</h4>
-    </div>
-    <div class="col-4 text-rigt">
-        <a href="/payments/initiate-payment/"><i
-            class="fas fa-cloud fa-5x"></i> </a>
-        <br>
-        <h4 class="pt-3">Online Form</h4></div>
-    </div>
-  </div>
-  <div class="mt-5 text-center">
-      <h4 id="Apply">Annual membership pricing</h4><br>
-      <div class=" d-flex justify-content-center">
-      <table class="table table-responsive back-act rounded w-auto">
-        <thead>
-          <tr class="table-primary h5">
-            <th scope="col">Individual</th>
-            <th scope="col">Retired teachers</th>
-            <th scope="col">Student teachers</th>
-            <th scope="col">Corporate Institutional Membership</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr style="font-size: 1.3em;" class="text-center">
-            <td>R600</td>
-            <td>R300</td>
-            <td>R300</td>
-            <td>R2 560</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-      <em>We accept EFT, read more by clicking on either the printable form or the online form above.</em>
-  </div>
-</div>
-<div class="container mb-5">
-  <h3 class="text-center mt-5 mb-5 padding">Benefits of membership</h3>
-  <div class="row">
-    <div class="col-md-6 col-sm-12 col-12">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Unlimited access to the topographic and orthophoto map downloader.</li>
-        <li class="list-group-item">Access to Prep Share: lesson preparation, digital presentations, assessment
-            tasks, and examinations.</li>
-        <li class="list-group-item">Opportunities for upskilling through webinars, workshops, and accredited
-            courses.</li>
-        <li class="list-group-item">Subscription to the annual SAGTA e-journal, JoGEA.</li>
-        <li class="list-group-item">Networking opportunities within the local geography community.</li>
-      </ul>
-    </div>
-    <div class="col-md-6 col-sm-12 col-12">
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item">Participation in biennial academic and field trip conferences.</li>
-        <li class="list-group-item">Funding opportunities to attend international conferences.</li>
-        <li class="list-group-item">Support for student teachers and learners through programs like the
-            Geolympiad.</li>
-        <li class="list-group-item">Membership includes access to the American Association of Geographers
-            (AAG).</li>
-        <li class="list-group-item">Promotion of GeoSpatial Technologies for classroom use.</li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="container mb-5">
-  <div class="row">
-    <div class="col-8 mx-auto justify-content-center d-block">
-      <h3 class="text-center mt-5">SAGTA GOALS</h3>
-      <ul class="benefits">
-        <li>Encourage continued professional growth and support of existing Geography Teachers in Southern Africa.</li>
-        <li>Build up the importance of Geography as a globally relevant subject within schools.</li>
-        <li>Improve the stature of the role of secondary geography in relation to the study options available at
-          tertiary level.</li>
-      </ul>
-    </div>
-    <div class="col-8 mx-auto justify-content-center d-block mt-5">
-      {{ self.carousel_images }}
-
-      <div class="row mt-5">
-        <div class="col-6">
-          <h4 style="text-align: right;" class="mt-3">IGSG Joint Declaration PDF</h4>
+    <h3 class="padding">
+        How to apply for <strong>Annual</strong> SAGTA membership
+    </h3>
+    <br /><br />
+    <div class="row align-items-center">
+        <div class="col-4 offset-2 text-center">
+            <div class="justify-content-right">
+                <a href="/printable-form" target="_blank"
+                    ><i class="fas fa-file-alt fa-5x"></i
+                ></a>
+            </div>
+            <br />
+            <h4 class="pt-3">Printable Form</h4>
         </div>
-        <div class="col-6"><a href="https://sagta.org.za/documents/69/IGSG_Joint_declaration-final.pdf"
-            target="_blank"><i class="far fa-file-pdf fa-4x"></i></a></div>
-      </div>
+        <div class="col-4 text-rigt">
+            <a href="/payments/initiate-payment/"
+                ><i class="fas fa-cloud fa-5x"></i>
+            </a>
+            <br />
+            <h4 class="pt-3">Online Form</h4>
+        </div>
     </div>
-  </div>
 </div>
+<div class="mt-5 text-center">
+    <h4 id="Apply">Annual membership pricing</h4>
+    <br />
+    <div class="d-flex justify-content-center">
+        <table class="table table-responsive back-act rounded w-auto">
+            <thead>
+                <tr class="table-primary h5">
+                    <th scope="col">Individual</th>
+                    <th scope="col">Retired teachers</th>
+                    <th scope="col">Student teachers</th>
+                    <th scope="col">Corporate Institutional Membership</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr style="font-size: 1.3em" class="text-center">
+                    <td>R600</td>
+                    <td>R300</td>
+                    <td>R300</td>
+                    <td>R2 560</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <em
+        >We accept EFT, read more by clicking on either the printable form or
+        the online form above.</em
+    >
+</div>
+<div class="container mb-5">
+    <h3 class="text-center mt-5 mb-5 padding">Benefits of membership</h3>
+    <div class="row">
+        <div class="col-md-6 col-sm-12 col-12">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Unlimited access to the topographic and orthophoto map
+                    downloader.
+                </li>
+                <li class="list-group-item">
+                    Access to Prep Share: lesson preparation, digital
+                    presentations, assessment tasks, and examinations.
+                </li>
+                <li class="list-group-item">
+                    Opportunities for upskilling through webinars, workshops,
+                    and accredited courses.
+                </li>
+                <li class="list-group-item">
+                    Subscription to the annual SAGTA e-journal, JoGEA.
+                </li>
+                <li class="list-group-item">
+                    Networking opportunities within the local geography
+                    community.
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-6 col-sm-12 col-12">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                    Participation in biennial academic and field trip
+                    conferences.
+                </li>
+                <li class="list-group-item">
+                    Funding opportunities to attend international conferences.
+                </li>
+                <li class="list-group-item">
+                    Support for student teachers and learners through programs
+                    like the Geolympiad.
+                </li>
+                <li class="list-group-item">
+                    Membership includes access to the American Association of
+                    Geographers (AAG).
+                </li>
+                <li class="list-group-item">
+                    Promotion of GeoSpatial Technologies for classroom use.
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="container mb-5">
+    <div class="row">
+        <div class="col-8 mx-auto justify-content-center d-block">
+            <h3 class="text-center mt-5">SAGTA GOALS</h3>
+            <ul class="benefits">
+                <li>
+                    Encourage continued professional growth and support of
+                    existing Geography Teachers in Southern Africa.
+                </li>
+                <li>
+                    Build up the importance of Geography as a globally relevant
+                    subject within schools.
+                </li>
+                <li>
+                    Improve the stature of the role of secondary geography in
+                    relation to the study options available at tertiary level.
+                </li>
+            </ul>
+        </div>
+        <div class="col-8 mx-auto justify-content-center d-block mt-5">
+            {{ self.carousel_images }}
+        </div>
+    </div>
+    <div class="row mt-5 align-items-center">
+        <div class="col-4 align">
+            <h4 style="text-align: right" class="mt-3">
+                IGSG Joint Declaration PDF
+            </h4>
+        </div>
+        <div class="col-4 text-center">
+            <a
+                href="https://sagta.org.za/documents/69/IGSG_Joint_declaration-final.pdf"
+                target="_blank"
+                ><i class="far fa-file-pdf fa-4x"></i
+            ></a>
+        </div>
+        <div class="col-4 text-start">
+            <img
+                class="img-fluid"
+                style="max-height: 200px;"
+                src="https://s3.sagta.org.za/images/igu_cge_logov2.original.png"
+                alt="igu-cge"
+            />
+        </div>
+    </div>
+</div>
+
 {% endblock %}
