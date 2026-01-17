@@ -1,4 +1,5 @@
 from allauth.account.adapter import DefaultAccountAdapter
+from django.db.models import Sum
 from django.forms import ValidationError
 import os
 from django.urls import reverse
@@ -108,36 +109,49 @@ def validate_users():
     validated_members = []
     invalidated_members = []
     users = User.objects.all()
+    members_group = Group.objects.get(name='Members')
+    
+    one_year_ago = timezone.now() - timedelta(days=365)
 
     for user in users:
-        try:
-            latest_payment = Payment.objects.filter(verified=True).order_by('-created_at').first()
-        except IndexError:  # Handle case where no payments exist
-            latest_payment = None 
+        # Calculate valid balance from verified payments in the last year
+        # Note: This recalculates the entire balance based on valid history. 
+        # Any payments older than 365 days are effectively ignored/expired.
+        valid_payments_sum = Payment.objects.filter(
+            user=user, 
+            verified=True, 
+            created_at__gt=one_year_ago
+        ).aggregate(total=Sum('amount'))['total'] or 0
 
         user_wallet, created = UserWallet.objects.get_or_create(user=user)
-        group = Group.objects.get(name='Members')
+
+        # Update the wallet balance if it doesn't match the valid sum
+        if user_wallet.balance != valid_payments_sum:
+            user_wallet.balance = valid_payments_sum
+            user_wallet.save()
 
         # Conditions
         already_member = user.groups.filter(name='Members').exists()
         sheet_member = user.email.lower() in all_members
-        
-        under_year = latest_payment and latest_payment.created_at > timezone.now() - timedelta(days=365)
-        
-        has_balance = user_wallet.balance > 0
+        has_valid_balance = user_wallet.balance > 0
 
-        if not already_member and (sheet_member or (under_year and has_balance)):
+        should_be_member = sheet_member or has_valid_balance
+
+        if not already_member and should_be_member:
             validated_members.append(user.email)
-            user.groups.add(group)
+            user.groups.add(members_group)
             user.is_active = True
-        elif already_member and not (sheet_member or (under_year and has_balance)):
+            user.save()
+        elif already_member and not should_be_member:
             invalidated_members.append(user.email)
-            user.groups.remove(group)
-            user_wallet.balance = 0
-            user_wallet.save()
-        
-        user.save()
-
+            user.groups.remove(members_group)
+            # access is removed. Balance is already updated to valid_payments_sum (likely 0)
+            user.save()
+        else:
+             # Just to be safe, ensure active status is correct if they are a member
+             if already_member and not user.is_active:
+                 user.is_active = True
+                 user.save()
 
     return  { 
             "Users validated": validated_members,
