@@ -14,6 +14,11 @@ RUN apt-get update \
     libgdk-pixbuf-2.0-0 \
     libffi-dev \
     shared-mime-info \
+    libmagic1 \
+    libjpeg-dev \
+    zlib1g-dev \
+    libwebp-dev \
+    libopenjp2-7-dev \
     wget \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*

@@ -19,6 +19,8 @@ class HomePage(Page):
             ("simple_richtext", blocks.SimpleRichtextBlock()),
             ("Raw_HTML", blocks.RawHTMLBlock()),
             ("cards", blocks.CardBlock()),
+            ("linked_image", blocks.LinkedImageBlock()),
+            ("button", blocks.ButtonBlock()),
         ],
         null=True,
         blank=True,

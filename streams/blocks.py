@@ -3,6 +3,40 @@
 from wagtail import blocks
 from wagtail.templatetags.wagtailcore_tags import richtext
 from wagtail.images.blocks import ImageChooserBlock
+    
+class LinkedImageBlock(blocks.StructBlock):
+    image = ImageChooserBlock(required=True)
+    link_url = blocks.URLBlock(required=False, help_text="Link to an external URL")
+    link_page = blocks.PageChooserBlock(required=False, help_text="Link to an internal page")
+    caption = blocks.CharBlock(required=False)
+
+    class Meta:
+        template = "streams/linked_image_block.html"
+        icon = "image"
+        label = "Linked Image"
+
+class ButtonBlock(blocks.StructBlock):
+    text = blocks.CharBlock(required=True, help_text="Text to display on the button")
+    link_url = blocks.URLBlock(required=False, help_text="Link to an external URL")
+    link_page = blocks.PageChooserBlock(required=False, help_text="Link to an internal page")
+    
+    style = blocks.ChoiceBlock(choices=[
+        ('primary', 'Primary'),
+        ('secondary', 'Secondary'),
+        ('warning', 'Warning'),
+        ('danger', 'Danger'),
+    ], default='primary', help_text="Bootstrap button style")
+    
+    alignment = blocks.ChoiceBlock(choices=[
+        ('start', 'Left'),
+        ('center', 'Center'),
+        ('end', 'Right'),
+    ], default='start', help_text="Button alignment")
+
+    class Meta:
+        template = "streams/button_block.html"
+        icon = "placeholder"
+        label = "Bootstrap Button"
 
 class TitleAndTextBlock(blocks.StructBlock):
     """Title and text, nothing else"""

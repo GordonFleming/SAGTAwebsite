@@ -1,0 +1,23 @@
+{% load wagtailimages_tags %}
+
+<div class="row justify-content-center my-4">
+    <div class="col-12 col-md-10 text-center">
+        {% image self.image original as img %}
+
+        {% if self.link_page %}
+        <a href="{% pageurl self.link_page %}">
+            <img src="{{ img.url }}" alt="{{ img.alt }}" class="img-fluid">
+        </a>
+        {% elif self.link_url %}
+        <a href="{{ self.link_url }}" target="_blank" rel="noopener noreferrer">
+            <img src="{{ img.url }}" alt="{{ img.alt }}" class="img-fluid">
+        </a>
+        {% else %}
+        <img src="{{ img.url }}" alt="{{ img.alt }}" class="img-fluid">
+        {% endif %}
+
+        {% if self.caption %}
+        <p class="text-muted mt-2 small">{{ self.caption }}</p>
+        {% endif %}
+    </div>
+</div>

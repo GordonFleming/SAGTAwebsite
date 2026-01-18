@@ -1,0 +1,19 @@
+{% load wagtailcore_tags %}
+
+<div class="row my-4">
+    <div class="col-12 text-{{ self.alignment }}">
+        {% if self.link_page %}
+        <a href="{% pageurl self.link_page %}" class="btn btn-{{ self.style }}">
+            {{ self.text }}
+        </a>
+        {% elif self.link_url %}
+        <a href="{{ self.link_url }}" class="btn btn-{{ self.style }}" target="_blank" rel="noopener noreferrer">
+            {{ self.text }}
+        </a>
+        {% else %}
+        <button class="btn btn-{{ self.style }}" disabled>
+            {{ self.text }}
+        </button>
+        {% endif %}
+    </div>
+</div>
