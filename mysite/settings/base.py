@@ -50,6 +50,7 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'modelsearch',
 
     'django.contrib.admin',
     'django.contrib.auth',
