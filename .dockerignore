@@ -4,3 +4,7 @@ media
 static
 db.sqlite3
 .git
+
+# Ignore local virtual environments
+.venv
+virtualenv
