@@ -22,9 +22,7 @@ class HomePage(Page):
             ("linked_image", blocks.LinkedImageBlock()),
             ("button", blocks.ButtonBlock()),
         ],
-        null=True,
         blank=True,
-	    use_json_field=True,
     )
 
     banner_title = models.CharField(max_length=100, blank=False, null=True)
@@ -42,7 +40,6 @@ class HomePage(Page):
         ('carousel_image', blocks.CarouselBlock()),
         ], 
         blank=True,
-        use_json_field=True,
     )
 
     content_panels = Page.content_panels + [

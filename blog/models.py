@@ -52,9 +52,7 @@ class BlogDetailPage(Page):
             ("full_richtext", blocks.RichtextBlock()),
             ("simple_richtext", blocks.SimpleRichtextBlock()),
         ],
-        null=True,
         blank=True,
-	    use_json_field=True,
     )
 
     content_panels = Page.content_panels + [

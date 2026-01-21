@@ -22,9 +22,7 @@ class FlexPage(Page):
             ("cards", blocks.CardBlock()),
             ('carousel_image', blocks.CarouselBlock()),
         ],
-        null=True,
         blank=True,
-	    use_json_field=True,
     )
 
     subtitle = models.CharField(max_length=100, null=True, blank = True)

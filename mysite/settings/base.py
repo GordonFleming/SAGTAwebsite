@@ -23,7 +23,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 # Application definition
 
-CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ALL_ORIGINS = True # TODO: Restrict this to specific origins for production security
+
 INSTALLED_APPS = [
     'home',
     'flex',
@@ -114,8 +115,6 @@ MIDDLEWARE = [
     # allauth
     'allauth.account.middleware.AccountMiddleware',
 
-	#DeprecationWarning
-    #'wagtail.middleware.SiteMiddleware',
     'wagtail.contrib.redirects.middleware.RedirectMiddleware',
 
     # whitenoise
@@ -192,8 +191,6 @@ LANGUAGE_CODE = 'en-us'
 TIME_ZONE = 'Africa/Johannesburg'
 
 USE_I18N = True
-
-USE_L10N = True
 
 USE_TZ = True
 
