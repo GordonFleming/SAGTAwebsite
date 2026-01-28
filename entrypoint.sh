@@ -17,4 +17,7 @@ echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
 echo "Starting Litestream with application..."
+# Cleanup potentially corrupted local state from previous runs
+rm -rf db/site.sqlite3-litestream
+
 exec litestream replicate -config litestream.yml -exec "gunicorn mysite.wsgi:application --bind=0.0.0.0:80 --workers=3"

@@ -8,3 +8,4 @@ dbs:
         secret-access-key: ${SECRET_KEY_S3}
         bucket: ${BUCKET_NAME}
         path: sagta/site.sqlite3
+        region: auto
