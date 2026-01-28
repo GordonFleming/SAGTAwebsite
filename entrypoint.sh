@@ -8,7 +8,6 @@ mkdir -p db
 chmod -R a+rwX db
 
 echo "Restoring database from Litestream if available..."
-# Add error handling for restore
 if litestream restore -config litestream.yml -if-db-not-exists -if-replica-exists db/site.sqlite3; then
     echo "Database restored successfully"
 else
@@ -24,10 +23,6 @@ python manage.py migrate --noinput
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
-# Optional: Create a superuser if needed (using env vars)
-# if [ "$DJANGO_SUPERUSER_USERNAME" ]; then
-#     python manage.py createsuperuser --noinput || true
-# fi
-
 echo "Starting Litestream with application..."
-exec litestream replicate -config litestream.yml -exec "$@"
+# Pass all CMD arguments to litestream -exec
+exec litestream replicate -config litestream.yml -exec "$*"

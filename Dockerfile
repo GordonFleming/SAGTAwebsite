@@ -51,6 +51,10 @@ COPY . /usr/src/app
 # Expose the UWSGI port
 EXPOSE 80
 
+# Health check
+HEALTHCHECK --interval=30s --timeout=3s --start-period=40s --retries=3 \
+    CMD python -c "import sqlite3; conn = sqlite3.connect('db/site.sqlite3', timeout=1); conn.execute('SELECT 1'); conn.close()" || exit 1
+
 # Set the entrypoint script
 RUN chmod +x /usr/src/app/entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
