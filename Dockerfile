@@ -31,12 +31,10 @@ RUN apt-get update \
     ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
-# Install Ofelia for job scheduling
-RUN wget -q https://github.com/mcuadros/ofelia/releases/download/v0.3.17/ofelia_0.3.17_linux_arm64.tar.gz \
-    && tar -xzf ofelia_0.3.17_linux_arm64.tar.gz \
-    && mv ofelia /usr/local/bin/ \
-    && chmod +x /usr/local/bin/ofelia \
-    && rm ofelia_0.3.17_linux_arm64.tar.gz
+# Install Litestream for SQLite replication
+RUN wget -q https://github.com/benbjohnson/litestream/releases/download/v0.3.13/litestream-v0.3.13-linux-amd64.deb \
+    && dpkg -i litestream-v0.3.13-linux-amd64.deb \
+    && rm litestream-v0.3.13-linux-amd64.deb
 
 # Create application directory
 WORKDIR /usr/src/app
@@ -57,4 +55,4 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 
 # Command to run Gunicorn
-CMD ["gunicorn", "mysite.wsgi:application", "--bind=0.0.0.0:80", "--workers=4"]
+CMD ["gunicorn", "mysite.wsgi:application", "--bind=0.0.0.0:80", "--workers=3"]

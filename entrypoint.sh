@@ -1,14 +1,16 @@
 #!/usr/bin/env sh
 
 # Exit on error
-set -e
+set -eux
 
-# Start Ofelia in background
-ofelia daemon --config=/usr/src/app/ofelia.ini &
+echo "Restoring database from Litestream if available..."
+litestream restore -config litestream.yml -if-db-not-exists -if-replica-exists db.sqlite3
 
-# Run migrations and collect static files
+echo "Running migrations..."
 python manage.py migrate --noinput
+
+echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
-# Execute the main command
-exec "$@"
+echo "Starting Litestream with application..."
+exec litestream replicate -config litestream.yml -exec "$@"

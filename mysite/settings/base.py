@@ -59,8 +59,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
 
-    'dbbackup',
-
     "whitenoise.runserver_nostatic",
     'django.contrib.staticfiles',
     'django.contrib.sites',
@@ -160,6 +158,17 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'OPTIONS': {
+            'transaction_mode': 'IMMEDIATE',
+            'timeout': 5,  # seconds
+            'init_command': """
+                PRAGMA journal_mode=WAL;
+                PRAGMA synchronous=NORMAL;
+                PRAGMA mmap_size=134217728;
+                PRAGMA journal_size_limit=27103364;
+                PRAGMA cache_size=2000;
+            """,
+        },
     }
 }
 
@@ -278,14 +287,4 @@ AWS_S3_SECRET_ACCESS_KEY = os.environ.get("SECRET_KEY_S3")
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_S3_CUSTOM_DOMAIN= "s3.sagta.org.za"
 
-# DBBACKUP settings
-DBBACKUP_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
-DBBACKUP_STORAGE_OPTIONS = {
-    'access_key': os.environ.get("ACCESS_KEY_S3"),
-    'secret_key': os.environ.get("SECRET_KEY_S3"),
-    'bucket_name': os.environ.get("BUCKET_NAME"),
-    'endpoint_url': os.environ.get("ENDPOINT_URL"),
-    'region_name': 'auto',  # R2 uses 'auto' usually
-    'location': 'dbbackup/',
-}
