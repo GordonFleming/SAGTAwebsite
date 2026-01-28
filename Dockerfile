@@ -56,4 +56,4 @@ RUN chmod +x /usr/src/app/entrypoint.sh
 ENTRYPOINT ["/usr/src/app/entrypoint.sh"]
 
 # Command to run Gunicorn
-CMD ["gunicorn", "mysite.wsgi:application", "--bind=0.0.0.0:80", "--workers=3"]
+CMD ["gunicorn", "mysite.wsgi:application", "--bind=0.0.0.0:80", "--workers=2", "--threads=4", "--timeout=60"]

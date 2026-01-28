@@ -1,14 +1,22 @@
 #!/usr/bin/env sh
 
 # Exit on error
-set -eux
+set -eu
 
 echo "Setting up database directory..."
 mkdir -p db
 chmod -R a+rwX db
 
 echo "Restoring database from Litestream if available..."
-litestream restore -config litestream.yml -if-db-not-exists -if-replica-exists db/site.sqlite3
+# Add error handling for restore
+if litestream restore -config litestream.yml -if-db-not-exists -if-replica-exists db/site.sqlite3; then
+    echo "Database restored successfully"
+else
+    echo "No replica found or database already exists, continuing..."
+fi
+
+# Cleanup potentially corrupted local state from previous runs
+rm -f db/site.sqlite3-litestream
 
 echo "Running migrations..."
 python manage.py migrate --noinput
@@ -16,8 +24,10 @@ python manage.py migrate --noinput
 echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
-echo "Starting Litestream with application..."
-# Cleanup potentially corrupted local state from previous runs
-rm -rf db/site.sqlite3-litestream
+# Optional: Create a superuser if needed (using env vars)
+# if [ "$DJANGO_SUPERUSER_USERNAME" ]; then
+#     python manage.py createsuperuser --noinput || true
+# fi
 
-exec litestream replicate -config litestream.yml -exec "gunicorn mysite.wsgi:application --bind=0.0.0.0:80 --workers=3"
+echo "Starting Litestream with application..."
+exec litestream replicate -config litestream.yml -exec "$@"

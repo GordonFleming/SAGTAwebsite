@@ -163,9 +163,9 @@ DATABASES = {
         'NAME': os.path.join(BASE_DIR, 'db', 'site.sqlite3'),
         'OPTIONS': {
             'transaction_mode': 'IMMEDIATE',
-            'timeout': 5,  # seconds
             'init_command': """
                 PRAGMA journal_mode=WAL;
+                PRAGMA busy_timeout=5000;
                 PRAGMA synchronous=NORMAL;
                 PRAGMA mmap_size=134217728;
                 PRAGMA journal_size_limit=27103364;
