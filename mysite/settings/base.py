@@ -16,6 +16,9 @@ import os
 PROJECT_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 BASE_DIR = os.path.dirname(PROJECT_DIR)
 
+# Default primary key field type
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
@@ -286,5 +289,6 @@ AWS_S3_ACCESS_KEY_ID = os.environ.get("ACCESS_KEY_S3")
 AWS_S3_SECRET_ACCESS_KEY = os.environ.get("SECRET_KEY_S3")
 AWS_S3_SIGNATURE_VERSION = "s3v4"
 AWS_S3_CUSTOM_DOMAIN= "s3.sagta.org.za"
+AWS_S3_FILE_OVERWRITE = False  # Prevent accidental file overwrites
 
 

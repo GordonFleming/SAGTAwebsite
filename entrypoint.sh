@@ -13,4 +13,4 @@ echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
 echo "Starting Litestream with application..."
-exec litestream replicate -config litestream.yml -exec "$@"
+exec litestream replicate -exec "$@"
