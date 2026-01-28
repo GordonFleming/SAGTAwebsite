@@ -1,5 +1,5 @@
 dbs:
-  - path: db.sqlite3
+  - path: db/site.sqlite3
     replicas:
       - name: cloudflare-r2
         type: s3

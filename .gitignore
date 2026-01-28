@@ -45,6 +45,7 @@ local.py
 *.sqlite
 *.sqlite3
 *.db
+db/
 postgres-data/
 
 # OS generated files
