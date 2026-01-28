@@ -17,4 +17,4 @@ echo "Collecting static files..."
 python manage.py collectstatic --noinput
 
 echo "Starting Litestream with application..."
-exec litestream replicate -exec "$@"
+exec litestream replicate -exec "gunicorn mysite.wsgi:application --bind=0.0.0.0:80 --workers=3"
