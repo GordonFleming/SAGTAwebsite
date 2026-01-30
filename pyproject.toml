@@ -13,6 +13,7 @@ dependencies = [
     "django-import-export==4.3.8",
     "django-oauth-toolkit==1.7.1",
     "django-storages[s3]==1.14.4",
+    "django-ses==4.4.0",
     "django-turnstile==0.1.2",
     "djangorestframework==3.16.0",
     "gspread==6.2.1",

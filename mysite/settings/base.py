@@ -257,13 +257,12 @@ ACCOUNT_EMAIL_NOTIFICATIONS = True
 ACCOUNT_LOGIN_ON_GET = False
 
 # Email Settings
-EMAIL_HOST = os.environ.get("EMAIL_HOST")
-EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_PASSWORD")
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-# EMAIL_USE_SSL = True
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_BACKEND = 'django_ses.SESBackend'
+AWS_SES_ACCESS_KEY_ID = os.environ.get('AWS_SES_ACCESS_KEY_ID')
+AWS_SES_SECRET_ACCESS_KEY = os.environ.get('AWS_SES_SECRET_ACCESS_KEY')
+AWS_SES_REGION_NAME = os.environ.get('AWS_SES_REGION_NAME', 'af-south-1')
+AWS_SES_REGION_ENDPOINT = os.environ.get('AWS_SES_REGION_ENDPOINT')
+
 DEFAULT_FROM_EMAIL = 'SAGTA Team <mail@sagta.org.za>'
 #TO_EMAIL = ''
 
